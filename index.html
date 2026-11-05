@@ -1429,6 +1429,45 @@ body.desk .sb-cloud{display:flex;margin-left:auto;margin-right:2px;background:no
 @media (prefers-reduced-motion:reduce){.sb-cloud.busy svg{animation:none}}
 
 .sb-cloud.warn{color:#E09B2D}
+
+/* repetições previstas, banner de dia e histórico de hábitos */
+.jb i.vi{background:transparent!important;border:1.5px solid var(--c);box-sizing:border-box}
+.row.virt{opacity:.78}.row.virt .tt{font-style:italic}.row.virt .vic{display:flex;color:var(--mu);margin-right:2px}
+.tli.virt{opacity:.72}.tli.virt .tlp{border:1.5px dashed var(--c);background:transparent}
+.tck.virt{display:flex;align-items:center;justify-content:center;border:1.5px dashed var(--c,var(--mu));background:transparent;color:var(--mu);cursor:default}
+.wn.virt{border:1.5px dashed var(--c);background:transparent!important;opacity:.85}
+.wup.virt{border:1.5px dashed var(--c);background:transparent!important}
+.selwarn{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0;padding:9px 12px;border-radius:12px;background:var(--bg2);border:1px solid var(--bd);font-size:13px}
+.selwarn .chip{flex:none}
+.row.hrow .tck{margin-right:10px}
+.hh-n{display:flex;align-items:center;justify-content:space-between;margin:2px 0 6px}.hh-n button{background:none;border:0;padding:6px;color:var(--tx);cursor:pointer}.hh-n button:first-child svg{transform:rotate(180deg)}
+.hh-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.hc{aspect-ratio:1;border-radius:10px;border:1px solid var(--bd);background:transparent;color:var(--tx);font:inherit;font-size:12.5px;cursor:pointer;padding:0}
+.hc.out{opacity:.35}.hc.on{background:var(--ac);color:var(--onac,#fff);border-color:transparent}.hc.miss{border-style:dashed}.hc.today{outline:2px solid var(--ac);outline-offset:1px}.hc.fut{opacity:.4;cursor:default}
+
+/* seletor de data/hora dentro da folha (troca o conteúdo, com seta para voltar) */
+.sh.dtpin .hd{justify-content:flex-start;gap:4px;margin-bottom:4px}.sh.dtpin .hd h2{flex:1;margin:0}
+.dtp-back{flex:none}.dtp-back svg{transform:rotate(180deg)}
+.dtpin .wcal{border-bottom:0;margin:2px 0 4px}.dtpin .wday{position:relative;padding:9px 0}
+
+/* segundas vias dos gestos (celular) */
+body:not(.desk) #main{position:relative}
+body:not(.desk) #main h1[data-a=sbopen]{cursor:pointer;padding-right:44px}
+.qsb{position:absolute;top:calc(14px + env(safe-area-inset-top));right:10px;z-index:3;display:flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:none;color:var(--mu);opacity:.6;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.qsb:active{opacity:1;background:var(--glassh)}
+body.desk .qsb,body.selmode .qsb,body.sb-open .qsb{display:none}
+
+/* cartão Fechar o dia destacado ao chegar pela notificação */
+.dia.ping{animation:diaping 2.2s ease-out 1}
+@keyframes diaping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ac) 55%,transparent)}60%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.dia.ping{animation:none;outline:2px solid var(--ac)}}
+
+/* desktop: linha de busca no topo do menu fixo */
+.sb-find{display:none}
+body.desk .sb-find{display:flex;align-items:center;gap:8px;width:100%;margin:2px 0 12px;padding:7px 10px;border:1px solid var(--bd);border-radius:9px;background:none;color:var(--mu);font:inherit;font-size:13px;cursor:pointer}
+body.desk .sb-find:hover{background:var(--glassh);color:var(--tx)}
+body.desk .sb-find span{flex:1;text-align:left}
+body.desk .sb-find kbd{font:inherit;font-size:11px;padding:1px 6px;border:1px solid var(--bd);border-radius:5px;color:var(--mu)}
 </style>
 </head>
 <body>
@@ -1454,9 +1493,9 @@ body.desk .sb-cloud{display:flex;margin-left:auto;margin-right:2px;background:no
 <script>
 (function(){try{var c=document.createElement('canvas');c.width=c.height=512;var x=c.getContext('2d');x.fillStyle='#3A6FF7';x.fillRect(0,0,512,512);x.strokeStyle='#fff';x.lineWidth=44;x.lineCap='round';x.lineJoin='round';x.beginPath();x.moveTo(130,270);x.lineTo(220,360);x.lineTo(385,170);x.stroke();var icon=c.toDataURL('image/png');var m={name:'Lembra',short_name:'Lembra',display:'standalone',background_color:'#FAFAF8',theme_color:'#3A6FF7',start_url:'.',icons:[{src:icon,sizes:'512x512',type:'image/png'}]};var l=document.createElement('link');l.rel='manifest';l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));document.head.appendChild(l);var a=document.createElement('link');a.rel='apple-touch-icon';a.href=icon;document.head.appendChild(a)}catch(e){}})();
 
-const APP_V='0.9.0',APP_BUILD='01/11/2026 às 19:36';
+const APP_V='0.9.0',APP_BUILD='05/11/2026 às 08:07';
 const KEY='lembra-v2',OLD='lembra-v1',MODE='lembra-mode';
-const NAMES={tag:'Etiqueta',inbox:'Inbox',hoje:'Hoje',upcoming:'Upcoming',anytime:'Anytime',someday:'Someday',logbook:'Logbook',metas:'Metas',habitos:'Hábitos',foco:'Agora',home:'Listas',trash:'Lixeira',revsem:'Revisão semanal',amanha:'Amanhã',prazos:'Prazos',repeticoes:'Repetições',projconc:'Projetos concluídos',vida:'Vida',rituais:'Rituais',ajustes:'Ajustes',jornada:'Jornada',calendario:'Calendário'};
+const NAMES={tag:'Etiqueta',inbox:'Inbox',hoje:'Hoje',upcoming:'Upcoming',anytime:'Anytime',someday:'Someday',logbook:'Logbook',metas:'Metas',habitos:'Hábitos',foco:'Foco',home:'Listas',trash:'Lixeira',revsem:'Revisão semanal',amanha:'Amanhã',prazos:'Prazos',repeticoes:'Repetições',projconc:'Projetos concluídos',vida:'Vida',rituais:'Rituais',ajustes:'Ajustes',jornada:'Jornada',calendario:'Calendário'};
 const FCOL=['#3A6FF7','#E0584B','#E09B2D','#3FA66B','#8E5BD6','#D6559B','#2BA3B8','#7A7A74'];
 const DEFAULT_FOLDERS=['Arte e coletivo','Estudos · UFJF','Trabalho','Casa','Saúde','Finanças','Pessoal'];
 const CTX={sair:'Ao sair de casa',casa:'Ao chegar em casa'};
@@ -1512,11 +1551,11 @@ const alias={'Arte':'Arte e coletivo','Estudos':'Estudos · UFJF'};
 o.ritual=o.ritual||b.ritual;o.nid=o.nid||1;return o}
 function load(){try{let r=localStorage.getItem(KEY);if(r){const o=JSON.parse(r);if(o&&o.v===2)return o}
 r=localStorage.getItem(OLD);if(r){const o=JSON.parse(r);if(o&&o.v===1)return migrate(o)}}catch(e){}return blank()}
-function save(){try{syncStamp()}catch(e){}try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}try{syncSoon()}catch(e){}}
+function save(){try{syncStamp()}catch(e){}try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}try{syncSoon()}catch(e){}try{ntfSoon()}catch(e){}}
 let S=load(),V={tab:'inbox',goal:null,proj:null,fid:null},SH=null,finderOpen=false;
 /* ---------- sincronização com o Google Drive (celular e computador) ---------- */
 const SYNC={busy:false,err:'',tok:null,exp:0,t:null,applying:false,lastTry:0};
-const SYNC_ARR=['folders','goals','projects','tasks','habits','ritual','media','trash'];
+const SYNC_ARR=['folders','goals','projects','tasks','habits','ritual','media','trash','fotosIdx'];
 const SYNC_LOCAL=['vis','gcid','mqt','mqp','wspd'];
 const DRIVE_SCOPE='https://www.googleapis.com/auth/drive.file';
 let SNAP=null;
@@ -1536,7 +1575,7 @@ function syncDoc(){const d={app:'lembra',v:2,dev:(S.sync&&S.sync.dev)||'',at:Dat
 function syncMerge(L,R){const M={app:'lembra',v:2,at:Date.now(),dev:L.dev||''},T={};[L.tomb,R.tomb].forEach(t=>Object.keys(t||{}).forEach(k=>{T[k]=Math.max(T[k]||0,t[k])}));
 const cut=Date.now()-120*864e5;Object.keys(T).forEach(k=>{if(T[k]<cut)delete T[k]});M.tomb=T;
 SYNC_ARR.forEach(c=>{const lm=new Map((L[c]||[]).map(x=>[x.id,x])),rm=new Map((R[c]||[]).map(x=>[x.id,x])),ids=[...lm.keys()];rm.forEach((v,k)=>{if(!lm.has(k))ids.push(k)});const out=[];
-ids.forEach(id=>{const x=lm.get(id),y=rm.get(id),p=x&&y?((y.u||0)>(x.u||0)?y:x):(x||y);if((T[c+':'+id]||0)>(p.u||0))return;out.push(p)});M[c]=out});
+ids.forEach(id=>{const x=lm.get(id),y=rm.get(id),p=x&&y?((+y.u||0)>(+x.u||0)?y:x):(x||y);if((T[c+':'+id]||0)>(+p.u||0))return;out.push(p)});M[c]=out});
 const un=(x,y,key)=>{const s=new Set(),o=[];(x||[]).concat(y||[]).forEach(i=>{const k=key(i);if(!s.has(k)){s.add(k);o.push(i)}});return o};
 M.mlog=un(L.mlog,R.mlog,i=>[i.t,i.id,i.k,i.n].join('|'));M.focusLog=un(L.focusLog,R.focusLog,i=>JSON.stringify(i));
 M.arch={};[L.arch,R.arch].forEach(ar=>Object.keys(ar||{}).forEach(d=>{const r=M.arch[d]=M.arch[d]||{f:{}};Object.keys(ar[d]||{}).forEach(p=>{if(p!=='f'&&r[p]===undefined)r[p]=ar[d][p]});Object.keys((ar[d]||{}).f||{}).forEach(fk=>{r.f[fk]=Math.max(r.f[fk]||0,ar[d].f[fk]||0)})}));
@@ -1573,7 +1612,7 @@ async peek(){const id=await this.find();return id?this.meta(id):'none'},
 async read(){const id=await this.find();if(!id)return null;const tag=await this.meta(id),t=await (await driveFetch('drive/v3/files/'+id+'?alt=media')).text();return{text:t,tag:tag}},
 async write(text){const id=await this.find();if(id){const j=await (await driveFetch('upload/drive/v3/files/'+id+'?uploadType=media&fields=md5Checksum,modifiedTime',{method:'PATCH',headers:{'Content-Type':'application/json'},body:text})).json();return j.md5Checksum||j.modifiedTime||''}
 const bd='lembra'+uid(),meta=JSON.stringify({name:'lembra-sync.json',mimeType:'application/json'});const j=await (await driveFetch('upload/drive/v3/files?uploadType=multipart&fields=id,md5Checksum,modifiedTime',{method:'POST',headers:{'Content-Type':'multipart/related; boundary='+bd},body:'--'+bd+'\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'+meta+'\r\n--'+bd+'\r\nContent-Type: application/json\r\n\r\n'+text+'\r\n--'+bd+'--'})).json();S.sync.fileId=j.id;return j.md5Checksum||j.modifiedTime||''}};
-async function syncBE(manual){if(window.__syncBackend)return window.__syncBackend;if(syncKind()==='github'){if(!S.sync.gh||!S.sync.gh.token||!S.sync.gh.repo)throw new Error('Falta o repositório ou o token do GitHub.');return ghBE}await syncToken(manual);return driveBE}
+async function syncBE(manual){if(window.__syncBackend)return window.__syncBackend;if(syncKind()==='server'){if(!S.sync.srv||!S.sync.srv.token||!S.sync.srv.url)throw new Error('Falta o endereço ou o token do servidor.');return serverBE}if(syncKind()==='github'){if(!S.sync.gh||!S.sync.gh.token||!S.sync.gh.repo)throw new Error('Falta o repositório ou o token do GitHub.');return ghBE}await syncToken(manual);return driveBE}
 
 /* --- GitHub: o arquivo lembra-sync.json fica num repositório privado seu --- */
 function b64e(s){const u=new TextEncoder().encode(s);let b='';for(let i=0;i<u.length;i+=0x8000)b+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return btoa(b)}
@@ -1612,11 +1651,76 @@ const r2=await fetch('https://api.github.com/repos/'+g.repo+'/contents/lembra-sy
 L.push(r2.status===200?'✓ O arquivo lembra-sync.json já existe no repositório.':r2.status===404?'✓ O arquivo lembra-sync.json ainda não existe: será criado na primeira sincronização.':'• Ao procurar o arquivo, o GitHub respondeu '+r2.status+'.')}
 catch(e){L.push('✕ Falhou no meio do teste: '+esc((e&&e.message)||String(e)))}
 fim()}
+
+/* --- Meu servidor: um celular parado, Raspberry, PC... (veja lembra-servidor) --- */
+const srvNorm=u=>{u=String(u||'').trim().replace(/\s+/g,'');if(!u)return'';if(!/^https?:\/\//i.test(u))u='http://'+u;return u.replace(/\/+$/,'')};
+const srvMixed=u=>!isNative()&&location.protocol==='https:'&&/^http:\/\//i.test(u)&&!/^http:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(u);
+const SRV_MIXED_MSG='Esta página é https e o servidor é http: o navegador bloqueia. Abra o Lembra pelo endereço do próprio servidor (http://…:8787) ou use https no servidor (Tailscale ou Cloudflare).';
+function srvNetErr(e){const m=String((e&&e.message)||e||'');if(e&&e.name==='AbortError')return 'O servidor não respondeu a tempo. Confira se o celular-servidor está ligado e conectado (Wi-Fi ou Tailscale).';if(srvMixed((S.sync&&S.sync.srv&&S.sync.srv.url)||''))return SRV_MIXED_MSG;if(navigator.onLine===false)return 'Este aparelho está sem internet.';return 'Não consegui falar com o servidor ('+m+'). Confira se o celular-servidor está ligado, os endereços e a porta, e se este aparelho está no mesmo Wi-Fi'+((S.sync&&S.sync.srv&&S.sync.srv.alt)?' ou com o Tailscale ligado (endereço de fora de casa)':' ou no Tailscale')+'.'+(isNative()&&/^http:/i.test((S.sync&&S.sync.srv&&S.sync.srv.url)||'')?' No app instalado, o projeto precisa ter passado pelo configurar-android.js (permite http) antes do npx cap sync.':'')}
+async function srvProbe(url){try{const c=new AbortController(),t=setTimeout(()=>c.abort(),6000);const r=await fetch(url+'/api/v1/ping',{signal:c.signal});clearTimeout(t);const j=await r.json();return !!(j&&j.app==='lembra-server')}catch(e){return false}}
+const srvHttpVariant=u=>/^https:\/\//i.test(u)?u.replace(/^https:/i,'http:'):'';
+const serverBE={base(){const s=S.sync.srv;return(SYNC.srvAlt&&s.alt)?s.alt:s.url},u(p){return this.base()+'/api/v1'+p},
+async call(p,o,ms){o=o||{};const s=S.sync.srv,tries=s.alt?2:1;let lastErr;
+for(let k=0;k<tries;k++){const full=ms||15000,tmo=(tries>1&&k===0&&!o.live)?Math.min(full,5000):full,ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),tmo);if(o.live)this.ctl=ctl;
+try{const r=await fetch(this.u(p),{method:o.method,body:o.body,signal:ctl.signal,headers:Object.assign({Authorization:'Bearer '+s.token},o.headers||{})});clearTimeout(tm);return r}
+catch(e){clearTimeout(tm);if(o.live&&e&&e.name==='AbortError'&&document.visibilityState!=='visible')throw e;lastErr=e;if(tries>1&&k===0){SYNC.srvAlt=!SYNC.srvAlt;SYNC.srvSwitch=Date.now();continue}}}
+throw new Error(srvNetErr(lastErr))},
+async check(r){if(r.ok||r.status===304)return;if(r.status===401)throw new Error('O servidor recusou o token. Confira o token (ou gere outro com: node server.js newtoken seu-nome).');if(r.status===429)throw new Error('Muitas tentativas erradas no servidor. Espere 1 minuto.');if(r.status===413)throw new Error('O documento é maior que o limite do servidor.');throw new Error('O servidor respondeu '+r.status)},
+async test(){let r=await this.call('/ping',null,8000);if(!r.ok)throw new Error('O servidor respondeu '+r.status+' ao teste.');const j=await r.json().catch(()=>null);if(!j||j.app!=='lembra-server')throw new Error('Esse endereço respondeu, mas não parece ser o servidor do Lembra.');r=await this.call('/me',null,8000);await this.check(r);return r.json()},
+async peek(){const r=await this.call('/version');await this.check(r);return String((await r.json()).version)},
+async read(){const r=await this.call('/doc');if(r.status===404){this.ver=null;return null}await this.check(r);this.ver=r.headers.get('X-Lembra-Version');const t=await r.text();return{text:t,tag:this.ver}},
+async write(text){const h={'Content-Type':'application/json'};if(this.ver)h['If-Match']='"'+this.ver+'"';else h['If-None-Match']='*';const r=await this.call('/doc',{method:'PUT',headers:h,body:text},30000);if(r.status===409){this.ver=null;throw new Error('CONFLITO')}await this.check(r);const j=await r.json();this.ver=String(j.version);return this.ver},
+async wait(since,secs){const r=await this.call('/wait?timeout='+(secs||25)+'&since='+encodeURIComponent(since),{live:true},(secs||25)*1000+10000);await this.check(r);return r.json()},
+abortLive(){try{if(this.ctl)this.ctl.abort()}catch(e){}},
+async putBlob(id,blob){const r=await this.call('/blob/'+encodeURIComponent(id),{method:'PUT',headers:{'Content-Type':/^image\//.test(blob.type)?blob.type:'image/jpeg'},body:blob},60000);if(r.status===507)throw new Error('O espaço de imagens do servidor acabou.');if(r.status===413)return true;await this.check(r);return true},
+async getBlob(id){const r=await this.call('/blob/'+encodeURIComponent(id),null,60000);if(r.status===404)return null;await this.check(r);return r.blob()},
+delBlob(id){this.call('/blob/'+encodeURIComponent(id),{method:'DELETE'},10000).catch(()=>{})}};
+
+/* --- imagens (capas e fotos do Foco): sincronizam pelo servidor próprio --- */
+const BL={busy:false,n:null,retry:0};
+function fotosIdxFix(){if(!PHOTOS.length)return;S.fotosIdx=S.fotosIdx||[];let ch=false;PHOTOS.forEach(p=>{if(!S.fotosIdx.some(e=>e.id===p.id)&&!(S.tomb&&S.tomb['fotosIdx:'+p.id])){S.fotosIdx.push({id:p.id,w:p.w||0,h:p.h||0,at:p.at||Date.now()});ch=true}});if(ch)save()}
+async function fotosReconcile(){let ch=false;for(const p of PHOTOS.slice()){if(S.tomb&&S.tomb['fotosIdx:'+p.id]&&!(S.fotosIdx||[]).some(e=>e.id===p.id)){try{await PDB.del(p.id);ch=true}catch(e){}}}if(ch)await fotosLoad()}
+function blobWanted(){const m=new Map();(S.media||[]).forEach(x=>{if(x.cover)m.set(x.cover,'c')});(S.fotosIdx||[]).forEach(p=>m.set(p.id,'p'));return m}
+async function blobLocal(){const s=new Set();try{((await CDB.tx('readonly',x=>x.getAllKeys()))||[]).forEach(k=>s.add(k))}catch(e){}try{((await PDB.tx('readonly',x=>x.getAllKeys()))||[]).forEach(k=>s.add(k))}catch(e){}return s}
+async function blobPool(list,n,fn){let i=0;const w=async()=>{while(i<list.length){const x=list[i++];try{await fn(x)}catch(e){BL.err=String((e&&e.message)||e);if(/espaço de imagens/.test(BL.err))throw e}}};await Promise.all(Array.from({length:Math.min(n,list.length)},w))}
+async function blobUp(){if(syncKind()!=='server'||!syncOn()||!window.indexedDB)return 0;const want=blobWanted(),have=await blobLocal(),up=(S.sync.up=S.sync.up||{}),L=[];want.forEach((k,id)=>{if(have.has(id)&&!up[id])L.push([id,k])});if(!L.length)return 0;BL.n={up:L.length,down:0};syncUI();let done=0;
+try{await blobPool(L,3,async([id,k])=>{const rec=await (k==='c'?CDB:PDB).tx('readonly',s=>s.get(id));if(!rec||!rec.blob)return;if(await serverBE.putBlob(id,rec.blob)){up[id]=1;done++}})}finally{BL.n=null;if(done){SYNC.applying=true;try{save()}finally{SYNC.applying=false}}syncUI()}return done}
+async function blobDown(){if(syncKind()!=='server'||!syncOn()||!window.indexedDB)return 0;const want=blobWanted(),have=await blobLocal(),up=(S.sync.up=S.sync.up||{}),L=[];want.forEach((k,id)=>{if(!have.has(id))L.push([id,k])});if(!L.length){BL.retry=0;return 0}
+BL.n={up:0,down:L.length};syncUI();let cC=false,cP=false,miss=0;
+try{await blobPool(L,3,async([id,k])=>{const b=await serverBE.getBlob(id);if(!b){miss++;return}if(k==='c'){await CDB.put({id:id,blob:b,at:Date.now()});cC=true}else{const e=(S.fotosIdx||[]).find(p=>p.id===id)||{};await PDB.put({id:id,blob:b,w:e.w||0,h:e.h||0,at:e.at||Date.now()});cP=true}up[id]=1})}finally{BL.n=null}
+if(cC)await capasLoad();if(cP)await fotosLoad();SYNC.applying=true;try{save()}finally{SYNC.applying=false}if(cC||cP)render(true);syncUI();
+if(miss&&BL.retry<8){BL.retry++;setTimeout(blobSync,5000)}return L.length-miss}
+async function blobSync(){if(BL.busy){BL.again=true;return}BL.busy=true;try{await blobUp();await fotosReconcile();await blobDown()}catch(e){BL.err=String((e&&e.message)||e)}finally{BL.busy=false;if(BL.again){BL.again=false;setTimeout(blobSync,500)}}}
+async function syncLive(){if(SYNC.live||syncKind()!=='server'||!syncOn())return;SYNC.live=true;
+try{while(syncOn()&&syncKind()==='server'&&document.visibilityState==='visible'){if(SYNC.busy||SYNC.needAuth){await jwait(800);continue}
+if(SYNC.pending&&Date.now()>=(SYNC.retryAt||0)){await syncRun(false);continue}
+try{const r=await serverBE.wait(SYNC.rtag||'none',SYNC.pending?3:25);SYNC.liveErr=0;if(SYNC.errLive){SYNC.err='';SYNC.errLive=false;syncUI()}if(r&&r.changed&&r.version!==SYNC.rtag)await syncRun(false)}
+catch(e){if(e&&e.name==='AbortError'){if(document.visibilityState!=='visible'||!syncOn())break;continue}SYNC.liveErr=(SYNC.liveErr||0)+1;if(SYNC.liveErr>=2){SYNC.err=String((e&&e.message)||e);SYNC.errLive=true;syncUI()}await jwait(Math.min(30000,1500*Math.pow(2,Math.min(SYNC.liveErr,4))))}}}finally{SYNC.live=false}}
+const syncStart=()=>{syncSchedule();syncLive()};
+async function srvDiag(){const L=[];SYNC.diag='Testando…';syncUI();const fim=()=>{SYNC.diag=L.join('<br>');syncUI()};
+const url=srvNorm(($('#s-srvurl')||{}).value||(S.sync&&S.sync.srv&&S.sync.srv.url)||''),alt=srvNorm(($('#s-srvalt')||$('#s-srvalt2')||{}).value||(S.sync&&S.sync.srv&&S.sync.srv.alt)||''),tok=String(($('#s-srvtok')||{}).value||(S.sync&&S.sync.srv&&S.sync.srv.token)||'').replace(/\s+/g,'');
+if(!url){L.push('✕ Escreva o endereço do servidor (por exemplo http://192.168.1.50:8787).');return fim()}
+if(srvMixed(url)){L.push('✕ '+SRV_MIXED_MSG);return fim()}
+const tmw=ms=>{const c=new AbortController();setTimeout(()=>c.abort(),ms);return c.signal};
+if(alt){const okA=await srvProbe(alt),okU=await srvProbe(url);L.push((okU?'✓':'✕')+' Em casa ('+esc(url)+'): '+(okU?'responde.':'não responde agora.'));L.push((okA?'✓':'✕')+' De fora ('+esc(alt)+'): '+(okA?'responde.':'não responde agora (o Tailscale está ligado?).'));if(!okU&&!okA){L.push('✕ Nenhum dos dois endereços responde. Confira se o celular-servidor está ligado.');return fim()}}
+try{const r=await fetch((alt&&!(await srvProbe(url))?alt:url)+'/api/v1/ping',{signal:tmw(8000)}),j=await r.json();L.push(j&&j.app==='lembra-server'?'✓ O servidor do Lembra respondeu.':'✕ Esse endereço respondeu, mas não parece ser o servidor do Lembra.');if(!(j&&j.app==='lembra-server'))return fim()}
+catch(e){const hv=srvHttpVariant(url);if(hv&&!srvMixed(hv)&&await srvProbe(hv)){L.push('✕ Nada responde em '+esc(url)+', mas o servidor <b>responde em http</b>. Troque o endereço para <b>'+esc(hv)+'</b> (o servidor do Lembra não usa https, a não ser que você ligue um certificado).');const f=$('#s-srvurl');if(f)f.value=hv;return fim()}
+L.push('✕ Não alcancei o servidor: '+(e&&e.name==='AbortError'?'não respondeu em 8 segundos':esc((e&&e.message)||String(e)))+'. Confira se o celular-servidor está ligado, no mesmo Wi-Fi (ou Tailscale) e se o endereço e a porta estão certos.'+(isNative()&&/^http:/i.test(url)?' No app instalado, o projeto precisa ter passado pelo configurar-android.js (permite http) antes do npx cap sync.':''));
+L.push('<span style="color:var(--mu);font-size:11.5px">Detalhes: '+esc(location.protocol+'//'+(location.host||'arquivo local'))+' · online: '+(navigator.onLine?'sim':'não')+'</span>');return fim()}
+if(tok.length<20||/[^\w-]/.test(tok)){L.push('✕ O token parece incompleto ou tem caracteres inválidos. Ele começa com lbr_ e não tem espaços.');return fim()}
+try{const r=await fetch((alt&&!(await srvProbe(url))?alt:url)+'/api/v1/me',{headers:{Authorization:'Bearer '+tok},signal:tmw(8000)});
+if(r.status===401){L.push('✕ O servidor recusou o token. Confira se é o do seu usuário (ou gere outro: node server.js newtoken seu-nome).');return fim()}
+if(r.status===429){L.push('✕ Muitas tentativas erradas: espere 1 minuto.');return fim()}
+if(!r.ok){L.push('✕ O servidor respondeu '+r.status+'.');return fim()}
+const j=await r.json();L.push('✓ Token aceito (usuário: '+esc(j.user)+').');L.push(j.version==='none'?'✓ Ainda não há dados no servidor: serão criados na primeira sincronização.':'✓ O servidor já tem dados (versão '+esc(j.version)+', '+Math.max(1,Math.round(j.bytes/1024))+' KB).')}
+catch(e){L.push('✕ Falhou no meio do teste: '+esc((e&&e.message)||String(e)))}
+fim()}
 const googleBuilt=()=>(window.LEMBRA&&window.LEMBRA.googleClientId)||'';
 function syncBadge(){if(!syncOn())return null;const s=S.sync||{};if(SYNC.busy)return{c:'busy',t:'Sincronizando…',s:'sincronizando…'};if(SYNC.needAuth)return{c:'warn',t:'A permissão do Google venceu. Toque aqui para renovar (1 clique).',s:'renovar'};if(SYNC.err)return{c:'err',t:'Erro na sincronização: '+SYNC.err,s:'erro'};return{c:'ok',t:s.last?'Sincronizado '+syncAgo(s.last):'Conectado · ainda não sincronizou',s:(s.last?syncAgo(s.last):'conectado')}}
 const syncKind=()=>(S.sync&&S.sync.kind)||'drive';
+const syncKindSel=()=>{const s=S.sync||{};return s.kind||((window.LEMBRA&&window.LEMBRA.server)?'server':(googleBuilt()||s.gcid?'drive':'github'))};
 /* modo: 'merge' (padrão), 'remote' (usar o do Drive) ou 'local' (enviar este) */
-async function syncRun(manual,mode){if(SYNC.busy||!syncOn())return false;SYNC.busy=true;SYNC.err='';syncUI();let ok=false,wl=false,wr=false;const nome=syncKind()==='github'?'GitHub':'Drive';
+async function syncRun(manual,mode){if(SYNC.busy||!syncOn())return false;SYNC.busy=true;SYNC.err='';SYNC.pending=false;syncUI();let ok=false,wl=false,wr=false;const nome=syncKind()==='github'?'GitHub':syncKind()==='server'?'servidor':'Drive';
 try{const be=await syncBE(manual);
 for(let n=0;;n++){try{syncStamp();SYNC.prevTag=SYNC.rtag;const rr=await be.read();if(rr&&rr.tag!==undefined)SYNC.rtag=rr.tag;else if(!rr)SYNC.rtag='none';let R=null;if(rr&&rr.text){try{R=JSON.parse(rr.text)}catch(e){throw new Error('O arquivo da nuvem está ilegível.')}if(R.app!=='lembra')throw new Error('O arquivo da nuvem não é do Lembra.')}
 if(S.sync.first&&R&&!mode){if(syncPristine())mode='remote';else{if(manual)openSheet({type:'syncfirst'});SYNC.busy=false;syncUI();return false}}
@@ -1624,40 +1728,48 @@ const L=syncDoc();let M;wl=false;wr=false;
 if(!R||mode==='local'){M=L;wr=!R||syncCanon(L)!==syncCanon(R)}
 else if(mode==='remote'){M=R;wl=true;wr=false}
 else{M=syncMerge(L,R);const cm=syncCanon(M);wl=cm!==syncCanon(L);wr=cm!==syncCanon(R)}
-if(wl&&!manual&&!mode&&syncUserBusy()){SYNC.rtag=SYNC.prevTag;SYNC.busy=false;syncUI();return false}
-if(wl){SYNC.applying=true;try{syncApply(M);save();rescheduleAll();render(true)}finally{SYNC.applying=false}}
-if(wr){M.at=Date.now();M.dev=S.sync.dev;const nt=await be.write(JSON.stringify(M));if(nt)SYNC.rtag=nt}
+if(wl&&!manual&&!mode&&syncUserBusy()){SYNC.rtag=SYNC.prevTag;SYNC.pending=true;SYNC.busy=false;syncUI();return false}
+if(wl){SYNC.applying=true;try{syncApply(M);try{dataCheck(true)}catch(e){}save();rescheduleAll();render(true)}finally{SYNC.applying=false}}
+if(wr){if(syncKind()==='server'){try{await blobUp()}catch(e){}}M.at=Date.now();M.dev=S.sync.dev;const nt=await be.write(JSON.stringify(M));if(nt)SYNC.rtag=nt}
 break}catch(e){if(e&&e.message==='CONFLITO'&&n<2){mode=mode==='remote'?'remote':mode;continue}throw e}}
-S.sync.last=Date.now();S.sync.first=false;SYNC.needAuth=false;SYNC.pollErr=0;SYNC.applying=true;try{save()}finally{SYNC.applying=false}ok=true;if(manual)toast(wl&&wr?'Sincronizado: juntei as duas cópias':wl?'Sincronizado: trouxe as mudanças do '+nome:wr?'Sincronizado: enviei as mudanças para o '+nome:'Tudo igual ao '+nome)}
-catch(e){const m=e&&e.message||String(e);if(m==='AUTH')SYNC.needAuth=true;if(m==='AUTH')SYNC.err=manual?'Entre com o Google para continuar.':'Toque em “Sincronizar agora” para entrar de novo.';else if(m==='CONFLITO')SYNC.err='Outro aparelho estava gravando ao mesmo tempo. Tente de novo.';else SYNC.err=m;if(manual&&m!=='AUTH')toast('Não consegui sincronizar: '+SYNC.err)}
+if(syncKind()==='server')setTimeout(blobSync,50);S.sync.last=Date.now();S.sync.first=false;SYNC.needAuth=false;SYNC.pollErr=0;SYNC.failN=0;SYNC.retryAt=0;SYNC.applying=true;try{save()}finally{SYNC.applying=false}ok=true;if(manual)toast(wl&&wr?'Sincronizado: juntei as duas cópias':wl?'Sincronizado: trouxe as mudanças do '+nome:wr?'Sincronizado: enviei as mudanças para o '+nome:'Tudo igual ao '+nome)}
+catch(e){const m=e&&e.message||String(e);SYNC.pending=true;SYNC.failN=(SYNC.failN||0)+1;SYNC.retryAt=Date.now()+Math.min(60000,2000*Math.pow(2,Math.min(SYNC.failN,5)));if(m==='AUTH')SYNC.needAuth=true;if(m==='AUTH')SYNC.err=manual?'Entre com o Google para continuar.':'Toque em “Sincronizar agora” para entrar de novo.';else if(m==='CONFLITO')SYNC.err='Outro aparelho estava gravando ao mesmo tempo. Tente de novo.';else SYNC.err=m;if(manual&&m!=='AUTH')toast('Não consegui sincronizar: '+SYNC.err)}
 finally{SYNC.busy=false;syncUI()}return ok}
 const syncUserBusy=()=>!!(SH||FAN.open||focusOpen||SB.drag||(document.activeElement&&/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)&&document.activeElement.value));
-function syncSoon(){if(!syncOn()||SYNC.applying)return;const now=Date.now();if(!SYNC.dirtyAt)SYNC.dirtyAt=now;clearTimeout(SYNC.t);SYNC.t=setTimeout(()=>{SYNC.dirtyAt=0;syncRun(false)},Math.max(300,Math.min(2500,SYNC.dirtyAt+15000-now)))}
-async function syncPoll(){if(!syncOn()||SYNC.busy||SYNC.needAuth||document.visibilityState!=='visible')return;
-try{const be=await syncBE(false);if(!be.peek)return;const t=await be.peek();SYNC.pollErr=0;if(t!==undefined&&t!==SYNC.rtag)await syncRun(false)}catch(e){const m=e&&e.message;if(m==='AUTH'){SYNC.needAuth=true;syncUI()}else SYNC.pollErr=(SYNC.pollErr||0)+1}}
+function syncSoon(){if(!syncOn()||SYNC.applying)return;SYNC.pending=true;const now=Date.now();if(!SYNC.dirtyAt)SYNC.dirtyAt=now;clearTimeout(SYNC.t);SYNC.t=setTimeout(()=>{SYNC.dirtyAt=0;syncRun(false)},Math.max(300,Math.min(syncKind()==='server'?700:2500,SYNC.dirtyAt+15000-now)))}
+async function syncPoll(){if(!syncOn()||SYNC.busy||SYNC.needAuth||document.visibilityState!=='visible'||(SYNC.live&&syncKind()==='server'))return;
+try{if(SYNC.pending&&Date.now()>=(SYNC.retryAt||0)){await syncRun(false);return}const be=await syncBE(false);if(!be.peek)return;const t=await be.peek();SYNC.pollErr=0;if(t!==undefined&&t!==SYNC.rtag)await syncRun(false)}catch(e){const m=e&&e.message;if(m==='AUTH'){SYNC.needAuth=true;syncUI()}else SYNC.pollErr=(SYNC.pollErr||0)+1}}
 function syncSchedule(){clearTimeout(SYNC.pt);if(!syncOn())return;const base=Math.max(1,(S.sync.every||15))*1000,wait=Math.min(120000,base*Math.pow(2,Math.min(SYNC.pollErr||0,3)));SYNC.pt=setTimeout(async()=>{await syncPoll();syncSchedule()},wait+Math.random()*(base>5000?1500:100))}
-function syncWire(){if(SYNC.wired)return;SYNC.wired=true;document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&syncOn()){SYNC.pollErr=0;syncPoll()}});window.addEventListener('online',()=>{if(syncOn()){SYNC.pollErr=0;syncRun(false)}})}
+function syncWire(){if(SYNC.wired)return;SYNC.wired=true;document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&syncOn()){SYNC.pollErr=0;syncPoll();syncLive()}else serverBE.abortLive()});window.addEventListener('online',()=>{if(syncOn()){SYNC.pollErr=0;syncRun(false)}})}
 function syncUI(){try{if(typeof sbRender==='function'&&(SB.open||DESKON()))sbRender()}catch(x){}const e=$('#sync-st');if(e)e.innerHTML=syncStatusHTML();const dg=$('#sync-diag');if(dg)dg.innerHTML=SYNC.diag||'';const b=$('#sync-now');if(b){b.disabled=SYNC.busy;b.textContent=SYNC.busy?'Sincronizando…':'Sincronizar agora'}}
-function syncStatusHTML(){const s=S.sync||{},onde=syncKind()==='github'?'GitHub · '+esc((s.gh&&s.gh.repo)||''):'Google Drive';if(SYNC.busy)return 'Sincronizando…';if(SYNC.err)return '<span style="color:var(--dg)">'+esc(SYNC.err)+'</span>'+(s.last?'<br>Última vez: '+syncAgo(s.last):'');return 'Conectado ao '+onde+' · '+(s.last?'sincronizado '+syncAgo(s.last):'ainda não sincronizou')}
-function syncHTML(){const s=S.sync||{},k=s.kind||(googleBuilt()||s.gcid?'drive':'github'),gb=googleBuilt();let h='<label>Sincronização</label>';
-if(!s.on){h+='<p class="sub" style="margin:2px 0 8px">Mantém o celular e o computador iguais, guardando os dados num arquivo seu (<b>lembra-sync.json</b>). Escolha onde:</p><div class="chips">'+chip(k==='github','synckind','github','GitHub (mais simples)')+chip(k==='drive','synckind','drive','Google Drive')+'</div>';
-if(k==='github')h+='<p class="mt" style="font-size:12px;margin:4px 0 6px">Precisa de um repositório <b>privado</b> seu e de um <b>token</b> com acesso só a ele (veja o guia). Use o mesmo nos dois aparelhos.</p><input type="text" id="s-ghrepo" placeholder="usuario/lembra-dados" value="'+esc((s.gh&&s.gh.repo)||'')+'" autocomplete="off" autocapitalize="off" spellcheck="false"><input type="password" id="s-ghtok" placeholder="Token do GitHub (github_pat_…)" value="" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="chips"><button class="chip" data-a="syncon">Conectar ao GitHub</button><button class="chip" data-a="syncdiag">Testar conexão</button></div><p class="mt" id="sync-diag" style="font-size:12.5px;margin:6px 0 4px">'+(SYNC.diag||'')+'</p>';
+function syncStatusHTML(){const s=S.sync||{},onde=syncKind()==='github'?'GitHub · '+esc((s.gh&&s.gh.repo)||''):syncKind()==='server'?'servidor · '+esc(String(((SYNC.srvAlt&&s.srv&&s.srv.alt)?s.srv.alt:(s.srv&&s.srv.url))||'').replace(/^https?:\/\//,''))+((SYNC.srvAlt&&s.srv&&s.srv.alt)?' (endereço de fora)':''):'Google Drive';if(SYNC.busy)return 'Sincronizando…';if(SYNC.err)return '<span style="color:var(--dg)">'+esc(SYNC.err)+'</span>'+(s.last?'<br>Última vez: '+syncAgo(s.last):'');return 'Conectado ao '+onde+' · '+(s.last?'sincronizado '+syncAgo(s.last):'ainda não sincronizou')+(BL.n?' · '+(BL.n.up?'enviando '+BL.n.up+' imagem(ns)…':'baixando '+BL.n.down+' imagem(ns)…'):'')+(BL.err&&!BL.n?'<br><span style="color:var(--mu)">Imagens: '+esc(BL.err)+'</span>':'')}
+function syncHTML(){const s=S.sync||{},k=s.kind||((window.LEMBRA&&window.LEMBRA.server)?'server':(googleBuilt()||s.gcid?'drive':'github')),gb=googleBuilt();let h='<label>Sincronização</label>';
+if(!s.on){h+='<p class="sub" style="margin:2px 0 8px">Mantém o celular e o computador iguais, guardando os dados num arquivo seu (<b>lembra-sync.json</b>). Escolha onde:</p><div class="chips">'+chip(k==='github','synckind','github','GitHub (mais simples)')+chip(k==='drive','synckind','drive','Google Drive')+chip(k==='server','synckind','server','Meu servidor')+'</div>';
+if(k==='server')h+='<p class="mt" style="font-size:12px;margin:4px 0 6px">Seu próprio servidor (um celular parado, um Raspberry, um PC). Sincroniza em cerca de 1 segundo e não depende de Google nem de GitHub. Veja o guia do servidor. Use o mesmo endereço e token nos dois aparelhos.</p><input type="text" id="s-srvurl" placeholder="http://192.168.1.50:8787" value="'+esc((s.srv&&s.srv.url)||(window.LEMBRA&&window.LEMBRA.server)||'')+'" autocomplete="off" autocapitalize="off" spellcheck="false"><input type="password" id="s-srvtok" placeholder="Token do servidor (lbr_…)" value="" autocomplete="off" autocapitalize="off" spellcheck="false"><label>Endereço de fora de casa (opcional)</label><input type="text" id="s-srvalt" placeholder="http://100.x.y.z:8787 (o IP do Tailscale)" value="'+esc((s.srv&&s.srv.alt)||'')+'" autocomplete="off" autocapitalize="off" spellcheck="false"><p class="mt" style="font-size:12px;margin:2px 0 6px">O app usa o primeiro endereço (em casa, mais rápido) e, se ele não responder, troca sozinho para este.</p><div class="chips"><button class="chip" data-a="syncon">Conectar ao servidor</button><button class="chip" data-a="syncdiag">Testar conexão</button></div><p class="mt" id="sync-diag" style="font-size:12.5px;margin:6px 0 4px">'+(SYNC.diag||'')+'</p>';
+else if(k==='github')h+='<p class="mt" style="font-size:12px;margin:4px 0 6px">Precisa de um repositório <b>privado</b> seu e de um <b>token</b> com acesso só a ele (veja o guia). Use o mesmo nos dois aparelhos.</p><input type="text" id="s-ghrepo" placeholder="usuario/lembra-dados" value="'+esc((s.gh&&s.gh.repo)||'')+'" autocomplete="off" autocapitalize="off" spellcheck="false"><input type="password" id="s-ghtok" placeholder="Token do GitHub (github_pat_…)" value="" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="chips"><button class="chip" data-a="syncon">Conectar ao GitHub</button><button class="chip" data-a="syncdiag">Testar conexão</button></div><p class="mt" id="sync-diag" style="font-size:12.5px;margin:6px 0 4px">'+(SYNC.diag||'')+'</p>';
 else if(gb)h+='<p class="mt" style="font-size:12px;margin:4px 0 6px">Entre com a sua conta do Google. Os dados ficam num arquivo <b>seu</b> no seu Google Drive; o Lembra só enxerga esse arquivo, nunca o resto do Drive. Use a mesma conta nos dois aparelhos.</p><div class="chips"><button class="chip" data-a="syncon">Entrar com o Google</button></div>';
 else h+='<p class="mt" style="font-size:12px;margin:4px 0 6px">Precisa de um ID de cliente do Google (veja o guia). Use o mesmo ID nos dois aparelhos.</p><input type="text" id="s-gcid" placeholder="ID do cliente Web (…apps.googleusercontent.com)" value="'+esc(s.gcid||'')+'" autocomplete="off" autocapitalize="off"><div class="chips"><button class="chip" data-a="syncon">Conectar ao Drive</button></div>'}
-else{const nome=syncKind()==='github'?'GitHub':'Drive';h+='<p class="sub" id="sync-st" style="margin:2px 0 8px">'+syncStatusHTML()+'</p><div class="chips"><button class="chip" id="sync-now" data-a="syncnow">Sincronizar agora</button>'+(syncKind()==='github'?'<button class="chip" data-a="syncdiag">Testar conexão</button>':'')+'<button class="chip" data-a="syncpull">Usar a cópia do '+nome+'</button><button class="chip" data-a="syncpush">Enviar esta cópia</button><button class="chip" data-a="syncoff">Desconectar</button></div><label>Buscar mudanças dos outros aparelhos</label><div class="chips">'+chip((s.every||15)===15,'syncevery',15,'A cada 15 s')+chip(s.every===60,'syncevery',60,'A cada 1 min')+chip(s.every===300,'syncevery',300,'A cada 5 min')+'</div><p class="mt" id="sync-diag" style="font-size:12.5px;margin:2px 0 6px">'+(SYNC.diag||'')+'</p><p class="mt" style="font-size:12px;margin:4px 0 8px">O que você muda sobe em cerca de 3 segundos, e o app confere as mudanças dos outros aparelhos no intervalo escolhido enquanto está aberto. Capas e fotos do Foco não vão junto. “Usar a cópia” e “Enviar esta cópia” substituem o outro lado por inteiro.</p>'}
+else{const nome=syncKind()==='github'?'GitHub':syncKind()==='server'?'servidor':'Drive';h+='<p class="sub" id="sync-st" style="margin:2px 0 8px">'+syncStatusHTML()+'</p><div class="chips"><button class="chip" id="sync-now" data-a="syncnow">Sincronizar agora</button>'+(syncKind()!=='drive'?'<button class="chip" data-a="syncdiag">Testar conexão</button>':'')+'<button class="chip" data-a="syncpull">Usar a cópia do '+nome+'</button><button class="chip" data-a="syncpush">Enviar esta cópia</button><button class="chip" data-a="syncoff">Desconectar</button></div>'+(syncKind()==='server'?'<label>Endereço de fora de casa (opcional)</label><input type="text" id="s-srvalt2" placeholder="http://100.x.y.z:8787 (o IP do Tailscale)" value="'+esc((s.srv&&s.srv.alt)||'')+'" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="chips"><button class="chip" data-a="srvaltsave">Salvar endereço de fora</button></div>':'')+'<label>Buscar mudanças dos outros aparelhos</label><div class="chips">'+chip((s.every||15)===15,'syncevery',15,'A cada 15 s')+chip(s.every===60,'syncevery',60,'A cada 1 min')+chip(s.every===300,'syncevery',300,'A cada 5 min')+'</div><p class="mt" id="sync-diag" style="font-size:12.5px;margin:2px 0 6px">'+(SYNC.diag||'')+'</p><p class="mt" style="font-size:12px;margin:4px 0 8px">O que você muda sobe em cerca de 3 segundos, e o app confere as mudanças dos outros aparelhos no intervalo escolhido enquanto está aberto. Capas e fotos do Foco vão junto só pelo servidor próprio (Drive e GitHub levam só os dados). “Usar a cópia” e “Enviar esta cópia” substituem o outro lado por inteiro.</p>'}
 return h}
-async function syncConnect(){const kind=((S.sync&&S.sync.kind)||((googleBuilt()||(S.sync&&S.sync.gcid))?'drive':'github'));let cfg;
+async function syncConnect(){const kind=((S.sync&&S.sync.kind)||((window.LEMBRA&&window.LEMBRA.server)?'server':((googleBuilt()||(S.sync&&S.sync.gcid))?'drive':'github')));let cfg;
 if(kind==='github'){const rd=ghRead(),repo=rd.repo,tok=ghClean((($('#s-ghtok')||{}).value||''));
 if(!/^[\w.-]+\/[\w.-]+$/.test(repo)){toast('Escreva o repositório assim: seu-usuario/lembra-dados');return}
 if(tok.length<20){toast('Cole o token do GitHub (começa com github_pat_)');return}
 if(/[^\w-]/.test(tok)){toast('O token tem caracteres inválidos. Copie de novo, sem espaços nem símbolos.');return}
 cfg={kind:'github',gh:{repo:repo,token:tok}}}
+else if(kind==='server'){const url=srvNorm(($('#s-srvurl')||{}).value||(S.sync&&S.sync.srv&&S.sync.srv.url)||(window.LEMBRA&&window.LEMBRA.server)||''),tok=String((($('#s-srvtok')||{}).value||'')).replace(/\s+/g,'');
+if(!/^https?:\/\/[^\s\/]+/i.test(url)){toast('Escreva o endereço do servidor, por exemplo http://192.168.1.50:8787');return}
+if(tok.length<20||/[^\w-]/.test(tok)){toast('Cole o token do servidor (começa com lbr_)');return}
+if(srvMixed(url)){toast(SRV_MIXED_MSG);return}
+const alt=srvNorm(($('#s-srvalt')||{}).value||(S.sync&&S.sync.srv&&S.sync.srv.alt)||'');if(alt&&!/^https?:\/\/[^\s\/]+/i.test(alt)){toast('O endereço de fora está inválido. Exemplo: http://100.x.y.z:8787');return}
+cfg={kind:'server',srv:{url:url,token:tok,alt:alt||''}}}
 else{const el=$('#s-gcid'),cid=(googleBuilt()||(el&&el.value)||(S.sync&&S.sync.gcid)||'').trim();if(!cid||cid.indexOf('.apps.googleusercontent.com')<0){toast('Cole o ID do cliente Web do Google (termina em .apps.googleusercontent.com)');return}cfg={kind:'drive',gcid:cid};SETG().gcid=cid}
 S.sync=Object.assign({on:true,dev:(S.sync&&S.sync.dev)||uid(),fileId:null,last:0,first:true},cfg);
 if(kind==='github'){try{await ghBE.test()}catch(e){S.sync.on=false;SYNC.err='';save();render(true);toast(e.message);return}}
-(['folders','goals','projects','tasks','habits','ritual','media','trash']).forEach(c=>(S[c]||[]).forEach(it=>{if(it&&it.u==null)it.u=it.doneAt||it.createdAt||S.createdAt||1}));
+if(kind==='server'){try{await serverBE.test()}catch(e){const hv=srvHttpVariant(S.sync.srv.url);let fixed=false;if(hv&&!srvMixed(hv)&&await srvProbe(hv)){S.sync.srv.url=hv;try{await serverBE.test();fixed=true;toast('O servidor usa http (não https): troquei o endereço para '+hv)}catch(e2){e=e2}}if(!fixed){S.sync.on=false;SYNC.err='';save();render(true);toast(e.message);return}}}
+(['folders','goals','projects','tasks','habits','ritual','media','trash','fotosIdx']).forEach(c=>(S[c]||[]).forEach(it=>{if(it&&it.u==null)it.u=it.doneAt||it.createdAt||S.createdAt||1}));
 if(!isNative()&&(S.nid||1)<2e7)S.nid=2e7;SNAP=null;SNAP=syncSnap();save();render(true);
-await syncRun(true);syncWire();syncSchedule();render(true)}
+await syncRun(true);syncWire();syncStart();render(true)}
 const nextNid=()=>S.nid++;
 
 const fol=id=>S.folders.find(f=>f.id===id),goalOf=id=>S.goals.find(g=>g.id===id),projOf=id=>S.projects.find(p=>p.id===id),taskOf=id=>S.tasks.find(t=>t.id===id);
@@ -1679,11 +1791,74 @@ const isSome=t=>!t.done&&t.someday;
 
 const LN=()=>(window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.LocalNotifications)||null;
 async function ensurePerm(){const ln=LN();if(ln){try{const p=await ln.checkPermissions();if(p.display!=='granted')await ln.requestPermissions()}catch(e){}}else if('Notification' in window&&Notification.permission==='default'){try{Notification.requestPermission()}catch(e){}}}
-async function schedule(t){const ln=LN();if(!ln||t.done)return;const list=[];if(t.remindAt&&t.remindAt>Date.now())list.push({id:t.nid,title:'Lembra',body:t.title,schedule:{at:new Date(t.remindAt),allowWhileIdle:true}});
-(t.alerts||[]).slice(0,4).forEach((ts,i)=>{if(ts>Date.now())list.push({id:800000000+(t.nid%100000)*4+i,title:'Lembra',body:t.title,schedule:{at:new Date(ts),allowWhileIdle:true}})});if(!list.length)return;try{await ln.schedule({notifications:list})}catch(e){}}
-async function unschedule(t){const ln=LN();if(!ln||!t.nid)return;try{await ln.cancel({notifications:[{id:t.nid}].concat([0,1,2,3].map(i=>({id:800000000+(t.nid%100000)*4+i})))})}catch(e){}}
+async function schedule(t){const ln=LN();if(!ln||t.done)return;const list=[];if(t.remindAt&&t.remindAt>Date.now())list.push(Object.assign({id:t.nid,schedule:{at:new Date(t.remindAt),allowWhileIdle:true}},ntTask(t,t.remindAt,0)));
+(t.alerts||[]).slice(0,4).forEach((ts,i)=>{if(ts>Date.now())list.push(Object.assign({id:800000000+(t.nid%100000)*4+i,schedule:{at:new Date(ts),allowWhileIdle:true}},ntTask(t,ts,i+1)))});if(!list.length)return;try{await ln.schedule({notifications:list})}catch(e){}}
+
+/* ===== NOTIFICAÇÕES: personalidade, botões de ação e links diretos ===== */
+const NTI={done:false};
+const NT_ACT=()=>SETG().ntfAct!==false,NT_FUN=()=>SETG().ntfTone!=='plain';
+const ntSeed=s=>{s=String(s);let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)};
+const ntPick=(arr,seed)=>arr[ntSeed(seed)%arr.length];
+function taskHome(t){const p=t.projectId?projOf(t.projectId):null;if(p){const f=pFolder(p);return(f&&fol(f))?{tab:'folder',fid:f,proj:p.id}:{tab:'metas',goal:p.goalId?p.goalId:'none',proj:p.id}}if(t.folderId&&fol(t.folderId))return{tab:'folder',fid:t.folderId};return{tab:'inbox'}}
+function ntTask(t,ts,i){const day=ymd(new Date(ts)),p=t.projectId?projOf(t.projectId):null,f=tFolder(t),fn=(f&&fol(f))?fol(f).name:'',ctx=[p?p.title:'',fn].filter(Boolean).join(' · '),ck=t.checklist||[],nd=ck.filter(c=>c.done).length;
+const x={extra:{k:'task',tid:t.id}};if(NT_ACT())x.actionTypeId='TASK';
+if(!NT_FUN()){x.title='Lembra';x.body=t.title;return x}
+const L=[t.title];if(ctx)L.push(ctx);if(t.from&&t.to)L.push('Das '+t.from+' às '+t.to);if(ck.length)L.push('Checklist: '+nd+' de '+ck.length);if(t.deadline)L.push('Prazo: '+(t.deadline===today()?'hoje':dayShort(t.deadline)));if(t.repeat)L.push('Repete: '+repLabel(t.repeat));
+const T0=['Bora?','É agora','Chegou a hora','Ei, olha só','Um empurrãozinho','Vamos lá','Hora de resolver'],T1=['Só avisando','Falta pouco','Já está chegando','De olho no relógio'];
+x.title=ntPick(i===0?T0:T1,t.id+day+i);x.body=t.title;if(L.length>1)x.largeBody=L.join('\n');if(ctx)x.summaryText=ctx;return x}
+function ntNight(day,first){const x={extra:{k:'night'}};if(NT_ACT())x.actionTypeId='NIGHT';
+if(!NT_FUN()){x.title='Lembra · Fechar o dia';x.body='Confira o que sobrou em Hoje e planeje amanhã.';return x}
+x.title=ntPick(['Fechar o dia','Hora de desacelerar','Último passo do dia','Como foi o dia?','Fechando o caderno de hoje'],day);
+if(first){const n=S.tasks.filter(t=>!t.canceled&&isToday(t)).length;x.body=n?('Sobraram '+n+(n===1?' tarefa':' tarefas')+'. Dá para ver e adiar tudo para amanhã com um toque.'):'Hoje está limpo! Só dar uma olhada e planejar amanhã.'}
+else x.body=ntPick(['Confira o que sobrou em Hoje e planeje amanhã.','Um minutinho para fechar o dia e dormir tranquilo.','Dê uma olhada no que ficou e deixe amanhã organizado.'],day+'b');return x}
+function ntHabit(h,w){const x={extra:{k:'habit',hid:h.id},body:h.title};if(NT_ACT())x.actionTypeId='HABIT';
+if(!NT_FUN()){x.title=w?'Em '+w+' min':'Hora do hábito';return x}
+x.title=w?('Em '+w+' min · '+ntPick(['prepare-se','já vai começar','se ajeita aí'],h.id)):ntPick(['Hora do hábito','Seu hábito está te chamando','Hora de manter a sequência','Pequeno passo, grande hábito'],h.id);return x}
+function ntMedia(m,w){const v=MT[m.type].verb.toLowerCase(),x={extra:{k:'media',mid:m.id},body:mediaPlanTitle(m)};if(NT_ACT())x.actionTypeId=isEp(m)?'MEDIA_EP':isMg(m)?'MEDIA_CH':'MEDIA_PG';
+if(!NT_FUN()){x.title=w?'Em '+w+' min':'Hora de '+v;return x}
+x.title=w?('Em '+w+' min · '+ntPick(['já vai começar','prepare o ambiente'],m.id)):ntPick(['Hora de '+v,'Bora '+v+'?','Chegou o momento de '+v],m.id+v);x.largeBody=mediaPlanTitle(m)+'\n'+mediaSub(m);return x}
+function ntFoco(r){if(!NT_FUN())return r.phase==='focus'?'Pomo concluído. Hora da pausa.':'Pausa terminada. Pronto para o próximo pomo?';
+return r.phase==='focus'?ntPick(['Pomo concluído. Respira, levanta, bebe uma água.','Mais um pomo no bolso. Hora da pausa.','Missão cumprida. Pausa merecida.'],r.endAt):ntPick(['Pausa terminada. Pronto para o próximo pomo?','Voltando? O próximo pomo está esperando.','Recarregado? Bora de novo.'],r.endAt)}
+function ntFromId(id){id=Number(id);if(id===880101||id===880103||(id>=880110&&id<880124))return{k:'night'};if(id===880102)return{k:'week'};if(id===880001)return{k:'foco'};
+if(id>=800000000&&id<800400000){const q=Math.floor((id-800000000)/4),t=S.tasks.find(x=>x.nid%100000===q);return t?{k:'task',tid:t.id}:null}
+if(id>=850000000&&id<850100000){const q=id-850000000,t=S.tasks.find(x=>x.nid%100000===q);return t?{k:'task',tid:t.id}:null}
+if(id>=860000000&&id<860000100){const q=id-860000000,h=S.habits.find(x=>(x.nid||0)%90===q);return h?{k:'habit',hid:h.id}:null}
+if(id>=700000000&&id<700000200)return{k:'ci'};
+if(id>=500000000&&id<500000700){const q=Math.floor((id-500000000)/7),h=S.habits.find(x=>(x.nid||0)%90===q);return h?{k:'habit',hid:h.id}:null}
+const t=S.tasks.find(x=>x.nid===id);return t?{k:'task',tid:t.id}:null}
+function ntClose(){try{if(finderOpen)closeFinder();if(FAN.open)fanClose();if(DTP.open)dtpClose();if(SB.open)sbClose();if(SEL.on)endSelect();if(AG.open)agClose();if(SH)closeSheet()}catch(e){}}
+function ntMin(){setTimeout(()=>{const A=APP();try{A&&A.minimizeApp&&A.minimizeApp()}catch(e){}},350)}
+async function ntSnooze(x,mins,id,copy){const ln=LN();if(!ln)return;const at=new Date(Date.now()+mins*60000);try{await ln.schedule({notifications:[Object.assign({id:id,schedule:{at:at,allowWhileIdle:true}},copy)]})}catch(e){}}
+async function ntfOnAction(ev){try{const n=(ev&&ev.notification)||{},x=(n.extra&&n.extra.k)?n.extra:ntFromId(n.id),act=(ev&&ev.actionId)||'tap';if(!x)return;
+const quick=act!=='tap'&&act!=='open';if(!quick)ntClose();
+if(x.k==='task'){const t=taskOf(x.tid);
+if(!t){if(!quick){go({tab:'hoje'},'replace');toast('Essa tarefa não existe mais')}return}
+if(act==='done'){if(!t.done&&!t.canceled)toggleDone(t);ntMin();return}
+if(act==='snooze'){await ntSnooze(x,60,850000000+(t.nid%100000),ntTask(t,Date.now()+3600e3,1));ntMin();return}
+if(act==='tomorrow'){const tm=addDays(today(),1);t.due=tm;if(t.remindAt){const d=new Date(t.remindAt),n2=new Date(parse(tm));n2.setHours(d.getHours(),d.getMinutes(),0,0);t.remindAt=n2.getTime()}unschedule(t);schedule(t);save();render(true);ntMin();return}
+go(taskHome(t),'replace');setTimeout(()=>openEdit(t.id),180);return}
+if(x.k==='night'){if(act==='snooze'){await ntSnooze(x,30,880103,ntNight(today(),true));ntMin();return}
+if(act==='tmr'){const ids=S.tasks.filter(t=>!t.canceled&&isToday(t)).map(t=>t.id);if(ids.length)applyWhen(ids,{due:addDays(today(),1),evening:false});ntMin();return}
+go({tab:'hoje'},'replace');setTimeout(()=>{const c=document.getElementById('fechar');if(c){c.scrollIntoView({block:'center',behavior:'auto'});c.classList.add('ping');setTimeout(()=>c.classList.remove('ping'),2200)}},240);return}
+if(x.k==='week'){go({tab:'revsem'},'replace');return}
+if(x.k==='habit'){const h=S.habits.find(y=>y.id===x.hid);if(!h)return;
+if(act==='hdone'){if(h.logs.indexOf(today())<0)habToggle(h,today(),null,true);ntMin();return}
+if(act==='snooze'){await ntSnooze(x,30,860000000+((h.nid||0)%90),ntHabit(h,0));ntMin();return}
+HX={id:h.id,tab:'hist',month:null};go({tab:'habitos'},'replace');return}
+if(x.k==='media'){const m=mediaOf(x.mid);if(!m)return;
+if(act==='mnext'){if(isEp(m))mediaEp(m,1);else if(isMg(m))mediaPages(m,1);else mediaPages(m,10);ntMin();return}
+SETG().cv='dd';go({tab:'calendario'},'replace');setTimeout(()=>openSheet({type:'med',id:m.id,d:medDraft(m)}),180);return}
+if(x.k==='foco'){go({tab:'foco'},'replace');return}
+if(x.k==='ci'){agOpen();return}}catch(e){}}
+async function ntfInit(){const ln=LN();if(!ln||NTI.done)return;NTI.done=true;
+try{await ln.registerActionTypes({types:[{id:'TASK',actions:[{id:'done',title:'Concluir'},{id:'snooze',title:'Adiar 1 h'},{id:'tomorrow',title:'Amanhã'}]},{id:'NIGHT',actions:[{id:'open',title:'Ver o que sobrou'},{id:'tmr',title:'Adiar tudo p/ amanhã'},{id:'snooze',title:'Daqui a 30 min'}]},{id:'HABIT',actions:[{id:'hdone',title:'Já fiz'},{id:'snooze',title:'Daqui a 30 min'}]},{id:'MEDIA_EP',actions:[{id:'mnext',title:'+1 episódio'}]},{id:'MEDIA_CH',actions:[{id:'mnext',title:'+1 capítulo'}]},{id:'MEDIA_PG',actions:[{id:'mnext',title:'+10 páginas'}]}]})}catch(e){}
+try{ln.addListener('localNotificationActionPerformed',ntfOnAction)}catch(e){}}
+function ntfSoon(){clearTimeout(window._nts);window._nts=setTimeout(()=>{try{if(REM().night.on)schedRituals()}catch(e){}},4000)}
+async function ntTest(){const ln=LN();if(!ln){toast('Notificações só funcionam no app instalado');return}await ensurePerm();const t=S.tasks.find(x=>!x.done&&!x.canceled&&!x.someday)||null,at=Date.now()+6000;
+try{await ln.schedule({notifications:[Object.assign({id:880199,schedule:{at:new Date(at),allowWhileIdle:true}},t?ntTask(t,at,0):ntNight(today(),true))]});toast('Notificação de teste em 6 segundos. Feche o app para ver o link e os botões.')}catch(e){toast('Não consegui agendar o teste')}}
+async function unschedule(t){const ln=LN();if(!ln||!t.nid)return;try{await ln.cancel({notifications:[{id:t.nid},{id:850000000+(t.nid%100000)}].concat([0,1,2,3].map(i=>({id:800000000+(t.nid%100000)*4+i})))})}catch(e){}}
 async function habitSchedule(){const ln=LN();if(!ln)return;try{await ln.cancel({notifications:Array.from({length:700},(_,i)=>({id:500000000+i}))})}catch(e){}
-const list=[];S.habits.forEach(h=>{if(!h.from||!h.to)return;if(!h.nid)h.nid=nextNid();const hm=h.from.split(':'),w=warnOf(h);let mins=Number(hm[0])*60+Number(hm[1])-w;const days=(hDays(h)||[0,1,2,3,4,5,6]);days.forEach(wd=>{let dd=wd,mm=mins;if(mm<0){mm+=1440;dd=(wd+6)%7}list.push({id:500000000+(h.nid%90)*7+dd,title:w?'Em '+w+' min':'Hora do hábito',body:h.title,schedule:{on:{weekday:dd+1,hour:Math.floor(mm/60),minute:mm%60},allowWhileIdle:true}})})});
+const list=[];S.habits.forEach(h=>{if(!h.from||!h.to)return;if(!h.nid)h.nid=nextNid();const hm=h.from.split(':'),w=warnOf(h);let mins=Number(hm[0])*60+Number(hm[1])-w;const days=(hDays(h)||[0,1,2,3,4,5,6]);days.forEach(wd=>{let dd=wd,mm=mins;if(mm<0){mm+=1440;dd=(wd+6)%7}list.push({id:500000000+(h.nid%90)*7+dd,...ntHabit(h,w),schedule:{on:{weekday:dd+1,hour:Math.floor(mm/60),minute:mm%60},allowWhileIdle:true}})})});
 if(list.length){try{await ensurePerm();await ln.schedule({notifications:list})}catch(e){}}save()}
 function rescheduleAll(){S.tasks.forEach(t=>schedule(t));habitSchedule();if(typeof mediaSchedule==='function')mediaSchedule()}
 
@@ -1784,8 +1959,8 @@ else if(tr.id){const t=taskOf(tr.id);if(t&&isPomo(t)&&live&&t.from){const cells=
 /* ---------- presença: lembretes durante o bloco ("você deveria estar fazendo isto") ---------- */
 const ciEvery=()=>SETG().ci===undefined?30:SETG().ci;
 async function agCheckins(){const ln=LN();if(!ln)return;try{await ln.cancel({notifications:Array.from({length:200},(_,i)=>({id:700000000+i}))})}catch(e){}
-const every=ciEvery();if(!every)return;const now=Date.now(),list=[],msg=['Ainda em ','Como está ','Foco em '];let k=0;
-agBlocks().forEach(b=>{if(b.e<=now)return;for(let t=b.s+every*60000;t<b.e&&k<190;t+=every*60000){if(t<=now+5000)continue;list.push({id:700000000+k,title:msg[k%3]+b.t.title,body:'Você deveria estar fazendo isto agora · faltam '+stimMin(b.e-t),schedule:{at:new Date(t),allowWhileIdle:true}});k++}});
+const every=ciEvery();if(!every)return;const now=Date.now(),list=[],msg=['Ainda em ','Como está ','Foco em ','Segura firme: ','Bora, '];let k=0;
+agBlocks().forEach(b=>{if(b.e<=now)return;for(let t=b.s+every*60000;t<b.e&&k<190;t+=every*60000){if(t<=now+5000)continue;list.push({id:700000000+k,extra:{k:'ci'},title:msg[k%msg.length]+b.t.title,body:'Você deveria estar fazendo isto agora · faltam '+stimMin(b.e-t),schedule:{at:new Date(t),allowWhileIdle:true}});k++}});
 if(list.length){try{await ensurePerm();await ln.schedule({notifications:list})}catch(e){}}}
 function agTick(){if(document.hidden)return;const now=Date.now(),st=agState(now),chip=$('#agchip');agCellCheck(st,now);stimTick();agCardTick();{const sig=st.B.map(b=>b.t.id+':'+b.s+':'+b.e).join('|')+'|'+ciEvery();if(sig!==AG.ciSig){AG.ciSig=sig;agCheckins()}}
 if(AG.open){if(agKeyOf(st)!==AG.key)agBuild(st);
@@ -1862,10 +2037,60 @@ if(r.u==='m')return addMonths(d,r.n);return addMonths(d,12*r.n)}
 function nextRepDate(t){const r=t.repeat;
 if(r.m==='after'){const b=today();return r.u==='d'?addDays(b,r.n):r.u==='w'?addDays(b,7*r.n):r.u==='m'?addMonths(b,r.n):addMonths(b,12*r.n)}
 let d=repStep(r,t.due||today()),g=0;while(d<today()&&g++<400)d=repStep(r,d);return d}
-function spawnRepeat(t,nd){nd=nd||nextRepDate(t);const n=Object.assign(JSON.parse(JSON.stringify(t)),{id:uid(),nid:nextNid(),done:false,canceled:false,doneAt:null,spawned:null,postponed:0,notified:false,createdAt:Date.now(),due:nd,someday:false,checklist:(t.checklist||[]).map(c=>({id:uid(),t:c.t,done:false}))});
+function spawnRepeat(t,nd){nd=nd||nextRepDate(t);const rid=t.rid||t.id,did=rid+'r'+nd.replace(/-/g,''),ex=taskOf(did);if(ex){t.spawned=ex.id;return ex}
+const n=Object.assign(JSON.parse(JSON.stringify(t)),{id:did,rid:rid,nid:nextNid(),done:false,canceled:false,doneAt:null,spawned:null,postponed:0,notified:false,createdAt:Date.now(),due:nd,someday:false,checklist:(t.checklist||[]).map(c=>({id:uid(),t:c.t,done:false}))});
 n.deadline=(t.deadline&&t.due)?addDays(nd,Math.round((parse(t.deadline)-parse(t.due))/864e5)):null;
 if(t.remindAt){const o=new Date(t.remindAt),x=parse(nd);x.setHours(o.getHours(),o.getMinutes(),0,0);n.remindAt=x.getTime()}
 S.tasks.push(n);schedule(n);return n}
+
+/* ===== repetições: ocorrências futuras (projetadas) para enxergar o futuro em qualquer calendário ===== */
+let LASTV=null;
+function repStepAfter(r,d){return r.u==='d'?addDays(d,r.n):r.u==='w'?addDays(d,7*r.n):r.u==='m'?addMonths(d,r.n):addMonths(d,12*r.n)}
+/* a "cabeça" da série é a última ocorrência de verdade (a que ainda não gerou a próxima) */
+function repHeads(){return S.tasks.filter(t=>t.repeat&&t.repeat.n&&t.repeat.u&&!t.spawned&&!t.someday&&t.due&&(t.repeat.m==='after'?(!t.done||t.canceled):true))}
+function repDates(t,to){const r=t.repeat,td=today(),out=[];let d=r.m==='after'?repStepAfter(r,t.due<td?td:t.due):repStep(r,t.due),g=0;
+while(d<=to&&g++<900){if(d>=td&&d>t.due)out.push(d);d=r.m==='after'?repStepAfter(r,d):repStep(r,d)}return out}
+function repVirt(from,to){const M={};repHeads().forEach(t=>{repDates(t,to).forEach(d=>{if(d>=from)(M[d]=M[d]||[]).push(t)})});return M}
+function vRow(t,d,showDate){const meta=[showDate?('ignorada · volta em '+shortD(d)):('prevista · '+repLabel(t.repeat)+(t.repeat.m==='after'?' (estimada)':''))];if(showDate)meta.push(repLabel(t.repeat));if(t.from)meta.push(t.from+'–'+(t.to||''));
+return '<div class="row virt" data-a="edit" data-id="'+t.id+'"><span class="vic">'+ic('habitos',16)+'</span><div class="tx"><div class="tt">'+esc(t.title)+'</div><div class="mt">'+esc(meta.join(' · '))+'</div></div></div>'}
+function selBanner(){const sel=CLD.sel||today(),td=today();if(sel===td)return '';const dif=Math.round((parse(sel)-parse(td))/864e5),q=Math.abs(dif);
+return '<div class="selwarn"><span>Você está vendo <b>'+esc(cap1(parse(sel).toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})))+'</b> ('+(dif<0?'há '+q+(q===1?' dia':' dias'):'daqui a '+q+(q===1?' dia':' dias'))+')</span><button class="chip" data-a="cth">Voltar para hoje</button></div>'}
+/* hábitos: uma única forma de marcar/desmarcar, usada por Vida › Hábitos e por todo o Calendário */
+function habToggle(h,d,el,soft){if(!h||!d)return;if(d>today()){toast('Esse dia ainda não chegou');return}
+const was=h.logs.indexOf(d)>=0;if(was)h.logs.splice(h.logs.indexOf(d),1);else{h.logs.push(d);h.logs.sort();if(el)xpPop(el,'+12 XP')}
+save();soft?render(true):render();
+if(d!==today())toast((was?'Desmarcado em ':'Marcado em ')+shortD(d)+' · '+h.title,()=>{const j=h.logs.indexOf(d);if(was){if(j<0){h.logs.push(d);h.logs.sort()}}else if(j>=0)h.logs.splice(j,1);save();render(true)})}
+function habDayRows(d){const wd=parse(d).getDay(),L=S.habits.filter(h=>{const s=hDays(h);return !s||s.indexOf(wd)>=0||h.logs.indexOf(d)>=0});if(!L.length)return '';
+return '<div class="cd-s"><h3>Hábitos <span>'+L.length+'</span></h3>'+L.map(h=>{const did=h.logs.indexOf(d)>=0;return '<div class="row hrow'+(did?' done':'')+'"><button class="tck'+(did?' on':'')+'" style="--c:'+jColor(hFolder(h))+'" data-a="jt" data-k="hab" data-id="'+h.id+'" data-d="'+d+'" aria-label="'+(did?'Desmarcar':'Marcar')+' '+esc(h.title)+'">'+(did?ic('check',16):'')+'</button><div class="tx"><div class="tt">'+esc(h.title)+'</div><div class="mt">sequência '+streak(h)+'</div></div></div>'}).join('')+'</div>'}
+function habHist(x){const now=new Date(),base=HX.month?parse(HX.month):new Date(now.getFullYear(),now.getMonth(),1),y=base.getFullYear(),m=base.getMonth(),first=new Date(y,m,1),start=new Date(y,m,1-first.getDay()),set=new Set(x.logs),hd=hDays(x),td=today();let cells='';
+for(let i=0;i<42;i++){const d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i),k=ymd(d),out=d.getMonth()!==m,sch=!hd||hd.indexOf(d.getDay())>=0,on=set.has(k);cells+='<button class="hc'+(on?' on':'')+(out?' out':'')+(sch&&!on&&k<=td?' miss':'')+(k===td?' today':'')+(k>td?' fut':'')+'" data-a="hab" data-id="'+x.id+'" data-d="'+k+'" aria-label="'+k+'"><b>'+d.getDate()+'</b></button>'}
+const pre=ymd(first).slice(0,7),cnt=x.logs.filter(l=>l.slice(0,7)===pre).length,mn=base.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+return '<div class="hp hh"><div class="hh-n"><button data-a="hmon" data-v="-1" aria-label="Mês anterior">'+ic('chev',16)+'</button><b>'+esc(cap1(mn))+'</b><button data-a="hmon" data-v="1" aria-label="Próximo mês">'+ic('chev',16)+'</button></div><div class="j-wd">'+JWL.map(w=>'<span>'+w+'</span>').join('')+'</div><div class="hh-g">'+cells+'</div><p class="mt" style="margin-top:6px">'+cnt+(cnt===1?' dia':' dias')+' neste mês · sequência '+streak(x)+' · toque num dia para marcar ou desmarcar (é o mesmo registro do Calendário)</p></div>'}
+/* ===== checagem das ligações entre os dados (consertos seguros) ===== */
+function dataCheck(fix){const R=[],td=today(),isD=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s),add=(msg,n)=>{if(n>0)R.push({msg:msg,n:n})};
+S.habits=S.habits||[];S.projects=S.projects||[];S.goals=S.goals||[];S.folders=S.folders||[];S.media=S.media||[];S.mlog=S.mlog||[];
+/* 1) ids repetidos (sobras de junção entre aparelhos) */
+let dup=0;[S.folders,S.goals,S.projects,S.tasks,S.habits,S.media].forEach((arr,ix)=>{const keep=new Map();arr.forEach(it=>{if(!it||it.id==null)return;const o=keep.get(it.id);if(!o)keep.set(it.id,it);else{dup++;if((+it.u||0)>=(+o.u||0))keep.set(it.id,it)}});if(fix&&keep.size!==arr.filter(it=>it&&it.id!=null).length){const names=['folders','goals','projects','tasks','habits','media'];S[names[ix]]=Array.from(keep.values())}});
+add('Itens duplicados com o mesmo identificador',dup);
+const folIds=new Set(S.folders.map(f=>f.id)),goalIds=new Set(S.goals.map(g=>g.id)),projIds=new Set(S.projects.map(p=>p.id));
+/* 2) ligações quebradas: área, meta e projeto que não existem mais */
+let dl=0;const fixRef=(it,k,set)=>{if(it[k]!=null&&it[k]!==''&&!set.has(it[k])){dl++;if(fix)it[k]=null}};
+S.tasks.forEach(t=>{fixRef(t,'projectId',projIds);fixRef(t,'folderId',folIds);fixRef(t,'goalId',goalIds)});S.habits.forEach(h=>{fixRef(h,'projectId',projIds);fixRef(h,'folderId',folIds);fixRef(h,'goalId',goalIds)});S.projects.forEach(p=>{fixRef(p,'folderId',folIds);fixRef(p,'goalId',goalIds)});S.goals.forEach(g=>{fixRef(g,'folderId',folIds)});
+add('Itens ligados a uma área, meta ou projeto que não existe mais',dl);
+/* 3) datas inválidas e repetição malformada */
+let bd=0;S.tasks.forEach(t=>{['due','deadline'].forEach(k=>{if(t[k]!=null&&t[k]!==''&&!isD(t[k])){bd++;if(fix)t[k]=null}});if(t.repeat&&!(t.repeat.n>0&&/^[dwmy]$/.test(t.repeat.u))){bd++;if(fix)t.repeat=null}});
+add('Datas ou repetições com formato inválido',bd);
+/* 4) a "próxima ocorrência" aponta para uma tarefa que não existe */
+const tids=new Set(S.tasks.map(t=>t.id));let sp=0;S.tasks.forEach(t=>{if(t.spawned&&!tids.has(t.spawned)){sp++;if(fix)t.spawned=null}});add('Repetições que apontavam para uma próxima tarefa que não existe',sp);
+/* 5) a mesma ocorrência repetida duas vezes (acontece quando dois aparelhos geram a próxima juntos) */
+const seen=new Map(),rm=new Set();S.tasks.forEach(t=>{if(!t.repeat||t.done||t.canceled||!t.due)return;const k=t.title+'|'+t.due+'|'+JSON.stringify(t.repeat);if(seen.has(k))rm.add(t.id);else seen.set(k,t.id)});
+if(rm.size){add('Ocorrências repetidas duplicadas (mesmo título e dia)',rm.size);if(fix){const kept=new Map();S.tasks.forEach(t=>{if(!rm.has(t.id)&&t.repeat&&!t.done&&!t.canceled&&t.due)kept.set(t.title+'|'+t.due+'|'+JSON.stringify(t.repeat),t.id)});S.tasks.forEach(t=>{if(t.spawned&&rm.has(t.spawned)){const x=S.tasks.find(y=>y.id===t.spawned);t.spawned=x?kept.get(x.title+'|'+x.due+'|'+JSON.stringify(x.repeat))||null:null}});S.tasks=S.tasks.filter(t=>!rm.has(t.id))}}
+/* 6) hábitos: registros inválidos, repetidos, no futuro; dias e meta */
+let hl=0;S.habits.forEach(h=>{if(!Array.isArray(h.logs)){hl++;if(fix)h.logs=[];return}const c=Array.from(new Set(h.logs.filter(l=>isD(l)&&l<=td))).sort();if(c.length!==h.logs.length){hl+=h.logs.length-c.length;if(fix)h.logs=c}else if(fix&&c.some((v,i)=>v!==h.logs[i]))h.logs=c;if(h.days&&!(Array.isArray(h.days)&&h.days.every(d=>d>=0&&d<=6))){hl++;if(fix)h.days=null}if(h.target!=null&&!(h.target>=1&&h.target<=7)){hl++;if(fix)h.target=1}});
+add('Registros de hábitos inválidos, repetidos ou em dias que ainda não chegaram',hl);
+/* 7) histórico de mídia de itens que não existem mais */
+const mids=new Set(S.media.map(m=>m.id)),ml=S.mlog.filter(l=>!l||!mids.has(l.id)||!isD(l.day)).length;add('Histórico de leitura/vídeo sem o item correspondente',ml);if(fix&&ml)S.mlog=S.mlog.filter(l=>l&&mids.has(l.id)&&isD(l.day));
+if(fix&&R.length)save();return R}
 function repeatTick(){let ch=false,guard=0;S.tasks.forEach(t=>{if(t.evening&&!t.done&&t.due&&t.due<today()){t.evening=false;ch=true}});
 for(let i=0;i<S.tasks.length&&guard<300;i++){const t=S.tasks[i];if(!t.repeat||t.repeat.m!=='fixed'||t.spawned||!t.due||t.due>today())continue;
 let nd=repStep(t.repeat,t.due),g=0;while(nd<today()&&g++<400)nd=repStep(t.repeat,nd);
@@ -1904,13 +2129,14 @@ function batchDel(ids){const n=ids.length;ask('Excluir '+n+(n===1?' tarefa?':' t
 const RIT=()=>{S.rit=S.rit||{night:null,week:null};return S.rit};
 const REM=()=>{S.rem=S.rem||{night:{on:false,t:'21:00'},week:{on:false,d:0,t:'18:00'}};return S.rem};
 const daysSince=d=>Math.round((parse(today())-parse(d))/864e5);
-async function schedRituals(){const ln=LN();if(!ln)return;try{await ln.cancel({notifications:[{id:880101},{id:880102}]})}catch(e){}
+async function schedRituals(){const ln=LN();if(!ln)return;try{await ln.cancel({notifications:[{id:880101},{id:880102},{id:880103}].concat(Array.from({length:14},(_,i)=>({id:880110+i})))})}catch(e){}
 const r=REM(),list=[];
-if(r.night.on){const p=r.night.t.split(':').map(Number);list.push({id:880101,title:'Lembra · Fechar o dia',body:'Confira o que sobrou em Hoje e planeje amanhã.',schedule:{on:{hour:p[0],minute:p[1]},allowWhileIdle:true}})}
-if(r.week.on){const p=r.week.t.split(':').map(Number);list.push({id:880102,title:'Lembra · Revisão semanal',body:'Hora de revisar a Inbox, os próximos 7 dias e os projetos.',schedule:{on:{weekday:r.week.d+1,hour:p[0],minute:p[1]},allowWhileIdle:true}})}
+if(r.night.on){const p=r.night.t.split(':').map(Number),now=new Date();let first=true;for(let k=0;k<14;k++){const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+k,p[0],p[1],0);if(d.getTime()<=Date.now()+5000)continue;list.push(Object.assign({id:880110+k,schedule:{at:d,allowWhileIdle:true}},ntNight(ymd(d),first&&ymd(d)===today())));first=false}}
+if(r.week.on){const p=r.week.t.split(':').map(Number);list.push({id:880102,title:NT_FUN()?'Revisão semanal · uma voltinha':'Lembra · Revisão semanal',body:NT_FUN()?'Inbox, próximos 7 dias e projetos. Leva uns 10 minutos e deixa a semana leve.':'Hora de revisar a Inbox, os próximos 7 dias e os projetos.',extra:{k:'week'},schedule:{on:{weekday:r.week.d+1,hour:p[0],minute:p[1]},allowWhileIdle:true}})}
 if(list.length){try{await ln.schedule({notifications:list})}catch(e){}}}
 function ritSettings(){const r=REM();
 return '<label>Fechar o dia (revisão da noite)</label><div class="chips">'+chip(r.night.on,'remon','night','Lembrar todo dia')+'<input type="time" id="s-night" class="tm" value="'+r.night.t+'"></div><p class="mt" style="font-size:12px;margin:2px 0 6px">O cartão “Fechar o dia”, no fim do Hoje, aparece a partir deste horário, com o lembrete ligado ou não.</p>'+
+'<label>Notificações</label><div class="chips">'+chip(NT_FUN(),'ntone','fun','Com personalidade')+chip(!NT_FUN(),'ntone','plain','Diretas')+'</div><div class="chips">'+chip(NT_ACT(),'ntact','1','Botões: Concluir, Adiar, Amanhã')+chip(!NT_ACT(),'ntact','0','Sem botões')+'<button class="chip" data-a="ntest">Enviar notificação de teste</button></div><p class="mt" style="font-size:12px;margin:2px 0 6px">Os textos mudam a cada aviso. Tocar numa notificação abre a tarefa (ou o Hoje, no Fechar o dia) direto no lugar certo.</p>'+
 '<label>Revisão semanal</label><div class="chips">'+chip(r.week.on,'remon','week','Lembrar toda semana')+'<input type="time" id="s-week" class="tm" value="'+r.week.t+'"></div><div class="chips">'+WDORDER.map(i=>chip(r.week.d===i,'remwd',i,WD[i])).join('')+'</div>'}
 let RW={step:0};
 const RSTEPS=[['inbox','Inbox'],['semana','Semana que passou'],['prox','Próximos 7 dias'],['atras','Atrasadas e prazos'],['proj','Projetos'],['some','Someday'],['fim','Fechar']];
@@ -2128,6 +2354,7 @@ else if(!t.done&&!t.someday&&t.due===d){const bm=(t.from&&t.to)?blkMs(t):null;ou
 const wd=parse(d).getDay();S.habits.forEach(h=>{if(filter&&hFolder(h)!==filter)return;const sch=hDays(h),isd=!sch||sch.indexOf(wd)>=0,did=h.logs.indexOf(d)>=0;if(isd||did){const bm=(h.from&&h.to)?blkMs({due:d,from:h.from,to:h.to}):null;out.push({k:'hab',done:did,t:bm?bm.s:null,dur:bm?Math.round((bm.e-bm.s)/60000):0,blk:!!bm,id:h.id,title:h.title,c:jColor(hFolder(h)),ic:'habitos'})}});
 (S.media||[]).forEach(m=>{const p=m.plan,t=MT[m.type];if(m.state!=='done'&&p&&p.d===d){const bm=p.from?blkMs({due:d,from:p.from,to:p.to||agAddMin(p.from,t.dur)}):null;out.push({k:'med',done:false,t:bm?bm.s:null,dur:bm?Math.round((bm.e-bm.s)/60000):0,blk:!!bm,id:m.id,title:mediaPlanTitle(m),c:t.c,ic:t.ic})}else if(repOn(m,d)){const bm=blkMs({due:d,from:m.rep.from,to:repTo(m)});out.push({k:'med',done:false,t:bm.s,dur:Math.round((bm.e-bm.s)/60000),blk:true,id:m.id,title:mediaPlanTitle(m),c:t.c,ic:t.ic})}});
 (S.mlog||[]).forEach(l=>{if(l.day!==d)return;const m=mediaOf(l.id);if(!m)return;out.push({k:'med',done:true,t:l.t,id:m.id,title:m.title+' · '+(l.k==='ep'?'+'+(l.n||1)+' ep':l.k==='pg'?'+'+l.n+' págs':l.k==='ch'?'+'+l.n+' caps':l.k==='film'?'assistido':'concluído'),c:MT[m.type].c,ic:MT[m.type].ic})});
+if(jCal()&&d>=today()){(repVirt(d,d)[d]||[]).forEach(t=>{const f=tFolder(t);if(filter&&f!==filter)return;const bm=(t.from&&t.to)?blkMs({due:d,from:t.from,to:t.to}):null;out.push({k:'task',virt:true,done:false,t:bm?bm.s:null,dur:bm?Math.round((bm.e-bm.s)/60000):0,blk:!!bm,id:t.id,title:t.title,c:jColor(f),ic:'habitos'})})}
 return out.sort((a,b)=>(a.t==null)-(b.t==null)||(a.t||0)-(b.t||0))}
 function jHead(x){const g=jGoal(),dn=(x.all[today()]||{tasks:[]}).tasks.length;
 return '<div class="j-hero"><div class="j-lv"><b>'+x.lv+'</b><small>nível</small></div><div class="j-xp"><div class="j-xpt"><b>'+x.xp+' XP</b><span>faltam '+x.need+' para o nível '+(x.lv+1)+'</span></div><div class="j-bar"><i style="width:'+x.pct+'%"></i></div></div><div class="j-st"><span class="j-fl">'+ic('flame',20)+'</span><b>'+x.streak+'</b><small>'+(x.streak===1?'dia':'dias')+'</small></div><div class="j-gl">'+ring(Math.min(1,dn/g),'var(--ac)',34)+'<small>'+dn+'/'+g+' hoje</small></div></div>'}
@@ -2141,6 +2368,7 @@ cells+='<button class="jc lv'+lv+(out?' out':'')+(k===td?' today':'')+(n>=g?' go
 return '<div class="j-mh"><button data-a="jm" data-v="-1" aria-label="Mês anterior">'+ic('chev',18)+'</button><h2>'+mn.charAt(0).toUpperCase()+mn.slice(1)+' <span>'+y+'</span></h2><button data-a="jm" data-v="1" aria-label="Próximo mês">'+ic('chev',18)+'</button></div><div class="j-wd">'+JWL.map(x=>'<span>'+x+'</span>').join('')+'</div><div class="j-grid">'+cells+'</div>'
 +'<div class="j-ch"><button class="chip'+(!JD.filter?' on':'')+'" data-a="jf" data-v="">Tudo <em>'+tot+'</em></button>'+S.folders.map(f=>'<button class="chip'+(JD.filter===f.id?' on':'')+'" data-a="jf" data-v="'+f.id+'"><i class="dt" style="background:'+f.color+';margin:0 6px 0 0;width:10px;height:10px"></i>'+esc(f.name)+'</button>').join('')+'</div><p class="j-lg">Cada barra é uma tarefa concluída. Contorno forte e estrela: meta do dia cumprida ('+g+').</p>'}
 function jYear(){const wk=Math.max(12,Math.min(52,Math.floor((innerWidth-84)/14))),cal=jCal(),ahead=cal?Math.floor(wk/3):0,end=new Date();end.setHours(0,0,0,0);const endSun=new Date(end.getFullYear(),end.getMonth(),end.getDate()-end.getDay()),start=new Date(endSun.getFullYear(),endSun.getMonth(),endSun.getDate()-(wk-1-ahead)*7),all=jData(null),MDD=ddMap(),PD={};S.tasks.forEach(t=>{if(!t.done&&!t.canceled&&!t.someday&&t.due)PD[t.due]=(PD[t.due]||0)+1});
+if(cal){const VY=repVirt(ymd(start),ymd(new Date(start.getFullYear(),start.getMonth(),start.getDate()+wk*7)));Object.keys(VY).forEach(d=>{PD[d]=(PD[d]||0)+VY[d].length})}
 const grid=(val,color)=>{let h='<div class="j-hm">',lab='<div class="j-ml">',pm=-1;for(let w=0;w<wk;w++){const cd=new Date(start.getFullYear(),start.getMonth(),start.getDate()+w*7);if(cd.getMonth()!==pm){pm=cd.getMonth();lab+='<span style="left:'+(w*14)+'px">'+cd.toLocaleDateString('pt-BR',{month:'short'}).replace('.','')+'</span>'}
 h+='<div class="j-col">';for(let r=0;r<7;r++){const d=new Date(cd.getFullYear(),cd.getMonth(),cd.getDate()+r),k=ymd(d),fut=d>end,v=(fut&&!cal)?-1:val(k),lv=v<=0?0:v>=4?4:v;h+='<i class="'+((fut&&(!cal||v<=0))?'fu':'l'+lv)+(k===today()?' td':'')+'" data-a="jd" data-d="'+k+'" style="--c:'+color+'"></i>'}h+='</div>'}return lab+'</div>'+h+'</div>'};
 const stat=(val)=>{let n=0,c=0;for(let i=0;i<wk*7;i++){const d=ymd(new Date(start.getFullYear(),start.getMonth(),start.getDate()+i));if(val(d)>0)n++}let dd=val(today())>0?today():addDays(today(),-1);while(val(dd)>0&&c<400){c++;dd=addDays(dd,-1)}return{n:n,c:c}};
@@ -2151,8 +2379,8 @@ return h+'<p class="j-lg">'+(cal?'Últimas '+(wk-ahead)+' semanas e as próximas
 function jWeek(){const sel=jSel(),sd=parse(sel),mon=new Date(sd.getFullYear(),sd.getMonth(),sd.getDate()-sd.getDay()),days=[0,1,2,3,4,5,6].map(i=>ymd(new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+i))),per=days.map(d=>jItems(d,JD.filter));
 let lo=7,hi=21;per.forEach(L=>L.forEach(it=>{if(it.t!=null){const h=new Date(it.t).getHours();lo=Math.min(lo,h);hi=Math.max(hi,Math.min(23,h+1+Math.ceil((it.dur||0)/60)))}}));const HH=56,H=(hi-lo+1)*HH,sy=y=>(y-lo*60)*HH/60;
 let cols='';days.forEach((d,i)=>{const L=per[i].filter(it=>it.t!=null).sort((a,b)=>a.t-b.t);let prev=-99,items='';L.forEach(it=>{const dt=new Date(it.t),mins=dt.getHours()*60+dt.getMinutes(),dur=it.dur||0,h=Math.max(30,dur*HH/60);let top=sy(mins);if(top<prev+3)top=prev+3;prev=top+h;
-items+='<button class="wn '+((it.k==='foco'||it.blk)?'wp':'')+(it.pomo?' pomo':'')+(it.done?'':' pend')+'" style="--ppm:0.933;top:'+top.toFixed(0)+'px;height:'+h.toFixed(0)+'px;--c:'+it.c+'" data-a="'+(it.k==='med'?'medopen':(jCal()&&it.id&&it.k!=='foco'&&it.k!=='hab')?(it.k==='note'?'nopen':'edit'):'jn')+'"'+(it.id?' data-id="'+it.id+'"':'')+' data-t="'+esc(it.title)+'" data-h="'+jFmt(it.t)+'" aria-label="'+esc(it.title)+'"><span>'+ic(it.ic,15)+'</span></button>'});
-const unL=per[i].filter(it=>it.t==null&&(it.k==='task'||it.k==='note')),unH=unL.slice(0,3).map(it=>'<button class="wup'+(it.done?'':' pend')+'" style="--c:'+it.c+'" data-a="'+((jCal())?(it.k==='note'?'nopen':'edit'):'jn')+'" data-id="'+it.id+'" data-t="'+esc(it.title)+'" data-h="sem hora" aria-label="'+esc(it.title)+'">'+ic(it.ic,11)+'</button>').join('')+(unL.length>3?'<em>+'+(unL.length-3)+'</em>':'');cols+='<div class="wc'+(d===today()?' td':'')+'"><button class="wh'+(d===sel?' on':'')+'" data-a="jd" data-d="'+d+'"><small>'+JW[i]+'</small><b>'+parse(d).getDate()+'</b></button><div class="wl"'+(jCal()?' data-a="cgrid" data-d="'+d+'" data-lo="'+lo+'"':'')+' style="height:'+H+'px">'+items+'</div><div class="wun">'+unH+'</div></div>'});
+items+='<button class="wn '+(it.virt?'virt ':'')+((it.k==='foco'||it.blk)?'wp':'')+(it.pomo?' pomo':'')+(it.done?'':' pend')+'" style="--ppm:0.933;top:'+top.toFixed(0)+'px;height:'+h.toFixed(0)+'px;--c:'+it.c+'" data-a="'+(it.k==='med'?'medopen':(jCal()&&it.id&&it.k!=='foco'&&it.k!=='hab')?(it.k==='note'?'nopen':'edit'):'jn')+'"'+(it.id?' data-id="'+it.id+'"':'')+' data-t="'+esc(it.title)+'" data-h="'+jFmt(it.t)+'" aria-label="'+esc(it.title)+'"><span>'+ic(it.ic,15)+'</span></button>'});
+const unL=per[i].filter(it=>it.t==null&&(it.k==='task'||it.k==='note')),unH=unL.slice(0,3).map(it=>'<button class="wup'+(it.done?'':' pend')+(it.virt?' virt':'')+'" style="--c:'+it.c+'" data-a="'+((jCal())?(it.k==='note'?'nopen':'edit'):'jn')+'" data-id="'+it.id+'" data-t="'+esc(it.title)+'" data-h="sem hora" aria-label="'+esc(it.title)+'">'+ic(it.ic,11)+'</button>').join('')+(unL.length>3?'<em>+'+(unL.length-3)+'</em>':'');cols+='<div class="wc'+(d===today()?' td':'')+'"><button class="wh'+(d===sel?' on':'')+'" data-a="jd" data-d="'+d+'"><small>'+JW[i]+'</small><b>'+parse(d).getDate()+'</b></button><div class="wl"'+(jCal()?' data-a="cgrid" data-d="'+d+'" data-lo="'+lo+'"':'')+' style="height:'+H+'px">'+items+'</div><div class="wun">'+unH+'</div></div>'});
 let hrs='';for(let h=lo;h<=hi;h++)hrs+='<span style="top:'+((h-lo)*HH)+'px">'+h+'<sup>00</sup></span>';
 const now=new Date(),nowTop=(days.indexOf(today())>=0)?sy(now.getHours()*60+now.getMinutes()):null;
 const lab=new Date(days[0]+'T12:00:00').toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
@@ -2166,9 +2394,9 @@ if(!L.length)return h+'<div class="empty">Nada por aqui ainda em '+esc(sd.toLoca
 h+='<div class="tlv">';let prevEnd=null;
 L.forEach((it,i)=>{const timed=it.t!=null;if(timed&&prevEnd!=null&&it.t-prevEnd>=45*60000){const gm=Math.round((it.t-prevEnd)/60000);h+='<div class="tgap"><span>'+ic('hourglass',14)+'</span>Intervalo de '+jDur(gm)+'</div>'}
 if(timed)prevEnd=it.t+(it.dur||0)*60000;
-const range=it.k==='foco'?jFmt(it.t)+' – '+jFmt(it.t+it.dur*60000)+' ('+jDur(it.dur)+')':it.k==='note'?'nota · '+jFmt(it.t):(it.k==='med'&&it.done)?'registrado às '+jFmt(it.t):it.blk?jFmt(it.t)+' – '+jFmt(it.t+it.dur*60000)+' ('+jDur(it.dur)+')':timed?(it.done?'concluída às '+jFmt(it.t):'agendada para '+jFmt(it.t)):(it.k==='hab'?'hábito do dia':it.k==='note'?'nota':it.done?'concluída':'o dia todo'),
-tall=it.k==='foco'||(it.blk&&it.dur>=45),chk=(it.k==='foco'||it.k==='note'||(it.k==='med'&&it.done))?'':'<button class="tck'+(it.done?' on':'')+'" style="--c:'+it.c+'" data-a="jt" data-k="'+it.k+'" data-id="'+it.id+'" data-d="'+sel+'" aria-label="'+(it.done?'Desmarcar':'Concluir')+'">'+(it.done?ic('check',16):'')+'</button>';
-h+='<div class="tli'+(it.done?' done':'')+'"><div class="tlt">'+(timed?jFmt(it.t):'')+'</div><div class="tln"><span class="tlp'+(tall?' tall':'')+'" style="--c:'+it.c+'">'+ic(it.ic,22)+'</span></div><div class="tlx"'+(it.k==='note'?' data-a="nopen" data-id="'+it.id+'"':it.k==='med'?' data-a="medopen" data-id="'+it.id+'"':(jCal()&&it.k==='task'?' data-a="edit" data-id="'+it.id+'"':''))+'><small>'+esc(range)+'</small><b>'+esc(it.title)+'</b></div>'+chk+'</div>'});
+const range=it.virt?('repetição prevista'+(timed?' às '+jFmt(it.t):'')):it.k==='foco'?jFmt(it.t)+' – '+jFmt(it.t+it.dur*60000)+' ('+jDur(it.dur)+')':it.k==='note'?'nota · '+jFmt(it.t):(it.k==='med'&&it.done)?'registrado às '+jFmt(it.t):it.blk?jFmt(it.t)+' – '+jFmt(it.t+it.dur*60000)+' ('+jDur(it.dur)+')':timed?(it.done?'concluída às '+jFmt(it.t):'agendada para '+jFmt(it.t)):(it.k==='hab'?'hábito do dia':it.k==='note'?'nota':it.done?'concluída':'o dia todo'),
+tall=it.k==='foco'||(it.blk&&it.dur>=45),chk=it.virt?'<span class="tck virt" aria-hidden="true">'+ic('habitos',14)+'</span>':(it.k==='foco'||it.k==='note'||(it.k==='med'&&it.done))?'':'<button class="tck'+(it.done?' on':'')+'" style="--c:'+it.c+'" data-a="jt" data-k="'+it.k+'" data-id="'+it.id+'" data-d="'+sel+'" aria-label="'+(it.done?'Desmarcar':'Concluir')+'">'+(it.done?ic('check',16):'')+'</button>';
+h+='<div class="tli'+(it.done?' done':'')+(it.virt?' virt':'')+'"><div class="tlt">'+(timed?jFmt(it.t):'')+'</div><div class="tln"><span class="tlp'+(tall?' tall':'')+'" style="--c:'+it.c+'">'+ic(it.ic,22)+'</span></div><div class="tlx"'+(it.k==='note'?' data-a="nopen" data-id="'+it.id+'"':it.k==='med'?' data-a="medopen" data-id="'+it.id+'"':(jCal()&&it.k==='task'?' data-a="edit" data-id="'+it.id+'"':''))+'><small>'+esc(range)+'</small><b>'+esc(it.title)+'</b></div>'+chk+'</div>'});
 return h+'</div>'}
 
 /* ---------- resumo do dia + calendário de planejamento ---------- */
@@ -2189,18 +2417,20 @@ h+='<div class="rs-ft"><button class="btn" data-a="rsgo" data-v="hoje">Abrir Hoj
 const CLD={sel:null,month:null};
 function cMes(){const td=today(),sel=CLD.sel||(CLD.sel=td),sd=parse(sel),base=CLD.month||(CLD.month=new Date(sd.getFullYear(),sd.getMonth(),1)),y=base.getFullYear(),m=base.getMonth(),start=new Date(y,m,1-new Date(y,m,1).getDay());
 const P={},DL={};S.tasks.forEach(t=>{if(t.done||t.canceled)return;if(!t.someday&&t.due)(P[t.due]=P[t.due]||[]).push(t);if(t.deadline)DL[t.deadline]=(DL[t.deadline]||0)+1});
+const VT=repVirt(ymd(start),ymd(new Date(start.getFullYear(),start.getMonth(),start.getDate()+41)));
 const od=S.tasks.filter(t=>!t.done&&!t.canceled&&!t.someday&&t.due&&t.due<td).length;
-let cells='';for(let i=0;i<42;i++){const d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i),k=ymd(d),L=P[k]||[],n=L.length,out=d.getMonth()!==m,lv=n>=5?4:n>=3?3:n>=2?2:n>=1?1:0;
-cells+='<button class="jc cc lv'+lv+(out?' out':'')+(k===td?' today':'')+(k===sel?' sel':'')+(k<td&&n?' late':'')+'" data-a="cs" data-d="'+k+'" aria-label="'+k+'"><b>'+d.getDate()+'</b>'+(DL[k]?'<u>'+ic('flag',10)+'</u>':'')+'<span class="jb">'+L.slice(0,3).map(t=>'<i style="background:'+jColor(tFolder(t))+'"></i>').join('')+(n>3?'<em>+'+(n-3)+'</em>':'')+'</span></button>'}
+let cells='';for(let i=0;i<42;i++){const d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i),k=ymd(d),L=P[k]||[],VL=VT[k]||[],n=L.length+VL.length,out=d.getMonth()!==m,lv=n>=5?4:n>=3?3:n>=2?2:n>=1?1:0;
+cells+='<button class="jc cc lv'+lv+(out?' out':'')+(k===td?' today':'')+(k===sel?' sel':'')+(k<td&&L.length?' late':'')+'" data-a="cs" data-d="'+k+'" aria-label="'+k+'"><b>'+d.getDate()+'</b>'+(DL[k]?'<u>'+ic('flag',10)+'</u>':'')+'<span class="jb">'+L.slice(0,3).map(t=>'<i style="background:'+jColor(tFolder(t))+'"></i>').join('')+VL.slice(0,Math.max(0,3-L.length)).map(t=>'<i class="vi" style="--c:'+jColor(tFolder(t))+'"></i>').join('')+(n>3?'<em>+'+(n-3)+'</em>':'')+'</span></button>'}
 const mn=base.toLocaleDateString('pt-BR',{month:'long'});
 let h='<div class="j-mh"><button data-a="cm" data-v="-1" aria-label="Mês anterior">'+ic('chev',18)+'</button><h2>'+mn.charAt(0).toUpperCase()+mn.slice(1)+' <span>'+y+'</span></h2><button data-a="cm" data-v="1" aria-label="Próximo mês">'+ic('chev',18)+'</button></div><div class="j-wd">'+JWL.map(x=>'<span>'+x+'</span>').join('')+'</div><div class="j-grid">'+cells+'</div>';
 h+='<div class="j-ch"><button class="chip" data-a="cth">Hoje</button>'+(od?'<button class="chip warn" data-a="cs" data-d="'+td+'">'+od+(od===1?' atrasada':' atrasadas')+'</button>':'')+'</div>';
 const L=(P[sel]||[]).slice().sort((p,q)=>(p.remindAt||1e15)-(q.remindAt||1e15)||p.createdAt-q.createdAt),dl=S.tasks.filter(t=>!t.done&&!t.canceled&&t.deadline===sel&&t.due!==sel),dn=S.tasks.filter(t=>t.done&&!t.note&&!t.canceled&&t.doneAt&&ymd(new Date(t.doneAt))===sel),nn=S.tasks.filter(t=>t.note&&t.doneAt&&ymd(new Date(t.doneAt))===sel),late=sel===td?S.tasks.filter(t=>!t.done&&!t.canceled&&!t.someday&&t.due&&t.due<td).sort((p,q)=>p.due<q.due?-1:1):[];
 h+='<div class="cd"><div class="cd-h"><div><b>'+esc(cap1(sd.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})))+'</b><small>'+L.length+(L.length===1?' tarefa':' tarefas')+(dl.length?' · '+dl.length+(dl.length===1?' prazo':' prazos'):'')+(dn.length?' · '+dn.length+' feitas':'')+'</small></div><button class="ib" data-a="cmenu" aria-label="Ações do dia">'+ic('dots',20)+'</button></div><button class="cd-new" data-a="cnew">'+ic('plus',16)+'<span>Nova tarefa neste dia</span></button>';
-h+=evBlock(sel);
+h+=evBlock(sel);h+=habDayRows(sel);
 if(late.length)h+='<div class="cd-s warn"><h3>Atrasadas <span>'+late.length+'</span></h3>'+late.map(t=>taskRow(t)).join('')+'</div>';
 if(dl.length)h+='<div class="cd-s"><h3>Prazos <span>'+dl.length+'</span></h3>'+dl.map(t=>taskRow(t)).join('')+'</div>';
 h+=L.length?'<div class="cd-s">'+L.map(t=>taskRow(t)).join('')+'</div>':(late.length||dl.length?'':'<div class="empty">Dia livre. Que tal planejar algo?</div>');
+{const VS=(repVirt(sel,sel)[sel])||[];if(VS.length)h+='<div class="cd-s"><h3>Repetições previstas <span>'+VS.length+'</span></h3>'+VS.map(t=>vRow(t,sel)).join('')+'</div>'}
 if(nn.length)h+='<div class="cd-s"><h3>Notas do dia <span>'+nn.length+'</span></h3>'+nn.map(noteRow).join('')+'</div>';
 if(dn.length)h+='<div class="cd-s"><h3 class="coll" data-a="colt" data-k="cdd" style="cursor:pointer">Concluídas '+cnt('cdd',dn.length)+(isCol('cdd')?'':'<span>'+dn.length+'</span>')+'</h3>'+(isCol('cdd')?'':dn.map(t=>taskRow(t)).join(''))+'</div>';
 return h+'</div>'}
@@ -2236,7 +2466,7 @@ function cSeg(){const v=cView();return '<div class="j-seg">'+[['mes','Mês'],['a
 
 
 
-function calendarioView(){const v=cView();let h='<h1>'+ic('upcoming',26)+' Calendário</h1><button class="j-ask" data-a="resumo">'+ic('sparkle',18)+'<span>O que tenho que fazer hoje?</span></button>'+cSeg();
+function calendarioView(){const v=cView();let h='<h1>'+ic('upcoming',26)+' Calendário</h1><button class="j-ask" data-a="resumo">'+ic('sparkle',18)+'<span>O que tenho que fazer hoje?</span></button>'+cSeg()+((v==='mes'||v==='semana'||v==='dia')?selBanner():'');
 h+=v==='mes'?cMes():v==='ano'?jYear():v==='semana'?jWeek():v==='dd'?ddView():jDay();return '<div class="cal">'+h+'</div>'}
 function calDayHead(sel){const sd=parse(sel),n=S.tasks.filter(t=>!t.done&&!t.canceled&&!t.someday&&t.due===sel).length;return '<div class="cd-h" style="margin:2px 0 4px"><div><b>'+esc(cap1(sd.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})))+'</b><small>'+n+(n===1?' aberta':' abertas')+'</small></div><button class="ib" data-a="cmenu" aria-label="Ações do dia">'+ic('dots',20)+'</button></div><button class="cd-new" data-a="cnew" style="margin:6px 0 10px">'+ic('plus',16)+'<span>Nova tarefa neste dia</span></button>'+evBlock(sel)}
 /* ---------- Dia a dia: filmes, séries, animes, livros e mangás ---------- */
@@ -2269,24 +2499,28 @@ function medDraft(m){return m?Object.assign({},m,{plan:m.plan?Object.assign({},m
 function syncMed(){if(!SH||!SH.d)return;const d=SH.d,g=id=>$('#'+id);if(g('m-title'))d.title=g('m-title').value;if(g('m-pages'))d.pages=g('m-pages').value;if(g('m-season'))d.season=Math.max(1,Number(g('m-season').value)||1);if(g('m-ep'))d.ep=Math.max(0,Number(g('m-ep').value)||0);if(g('m-page'))d.page=Math.max(0,Number(g('m-page').value)||0);
 if(g('m-start'))d.started=g('m-start').value||null;if(g('m-end'))d.finished=g('m-end').value||'';
 if(g('m-pd')){const dd=g('m-pd').value;if(dd){d.plan=d.plan||{};d.plan.d=dd;d.plan.from=(g('m-pf')&&g('m-pf').value)||null;d.plan.to=(g('m-pt')&&g('m-pt').value)||null}else d.plan=null}if(g('m-url'))SH.url=g('m-url').value;if(g('m-rt'))d.rt=g('m-rt').value;if(g('m-eps'))d.eps=g('m-eps').value;if(g('m-pace'))d.pace=g('m-pace').value;if(g('m-rf'))SH.rf=g('m-rf').value}
+function mgHist(id){let n=0;(S.mlog||[]).forEach(l=>{if(l.id===id&&l.k==='ch')n+=l.n||0});return n}
 function medCoverBlock(d){return '<label>Capa</label><div class="mcv"><span class="mcv-pre">'+mcCover(d)+'</span><div class="mcv-bt"><div class="chips"><button class="chip" data-a="medfile">Escolher imagem</button><button class="chip'+(SH.linkOpen?' on':'')+'" data-a="medlink">Colar link</button>'+((d.cover||d.coverUrl)?'<button class="chip" data-a="medcov0">Sem capa</button>':'')+'</div>'+(SH.linkOpen?'<div class="mcl"><input type="text" id="m-url" placeholder="https://… (link da imagem)" value="'+esc(SH.url||'')+'" autocomplete="off"><button class="btn" data-a="medurl">Usar</button></div>':'')+'</div></div>'}
 function medFields(d){const t=MT[d.type],pl=d.plan||{},pd=pl.d||'';
 let h='';
 if(d.type==='filme')h+='<label>Duração (minutos)</label><input type="number" id="m-rt" inputmode="numeric" min="0" value="'+esc(d.rt)+'">';
 if(isEp(d))h+='<div class="mgrid"><label>Minutos por episódio<input type="number" id="m-rt" inputmode="numeric" min="0" value="'+esc(d.rt)+'"></label><label>Total de episódios'+(d.seas&&d.seas.length?' ('+d.seas.length+' temp.)':'')+'<input type="number" id="m-eps" inputmode="numeric" min="0" value="'+esc(d.seas&&d.seas.length?d.seas.reduce((x,y)=>x+y,0):d.eps)+'"'+(d.seas&&d.seas.length?' disabled':'')+'></label></div>';
 if(isEp(d))h+='<div class="mgrid"><label>Temporada<input type="number" id="m-season" inputmode="numeric" min="1" value="'+(d.season||1)+'"></label><label>Episódio onde parou<input type="number" id="m-ep" inputmode="numeric" min="0" value="'+(d.ep||0)+'"></label></div><label>Começou em</label><input type="date" id="m-start" value="'+esc(d.started||'')+'">';
-if(isRead(d))h+='<div class="mgrid"><label>'+(isMg(d)?'Capítulo atual':'Página atual')+'<input type="number" id="m-page" inputmode="numeric" min="0" value="'+(d.page||0)+'"></label><label>'+(isMg(d)?'Total de capítulos':'Total de páginas')+'<input type="number" id="m-pages" inputmode="numeric" min="0" value="'+esc(d.pages)+'"></label></div><div class="mgrid"><label>Início<input type="date" id="m-start" value="'+esc(d.started||'')+'"></label><label>Término<input type="date" id="m-end" value="'+esc(d.finished||'')+'"></label></div>';
+if(isRead(d))h+='<div class="mgrid"><label>'+(isMg(d)?'Capítulo atual':'Página atual')+'<input type="number" id="m-page" inputmode="numeric" min="0" value="'+(d.page||0)+'"></label><label>'+(isMg(d)?'Total de capítulos':'Total de páginas')+'<input type="number" id="m-pages" inputmode="numeric" min="0" value="'+esc(d.pages)+'"></label></div>'+(isMg(d)&&SH.id&&mgHist(SH.id)>(Number(d.page)||0)?'<p class="mt" style="font-size:12px;margin:-2px 0 8px">Pelo histórico, você já registrou <b>'+mgHist(SH.id)+'</b> capítulos. <button class="chip" data-a="medhist" data-v="'+mgHist(SH.id)+'">Usar '+mgHist(SH.id)+'</button></p>':'')+'<div class="mgrid"><label>Início<input type="date" id="m-start" value="'+esc(d.started||'')+'"></label><label>Término<input type="date" id="m-end" value="'+esc(d.finished||'')+'"></label></div>';
 h+='<label>'+(d.type==='filme'?'Quando vai ver':isEp(d)?'Próximo episódio em':'Planejo ler em (opcional)')+'</label><div class="chips">'+chip(pd===today(),'medpd','today','Hoje')+chip(pd===addDays(today(),1),'medpd','tom','Amanhã')+chip(!pd,'medpd','none','Sem data')+'</div><div class="mgrid"><label>Dia<input type="date" id="m-pd" value="'+esc(pd)+'"></label><label>Horário (vira bloco)<span class="blkin"><input type="time" id="m-pf" value="'+esc(pl.from||'')+'"><span>até</span><input type="time" id="m-pt" value="'+esc(pl.to||'')+'"></span></label></div>';
 h+=medPred(d);
 if(pl.from)h+='<p class="mt" style="margin:0 0 4px;font-size:12px">Com horário, aparece como bloco na Agora e nos calendários e avisa '+warnDef()+' min antes.</p>';
 return h}
 async function medFileChange(e){const f=e.target.files&&e.target.files[0];e.target.value='';if(!f||!SH||!SH.d)return;syncMed();toast('Preparando a capa…');try{const id=await capaFromFile(f);if(SH&&SH.d){SH.d.cover=id;SH.d.coverUrl=null;renderSheet()}}catch(err){toast(err&&err.message==='heic'?'Esse formato (HEIC) o app não abre. Compartilhe a imagem como JPEG':'Não consegui abrir essa imagem')}}
-function mediaMigrate(){let ch=false;{const st=SETG();if(st.gtMig!==1){st.groupToday=false;st.gtMig=1;ch=true}}(S.media||[]).forEach(m=>{if(m.type==='manga'&&m.u!=='ch'){const c=cppOf();m.page=Math.ceil((m.page||0)/c);m.pages=Math.ceil((Number(m.pages)||0)/c);m.u='ch';ch=true}});if(ch)save()}
+function mediaMigrate(){let ch=false;{const st=SETG();if(st.gtMig!==1){st.groupToday=false;st.gtMig=1;ch=true}}(S.media||[]).forEach(m=>{if(m.type!=='manga'||m.un==='ch')return;
+/* só dados muito antigos (em páginas) não têm nenhum marcador: carimbo de sincronização é número, marcador antigo era o texto 'ch' */
+if(m.u==null){const c=cppOf();m.page=Math.ceil((m.page||0)/c);m.pages=Math.ceil((Number(m.pages)||0)/c)}
+m.un='ch';if(m.u==='ch')delete m.u;ch=true});if(ch)save()}
 function mediaSave(){syncMed();const d=SH.d;if(!d.title.trim()){const r=$('#err');if(r)r.textContent='Dê um nome';return}
 if(d.plan&&d.plan.from&&!d.plan.to)d.plan.to=agAddMin(d.plan.from,MT[d.type].dur);
 let m=SH.id?mediaOf(SH.id):null;const fresh=!m;if(fresh){m={id:uid(),added:Date.now()};S.media=S.media||[];S.media.unshift(m)}
 Object.assign(m,{rt:Number(d.rt)||0,eps:Number(d.eps)||0,seas:d.seas||null,est:!!d.est,pace:Number(d.pace)||0,type:d.type,title:d.title.trim(),cover:d.cover||null,coverUrl:d.coverUrl||null,state:d.state||'doing',started:d.started||null,finished:d.finished||null,plan:(d.plan&&d.plan.d)?{d:d.plan.d,from:d.plan.from||null,to:d.plan.to||null}:null});
-if(isEp(d)){m.season=d.season||1;m.ep=d.ep||0}if(isRead(d)){m.page=d.page||0;m.pages=Number(d.pages)||0}if(m.type==='manga')m.u='ch';
+if(isEp(d)){m.season=d.season||1;m.ep=d.ep||0}if(isRead(d)){m.page=d.page||0;m.pages=Number(d.pages)||0}if(m.type==='manga')m.un='ch';
 if(m.state==='done'&&!m.finished)m.finished=today();if(m.state==='doing'&&!m.started)m.started=today();if(m.state==='later'){}
 save();closeSheet();render();mediaSchedule();toast(fresh?'Adicionado ao Dia a dia':'Salvo')}
 
@@ -2328,8 +2562,8 @@ h+=row('Em andamento',doing,true,sumOf(doing).replace('≈','faltam'))+row(later
 if(!all.length)h+='<div class="empty">'+(f==='tudo'?'Adicione o que você está assistindo ou lendo: filmes, séries, animes, livros e mangás.':'Nada em '+MT[f].p.toLowerCase()+' ainda.')+'</div>';
 return h+ddCal()}
 async function mediaSchedule(){const ln=LN();if(!ln)return;try{await ln.cancel({notifications:Array.from({length:150},(_,i)=>({id:400000000+i})).concat(Array.from({length:200},(_,i)=>({id:450000000+i})))})}catch(e){}
-const list=[];let k=0,rk=0;const w=warnDef();(S.media||[]).forEach(m=>{if(m.state==='done')return;const p=m.plan;if(p&&p.d&&p.from&&k<140){const st=new Date(p.d+'T'+p.from+':00').getTime()-w*60000;if(st>Date.now())list.push({id:400000000+k++,title:w?'Em '+w+' min':'Hora de '+MT[m.type].verb.toLowerCase(),body:mediaPlanTitle(m),schedule:{at:new Date(st),allowWhileIdle:true}})}
-if(m.rep&&m.rep.from){const hh=m.rep.from.split(':'),mins=Number(hh[0])*60+Number(hh[1])-w;repDays(m).forEach(wd=>{let dd=wd,mm=mins;if(mm<0){mm+=1440;dd=(wd+6)%7}if(rk<190)list.push({id:450000000+rk++,title:w?'Em '+w+' min':'Hora de '+MT[m.type].verb.toLowerCase(),body:mediaPlanTitle(m),schedule:{on:{weekday:dd+1,hour:Math.floor(mm/60),minute:mm%60},allowWhileIdle:true}})})}});
+const list=[];let k=0,rk=0;const w=warnDef();(S.media||[]).forEach(m=>{if(m.state==='done')return;const p=m.plan;if(p&&p.d&&p.from&&k<140){const st=new Date(p.d+'T'+p.from+':00').getTime()-w*60000;if(st>Date.now())list.push({id:400000000+k++,...ntMedia(m,w),schedule:{at:new Date(st),allowWhileIdle:true}})}
+if(m.rep&&m.rep.from){const hh=m.rep.from.split(':'),mins=Number(hh[0])*60+Number(hh[1])-w;repDays(m).forEach(wd=>{let dd=wd,mm=mins;if(mm<0){mm+=1440;dd=(wd+6)%7}if(rk<190)list.push({id:450000000+rk++,...ntMedia(m,w),schedule:{on:{weekday:dd+1,hour:Math.floor(mm/60),minute:mm%60},allowWhileIdle:true}})})}});
 if(list.length){try{await ensurePerm();await ln.schedule({notifications:list})}catch(e){}}}
 function agMediaBlocks(){const out=[];[addDays(today(),-1),today()].forEach(d=>{(S.media||[]).forEach(m=>{if(m.state==='done')return;const p=m.plan;let from=null,to=null;if(p&&p.d===d&&p.from){from=p.from;to=p.to||agAddMin(p.from,MT[m.type].dur)}else if(repOn(m,d)){from=m.rep.from;to=repTo(m)}if(!from)return;const id='m_'+m.id+'_'+d,t=AGP[id]||(AGP[id]={id:id,med:m.id,due:d});Object.assign(t,{title:mediaPlanTitle(m),from:from,to:to,pomo:false,notes:'',checklist:[],folderId:null,projectId:null,done:false});out.push(Object.assign({t:t},blkMs(t)))})});return out}
 /* ---------- busca de títulos, horas que faltam e blocos diários ---------- */
@@ -2529,16 +2763,18 @@ document.addEventListener('pointerdown',e=>{const t=e.target.closest&&e.target.c
 const off=()=>{document.removeEventListener('pointermove',mv,true);document.removeEventListener('pointerup',up,true);document.removeEventListener('pointercancel',up,true)},mv=ev=>{if(Math.hypot(ev.clientX-x,ev.clientY-y)>10){clearTimeout(window._lpt);off()}},up=()=>{clearTimeout(window._lpt);off()};
 document.addEventListener('pointermove',mv,true);document.addEventListener('pointerup',up,true);document.addEventListener('pointercancel',up,true)});
 /* ---------- seletor de data e hora no estilo do app ---------- */
-const DTP={open:false,el:null,inp:null,kind:'date',y:0,m:0,date:'',h:9,mi:0,title:'',err:''};
+const DTP={open:false,inSheet:false,st:0,inpId:'',el:null,inp:null,kind:'date',y:0,m:0,date:'',h:9,mi:0,title:'',err:''};
 const DTPT={'f-due':'Quando','f-ddl':'Prazo final','f-pstart':'Início do projeto','f-pdue':'Prazo do projeto','f-rem':'Lembrar em','s-night':'Fechar o dia','s-week':'Revisão semanal','f-wtime':'Hora do lembrete','f-from':'Início do bloco','f-to':'Fim do bloco','m-pf':'Início','m-pt':'Fim','m-rf':'Começa às','m-start':'Começou em','m-end':'Terminou em','m-pd':'Dia'};
 function dtpTitle(i,k){if(DTPT[i.id])return DTPT[i.id];const lb=i.closest&&i.closest('label');if(lb){const t=[...lb.childNodes].filter(n=>n.nodeType===3||(n.nodeType===1&&n.tagName==='SPAN'&&!n.querySelector('input'))).map(n=>n.textContent).join(' ').trim();if(t)return t}return k==='time'?'Escolher horário':k==='dt'?'Escolher data e hora':'Escolher data'}
 function dtpFor(inp){if(!inp)return;const k=inp.type==='time'?'time':inp.type==='date'?'date':'dt',v=inp.value||'';let date='',h=null,mi=null;
 if(k==='date')date=v;else if(k==='time'){if(v){h=+v.slice(0,2);mi=+v.slice(3,5)}}else if(v){date=v.slice(0,10);h=+v.slice(11,13);mi=+v.slice(14,16)}
 if(h==null){const n=new Date(Date.now()+36e5);h=k==='time'?9:n.getHours();mi=0}
-const base=date?parse(date):new Date();Object.assign(DTP,{inp:inp,kind:k,date:date,h:h,mi:mi,y:base.getFullYear(),m:base.getMonth(),title:dtpTitle(inp,k),err:'',open:true});dtpRender(true)}
+const base=date?parse(date):new Date();const ins=!!(SH&&['task','project','med','mednew'].indexOf(SH.type)>=0&&inp.closest&&inp.closest('#sheet'));
+if(ins){const sh=$('#sheet .sh');DTP.st=sh?sh.scrollTop:0;if(SH.type==='med'||SH.type==='mednew')syncMed();else syncDraft()}
+Object.assign(DTP,{inp:inp,inpId:inp.id,kind:k,date:date,h:h,mi:mi,y:base.getFullYear(),m:base.getMonth(),title:dtpTitle(inp,k),err:'',open:true,inSheet:ins});dtpRender(true)}
 function dtpEnsure(){if(DTP.el)return DTP.el;const e=document.createElement('div');e.id='dtp';e.setAttribute('role','dialog');e.setAttribute('aria-modal','true');document.body.appendChild(e);DTP.el=e;return e}
-function dtpDays(){const s={};S.tasks.forEach(t=>{if(!t.done&&!t.canceled&&t.due)s[t.due]=1});return s}
-function dtpRender(first){const e=dtpEnsure(),k=DTP.kind,t0=today();let h='<div class="dtp-bk" data-a="dtpx"></div><div class="dtp-c"><div class="dtp-h"><b>'+esc(DTP.title)+'</b><button class="ib" data-a="dtpx" aria-label="Fechar">'+ic('x',18)+'</button></div>';
+function dtpDays(){const s={};S.tasks.forEach(t=>{if(!t.done&&!t.canceled&&t.due)s[t.due]=1});const V=repVirt(today(),addDays(today(),400));Object.keys(V).forEach(d=>{if(!s[d])s[d]=2});return s}
+function dtpBody(){const k=DTP.kind,t0=today();let h='';
 if(k!=='time'){const off=(new Date(DTP.y,DTP.m,1).getDay()+6)%7,dim=new Date(DTP.y,DTP.m+1,0).getDate(),has=dtpDays();let g='';['S','T','Q','Q','S','S','D'].forEach(x=>{g+='<i class="wd">'+x+'</i>'});for(let i=0;i<off;i++)g+='<i></i>';
 for(let d=1;d<=dim;d++){const ds=DTP.y+'-'+pad(DTP.m+1)+'-'+pad(d);g+='<button class="wday'+(ds===t0?' today':'')+(ds===DTP.date?' on':'')+(ds<t0?' past':'')+(has[ds]?' has':'')+'" data-a="dtpd" data-v="'+ds+'">'+(ds===t0?ic('hoje',13):d)+'</button>'}
 h+='<div class="wcal"><div class="wch"><b>'+esc(cap1(new Date(DTP.y,DTP.m,1).toLocaleDateString('pt-BR',{month:'long',year:'numeric'})))+'</b><span><button data-a="dtpm" data-v="-1" aria-label="Mês anterior">‹</button><button data-a="dtpm" data-v="1" aria-label="Próximo mês">›</button></span></div><div class="wgrid">'+g+'</div></div>';
@@ -2546,11 +2782,14 @@ h+='<div class="chips dtp-q">'+chip(DTP.date===t0,'dtpq','0','Hoje')+chip(DTP.da
 if(k!=='date'){const hs=[],ms=[];for(let i=0;i<24;i++)hs.push(i);for(let i=0;i<60;i+=5)ms.push(i);if(ms.indexOf(DTP.mi)<0){ms.push(DTP.mi);ms.sort((x,y)=>x-y)}
 h+='<div class="dtp-t"><div class="dtp-band"></div><div class="dtp-col" id="dtp-h">'+hs.map(x=>'<i class="'+(x===DTP.h?'on':'')+'" data-a="dtph" data-v="'+x+'">'+pad(x)+'</i>').join('')+'</div><b class="dtp-sep">:</b><div class="dtp-col" id="dtp-m">'+ms.map(x=>'<i class="'+(x===DTP.mi?'on':'')+'" data-a="dtpn" data-v="'+x+'">'+pad(x)+'</i>').join('')+'</div></div>';
 h+='<div class="chips dtp-q">'+[[8,0],[9,0],[12,0],[15,0],[18,0],[21,0]].map(x=>chip(DTP.h===x[0]&&DTP.mi===x[1],'dtpt',x[0]+':'+x[1],pad(x[0])+':'+pad(x[1]))).join('')+'</div>'}
-h+='<div class="err" id="dtp-err">'+esc(DTP.err)+'</div><div class="dtp-f">'+(DTP.inp&&DTP.inp.value&&['s-night','s-week','f-wtime','m-rf'].indexOf(DTP.inp.id)<0?'<button class="btn s" data-a="dtpclr">Limpar</button>':'')+(k==='date'?'':'<button class="btn" data-a="dtpok">Confirmar</button>')+'</div></div>';
-e.innerHTML=h;
+h+='<div class="err" id="dtp-err">'+esc(DTP.err)+'</div><div class="dtp-f">'+(DTP.inp&&DTP.inp.value&&['s-night','s-week','f-wtime','m-rf'].indexOf(DTP.inp.id)<0?'<button class="btn s" data-a="dtpclr">Limpar</button>':'')+(k==='date'?'':'<button class="btn" data-a="dtpok">Confirmar</button>')+'</div>';return h}
+function dtpRender(first){if(DTP.inSheet){renderSheet();{const n=$('#sheet .dtpin');if(n&&first&&!calm())n.animate({opacity:[0,1]},{duration:150,easing:'ease-out'})}dtpWheels($('#sheet'));return}
+const e=dtpEnsure(),k=DTP.kind;e.innerHTML='<div class="dtp-bk" data-a="dtpx"></div><div class="dtp-c"><div class="dtp-h"><b>'+esc(DTP.title)+'</b><button class="ib" data-a="dtpx" aria-label="Fechar">'+ic('x',18)+'</button></div>'+dtpBody()+'</div>';
 if(first){e.classList.add('on');document.body.classList.add('dtp-open');if(!calm()){const c=e.querySelector('.dtp-c');e.querySelector('.dtp-bk').animate({opacity:[0,1]},{duration:160});c.animate({opacity:[0,1]},{duration:160,easing:'ease-out'});c.animate({translate:['-50% 18px','-50% 0']},{duration:220,easing:'cubic-bezier(.2,.7,.2,1)'})}}
-if(k!=='date'){['h','m'].forEach(w=>{const c=e.querySelector('#dtp-'+w);if(!c)return;const on=c.querySelector('.on');c.scrollTop=on?on.offsetTop-80:0;let tm;c.addEventListener('scroll',()=>{clearTimeout(tm);tm=setTimeout(()=>{const it=c.children[Math.max(0,Math.min(c.children.length-1,Math.round(c.scrollTop/40)))];if(!it)return;const v=Number(it.dataset.v);if(w==='h')DTP.h=v;else DTP.mi=v;c.querySelectorAll('i').forEach(x=>x.classList.toggle('on',x===it))},90)},{passive:true})})}}
-function dtpClose(){if(!DTP.open)return;DTP.open=false;document.body.classList.remove('dtp-open');const e=DTP.el;if(!e)return;if(calm()){e.classList.remove('on');return}const c=e.querySelector('.dtp-c');if(c)c.animate({opacity:[1,0],translate:['-50% 0','-50% 14px']},{duration:130,easing:'ease-in'});setTimeout(()=>{if(!DTP.open)e.classList.remove('on')},130)}
+dtpWheels(e)}
+function dtpWheels(e){const k=DTP.kind;if(k!=='date'){['h','m'].forEach(w=>{const c=e.querySelector('#dtp-'+w);if(!c)return;const on=c.querySelector('.on');c.scrollTop=on?on.offsetTop-80:0;let tm;c.addEventListener('scroll',()=>{clearTimeout(tm);tm=setTimeout(()=>{const it=c.children[Math.max(0,Math.min(c.children.length-1,Math.round(c.scrollTop/40)))];if(!it)return;const v=Number(it.dataset.v);if(w==='h')DTP.h=v;else DTP.mi=v;c.querySelectorAll('i').forEach(x=>x.classList.toggle('on',x===it))},90)},{passive:true})})}}
+function dtpSheetHTML(){const kind=sheetKind(SH.type);return '<div class="bk k-'+kind+'" data-a="dtpx"><div class="sh k-'+kind+' dtpin"><div class="hd"><button class="ib dtp-back" data-a="dtpx" aria-label="Voltar">'+ic('chev',20)+'</button><h2>'+esc(DTP.title)+'</h2></div>'+dtpBody()+'</div></div>'}
+function dtpClose(){if(!DTP.open)return;if(DTP.inSheet){DTP.open=false;DTP.inSheet=false;if(SH){renderSheet();const sh=$('#sheet .sh');if(sh)sh.scrollTop=DTP.st||0}return}DTP.open=false;document.body.classList.remove('dtp-open');const e=DTP.el;if(!e)return;if(calm()){e.classList.remove('on');return}const c=e.querySelector('.dtp-c');if(c)c.animate({opacity:[1,0],translate:['-50% 0','-50% 14px']},{duration:130,easing:'ease-in'});setTimeout(()=>{if(!DTP.open)e.classList.remove('on')},130)}
 function dtpCommit(v){let i=DTP.inp;dtpClose();if(!i)return;if(!document.body.contains(i)){const j=i.id&&document.getElementById(i.id);if(!j)return;i=j}if(!SH&&/^(f|m)-/.test(i.id||''))return;i.value=v;i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}))}
 function dtpOk(){const k=DTP.kind;if(k!=='time'&&!DTP.date){DTP.err='Escolha um dia.';const x=$('#dtp-err');if(x)x.textContent=DTP.err;return}const tm=pad(DTP.h)+':'+pad(DTP.mi);dtpCommit(k==='time'?tm:k==='dt'?DTP.date+'T'+tm:DTP.date)}
 document.addEventListener('click',e=>{const i=e.target.closest&&e.target.closest('input[type=date],input[type=time],input[type=datetime-local]');if(!i||i.classList.contains('hid'))return;e.preventDefault();e.stopPropagation();dtpFor(i)},true);
@@ -2597,12 +2836,12 @@ h+=v==='mes'?jMonth():v==='ano'?jYear():v==='semana'?jWeek():jDay();return '<div
 function xpPop(el,txt){const r=el.getBoundingClientRect(),e=document.createElement('div');e.className='xpop';e.textContent=txt;e.style.left=(r.left+r.width/2)+'px';e.style.top=r.top+'px';document.body.appendChild(e);
 if(calm()){setTimeout(()=>e.remove(),700);return}const an=e.animate([{opacity:0,translate:'-50% 6px',scale:'.6'},{opacity:1,translate:'-50% -14px',scale:'1.1',offset:.3},{opacity:0,translate:'-50% -46px',scale:'1'}],{duration:1100,easing:LQ.soft});an.onfinish=()=>e.remove()}
 function vidaView(){const tp=todayPomos(),hd=S.habits.filter(x=>{const dd=hDays(x);return !dd||dd.indexOf(new Date().getDay())>=0}),hn=hd.filter(x=>x.logs.indexOf(today())>=0).length;
-return '<h1>Vida</h1><p class="sub">Agora, metas e hábitos</p><div class="home">'+
-bigRow('data-a="nav" data-v="foco"',ring(focoPct(),'var(--ac)',24),'Agora','O bloco do momento em bateria, pomodoro com cenários e suas fotos',tp?tp+(tp===1?' pomo':' pomos'):'')+
+return '<h1>Vida</h1><div class="home">'+
+bigRow('data-a="nav" data-v="foco"',ring(focoPct(),'var(--ac)',24),'Foco','Pomodoros, cenários, fotos e prêmios',tp?tp+(tp===1?' pomo':' pomos'):'')+
 bigRow('data-a="nav" data-v="metas"',ring(metasPct(),'var(--ac)',24),'Metas','Progresso e ritmo das áreas e projetos','')+
 bigRow('data-a="nav" data-v="habitos"',ring(habitosPct(),'var(--ac)',24),'Hábitos','Sequências e metas da semana',hd.length?hn+'/'+hd.length+' hoje':'')+bigRow('data-a="nav" data-v="jornada"','<span style="color:var(--ac);display:flex">'+ic('jornada',24)+'</span>','Jornada','Calendário gamificado: mês, ano, semana e dia',(x=>x.streak?x.streak+' d':'')(jXP()))+'</div>'}
 function rituaisView(){const ws=RIT().week?(daysSince(RIT().week)===0?'✓':'há '+daysSince(RIT().week)+' d'):'';
-return '<h1>Rituais</h1><p class="sub">Rotinas para começar e fechar o dia</p><div class="home">'+
+return '<h1>Rituais</h1><div class="home">'+
 bigRow('data-a="ctx" data-k="sair"','<span style="color:var(--ac);display:flex">'+ic('check',22)+'</span>','Vou sair','Checklist antes de sair de casa','')+
 bigRow('data-a="ctx" data-k="casa"','<span style="color:var(--ac);display:flex">'+ic('home',22)+'</span>','Cheguei em casa','Checklist ao chegar','')+
 bigRow('data-a="nav" data-v="revsem"','<span style="color:var(--ac);display:flex">'+ic('upcoming',22)+'</span>','Revisão semanal','Inbox, próximos 7 dias e projetos',ws)+'</div>'}
@@ -2668,7 +2907,7 @@ const WD=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],WDORDER=[1,2,3,4,5,6,0],AT
 const hDays=x=>(x.days&&x.days.length)?x.days:null;
 const hTarget=x=>hDays(x)?hDays(x).length:(x.target||1);
 const habitOf=id=>S.habits.find(h=>h.id===id);
-let HX={id:null,tab:null};
+let HX={id:null,tab:null,month:null};
 function habitPct(x){const n=[0,1,2,3,4,5,6].filter(i=>x.logs.indexOf(addDays(today(),-i))>=0).length;return Math.min(1,n/hTarget(x))}
 const avg=a=>a.length?a.reduce((s,v)=>s+v,0)/a.length:0;
 const hojePct=()=>{const p=S.tasks.filter(isToday).length,d=S.tasks.filter(t=>t.done&&(t.doneAt||0)>=startOfDay()).length;return p+d?d/(p+d):0};
@@ -2680,7 +2919,7 @@ const shortD=d=>d.split('-').reverse().slice(0,2).join('/');
 const projColor=p=>{const f=fol(pFolder(p));return f?f.color:'var(--ac)'};
 
 
-const HTABS=[['cal','upcoming','Calendário'],['time','hourglass','Horário'],['tag','tag','Tags'],['att','gauge','Nível de atenção'],['loc','pin','Local']];
+const HTABS=[['hist','flame','Histórico'],['cal','upcoming','Calendário'],['time','hourglass','Horário'],['tag','tag','Tags'],['att','gauge','Nível de atenção'],['loc','pin','Local']];
 function habitCard(x,withCtx){const days=[];for(let i=6;i>=0;i--)days.push(addDays(today(),-i));
 const set=new Set(x.logs),n=days.filter(d=>set.has(d)).length,hd=hDays(x),open=HX.id===x.id,td=new Date().getDay(),doneToday=set.has(today());
 const pj=projOf(x.projectId),g=goalOf(x.goalId),f=fol(hFolder(x)),loc=pj?pj.title:g?g.title:(f&&withCtx!=='pj')?f.name:'';
@@ -2688,9 +2927,10 @@ let lab;if(!hd)lab='<span>'+(x.target||1)+'x por semana</span>';else if(hd.lengt
 const tm=x.from?'<span class="tm">'+ic('hourglass',11)+' '+esc(x.from)+'–'+esc(x.to||'')+'</span>':'';
 const meta=[n+'/'+hTarget(x)+' na semana','sequência '+streak(x)];if(x.attn)meta.push('atenção '+ATTN[x.attn].toLowerCase());(x.tags||[]).forEach(t=>meta.push('#'+t));
 let h='<div class="card rc hab">'+ring(habitPct(x),f?f.color:'var(--ac)',22)+'<div class="cb"><div class="hn" data-a="hopen" data-id="'+x.id+'"><span class="ht">'+esc(x.title)+'</span></div><div class="hrp" data-a="hopen" data-id="'+x.id+'">'+lab+tm+((withCtx&&loc)?'<span class="lc">'+esc(loc)+'</span>':'')+'</div><div class="mt">'+esc(meta.join(' · '))+'</div><div class="dots">'+days.map(d=>{const wd=parse(d).getDay(),off=hd&&hd.indexOf(wd)<0,isT=d===today();return '<div class="dot'+(isT?' td':'')+'">'+(isT?'Hoje':WD[wd])+'<br><button class="'+(set.has(d)?'on':'')+(off?' off':'')+'" data-a="hab" data-id="'+x.id+'" data-d="'+d+'" aria-label="Marcar '+(isT?'hoje':WD[wd])+'">'+(set.has(d)?ic('check',16):'')+'</button></div>'}).join('')+'</div>';
-if(open){h+='<div class="hbar">'+HTABS.map(t=>'<button class="hb'+(HX.tab===t[0]?' on':'')+'" data-a="htab" data-v="'+t[0]+'" aria-label="'+t[2]+'" title="'+t[2]+'">'+ic(t[1],20)+'<small>'+({cal:'Dias',time:'Horário',tag:'Tags',att:'Atenção',loc:'Local'}[t[0]]||t[2])+'</small></button>').join('')+'</div>';
+if(open){h+='<div class="hbar">'+HTABS.map(t=>'<button class="hb'+(HX.tab===t[0]?' on':'')+'" data-a="htab" data-v="'+t[0]+'" aria-label="'+t[2]+'" title="'+t[2]+'">'+ic(t[1],20)+'<small>'+({hist:'Histórico',cal:'Dias',time:'Horário',tag:'Tags',att:'Atenção',loc:'Local'}[t[0]]||t[2])+'</small></button>').join('')+'</div>';
 const ex=' data-id="'+x.id+'"';
 if(HX.tab==='cal')h+='<div class="hp"><label>Dias em que fazer</label><div class="chips">'+WDORDER.map(i=>chip(hd&&hd.indexOf(i)>=0&&hd.length<7,'hday',i,WD[i],ex)).join('')+chip(!!hd&&hd.length===7,'hall','x','Todo dia',ex)+'</div></div>';
+else if(HX.tab==='hist')h+=habHist(x);
 else if(HX.tab==='time')h+='<div class="hp"><label>Horário do hábito</label>'+(x.from?'<div class="chips"><span class="blkin"><input type="time" class="htime" data-k="from" data-id="'+x.id+'" value="'+esc(x.from)+'"><span>até</span><input type="time" class="htime" data-k="to" data-id="'+x.id+'" value="'+esc(x.to||'')+'"></span>'+chip(false,'hclear','x','Remover',ex)+'</div><label>Avisar antes</label><div class="chips">'+chip(x.warn==null,'hwarn','','Padrão ('+warnDef()+' min)',ex)+[0,5,10,15,30].map(m=>chip(x.warn===m,'hwarn',m,m?m+' min antes':'No horário',ex)).join('')+'</div>':'<div class="chips">'+chip(false,'hset','30','Definir horário (30 min)',ex)+chip(false,'hset','15','15 min',ex)+chip(false,'hset','60','1 h',ex)+'</div>')+'</div>';
 else if(HX.tab==='tag')h+='<div class="hp"><label>Tags</label><input type="text" class="htags" data-id="'+x.id+'" placeholder="#manhã #saúde" value="'+esc((x.tags||[]).map(t=>'#'+t).join(' '))+'"></div>';
 else if(HX.tab==='att')h+='<div class="hp"><label>Nível de atenção que o hábito exige</label><div class="chips">'+[1,2,3].map(v=>chip(x.attn===v,'hat',v,ATTN[v],ex)).join('')+'</div></div>';
@@ -2724,7 +2964,7 @@ function dayBlock(d){const t0=today();
 const open=S.tasks.filter(t=>!t.done&&!t.someday&&t.due===d).sort((a,b)=>(a.remindAt||1e15)-(b.remindAt||1e15)||a.createdAt-b.createdAt);
 const done=S.tasks.filter(t=>t.done&&!t.note&&!t.canceled&&t.doneAt&&ymd(new Date(t.doneAt))===d);
 const dl=S.tasks.filter(t=>!t.done&&!t.someday&&t.deadline===d&&t.due!==d),pd=S.projects.filter(p=>!projDone(p)&&p.due===d),tot=open.length+done.length,cl=isCol('d:'+d);
-let h='<div class="day'+(d===t0?' today':'')+(d<t0?' past':'')+'" data-day="'+d+'" data-z="day:'+d+'" data-zm="list"><div class="dayh coll" data-a="colt" data-k="d:'+d+'" role="button">'+ring(tot?done.length/tot:0,'var(--ac)',20)+'<b>'+esc(dayTitle(d))+'</b>'+(cl&&tot?'<span class="cn">'+tot+'</span>':'')+'<em>'+esc(dayShort(d))+'</em></div>'+evRows(d)+S.projects.filter(p=>!p.done&&!p.someday&&p.start===d).map(p=>'<div class="row" data-a="proj" data-id="'+p.id+'"><span class="hic" style="margin-top:1px">'+iconRing(p,22)+'</span><div class="tx"><div class="tt">'+esc(p.title)+'</div><div class="mt">Projeto começa hoje</div></div></div>').join('')+(cl?'':open.map(taskRow).join('')+done.map(taskRow).join(''));
+let h='<div class="day'+(d===t0?' today':'')+(d<t0?' past':'')+'" data-day="'+d+'" data-z="day:'+d+'" data-zm="list"><div class="dayh coll" data-a="colt" data-k="d:'+d+'" role="button">'+ring(tot?done.length/tot:0,'var(--ac)',20)+'<b>'+esc(dayTitle(d))+'</b>'+(cl&&tot?'<span class="cn">'+tot+'</span>':'')+'<em>'+esc(dayShort(d))+'</em></div>'+evRows(d)+S.projects.filter(p=>!p.done&&!p.someday&&p.start===d).map(p=>'<div class="row" data-a="proj" data-id="'+p.id+'"><span class="hic" style="margin-top:1px">'+iconRing(p,22)+'</span><div class="tx"><div class="tt">'+esc(p.title)+'</div><div class="mt">Projeto começa hoje</div></div></div>').join('')+(cl?'':open.map(taskRow).join('')+(d>=t0?(repVirt(d,d)[d]||[]).map(t=>vRow(t,d)).join(''):'')+done.map(taskRow).join(''));
 if(!cl)dl.forEach(t=>{h+='<div class="row ddl" data-a="edit" data-id="'+t.id+'">'+ic('flag',16)+'<div class="tx"><div class="tt">Prazo · '+esc(t.title)+'</div></div></div>'});
 if(!cl)pd.forEach(p=>{h+='<div class="row ddl" data-a="proj" data-id="'+p.id+'">'+ic('flag',16)+'<div class="tx"><div class="tt">Prazo do projeto · '+esc(p.title)+'</div></div></div>'});
 return h+'</div>'}
@@ -2845,7 +3085,7 @@ function prazosView(){const ts=S.tasks.filter(x=>!x.done&&!x.someday&&x.deadline
 const items=ts.map(t=>({d:t.deadline,h:taskRow(t)})).concat(ps.map(p=>({d:p.due,h:'<div class="row ddl" data-a="proj" data-id="'+p.id+'">'+ic('flag',16)+'<div class="tx"><div class="tt">Projeto · '+esc(p.title)+'</div></div></div>'}))).sort((x,y)=>x.d<y.d?-1:x.d>y.d?1:0);
 let h='<h1>Prazos</h1>';if(!items.length)h+='<div class="empty">Nenhuma tarefa ou projeto com prazo final.</div>';
 let last='';items.forEach(i=>{if(i.d!==last){last=i.d;h+='<div class="sec"'+(i.d<today()?' style="color:var(--dg)"':'')+'>'+esc(dayLabel(i.d))+'</div>'}h+=i.h});return h}
-function repeticoesView(){const ts=S.tasks.filter(x=>!x.done&&x.repeat).sort((a,b)=>(a.due||'')<(b.due||'')?-1:1);let h='<h1>Repetições</h1><p class="sub">Tarefas que se repetem</p>';if(!ts.length)h+='<div class="empty">Abra uma tarefa, toque em "Mais opções" e escolha "Repetir". Ou escreva "toda segunda" ao capturar.</div>';return h+ts.map(taskRow).join('')}
+function repeticoesView(){const ts=S.tasks.filter(x=>!x.done&&x.repeat).sort((a,b)=>(a.due||'')<(b.due||'')?-1:1),fg=repHeads().filter(t=>t.canceled).map(t=>({t:t,d:repDates(t,addDays(today(),800))[0]})).filter(x=>x.d).sort((p,q)=>p.d<q.d?-1:1);let h='<h1>Repetições</h1><p class="sub">Tarefas que se repetem</p>';if(!ts.length&&!fg.length)h+='<div class="empty">Abra uma tarefa, toque em "Mais opções" e escolha "Repetir". Ou escreva "toda segunda" ao capturar.</div>';return h+ts.map(taskRow).join('')+(fg.length?'<h3 class="sec" style="margin:16px 0 6px">Esquecidas neste dia (a série continua)</h3>'+fg.map(x=>vRow(x.t,x.d,true)).join(''):'')}
 function projconcView(){const ps=S.projects.filter(projDone);let h='<h1>Projetos concluídos</h1>';if(!ps.length)h+='<div class="empty">Os projetos que você concluir ficam aqui.</div>';return h+ps.map(projTitle).join('')}
 const PARENT={revsem:['rituais','Rituais'],foco:['vida','Vida'],habitos:['vida','Vida'],jornada:['vida','Vida'],metas:['vida','Vida']};
 function backHTML(){let l=null,par=null;
@@ -2854,9 +3094,13 @@ else if(V.tab==='metas'&&V.goal)l='Metas';else if(PARENT[V.tab]&&!V.prog){par=PA
 return l?'<a class="back" data-a="back"'+(par?' data-p="'+par+'"':'')+'>‹ '+esc(l)+'</a><br>':''}
 function renderView(){if(V.proj)return projView();return({inbox:inboxView,hoje:hojeView,upcoming:upcomingView,anytime:anytimeView,someday:somedayView,logbook:logbookView,folder:folderView,metas:metasView,habitos:habitosView,foco:focoView,amanha:amanhaView,prazos:prazosView,repeticoes:repeticoesView,projconc:projconcView,revsem:revsemView,trash:trashView,vida:vidaView,rituais:rituaisView,tag:tagView,ajustes:ajustesView,jornada:jornadaView,calendario:calendarioView}[V.tab]||hojeView)()}
 let NOANIM=false;
-function render(noAnim){if(repeatTick())save();const y=window.scrollY,anim=!noAnim&&!NOANIM,before=new Map();
+/* segundas vias dos gestos (só no celular): tocar no título abre o menu; lupa discreta abre a busca */
+function navAids(){if(DESKON())return;const m=$('#main');if(!m)return;const h=m.querySelector('h1');
+if(h&&!h.hasAttribute('data-a')){h.setAttribute('data-a','sbopen');h.setAttribute('role','button');h.setAttribute('aria-label',h.textContent.trim()+' — abrir o menu')}
+if(!m.querySelector('.qsb')){const b=document.createElement('button');b.className='qsb';b.dataset.a='qs';b.setAttribute('aria-label','Buscar');b.innerHTML=ic('search',17);m.appendChild(b)}}
+function render(noAnim){if(V.tab==='calendario'&&LASTV!=='calendario'){CLD.sel=null;CLD.month=null}LASTV=V.tab;if(repeatTick())save();const y=window.scrollY,anim=!noAnim&&!NOANIM,before=new Map();
 if(anim)document.querySelectorAll('#main [data-k]').forEach(e=>{if(e.offsetParent!==null)before.set(e.dataset.k,e.getBoundingClientRect().top)});
-const v=renderView();$('#main').innerHTML=backHTML()+v;document.querySelectorAll('.note').forEach(autosize);renderChrome();if(y)window.scrollTo(0,y);
+const v=renderView();$('#main').innerHTML=backHTML()+v;document.querySelectorAll('.note').forEach(autosize);renderChrome();navAids();if(y)window.scrollTo(0,y);
 if(anim&&before.size)document.querySelectorAll('#main [data-k]').forEach(e=>{const o=before.get(e.dataset.k),r=e.getBoundingClientRect();if(r.bottom<-80||r.top>innerHeight+80)return;
 if(o==null){e.animate([{opacity:0,transform:'translateY(-8px)'},{opacity:1,transform:'none'}],{duration:220,easing:'ease-out'});return}
 const d=o-r.top;if(Math.abs(d)>2)e.animate([{transform:'translateY('+d+'px)'},{transform:'none'}],{duration:260,easing:'cubic-bezier(.2,.8,.2,1)'})})}
@@ -2875,7 +3119,7 @@ if(ev){(ev.timed?[[0,'No horário'],[10,'10 min antes'],[60,'1 h antes'],[1440,'
 if(!d.remindAt)h+=chip(false,'rem','30','Em 30 min')+chip(false,'rem','60','Em 1 h')+chip(false,'rem','tom','Amanhã 9h');
 if(L.length<5)h+=chip(false,'pickrem','x','Escolher…');
 return h+'</div><input class="hid" type="datetime-local" id="f-rem" value="">'}
-function sheetHTML(){if(!SH)return '';let h='';const d=SH.d;
+function sheetHTML(){if(!SH)return '';if(DTP.inSheet&&DTP.open)return dtpSheetHTML();let h='';const d=SH.d;
 if(SH.type==='task'){const projs=S.projects.filter(p=>!p.done);
 const w=d.someday?'some':d.due===today()?(d.evening?'eve':'today'):d.due===addDays(today(),1)?'tom':!d.due?'none':'custom';
 const A=SH.acc||(SH.acc={quando:true});
@@ -2949,8 +3193,8 @@ else if(SH.type==='fotos'){const n=PHOTOS.length,sl=FS().slide||8;h='<div class=
 (n?'<div class="fgrid">'+PHOTOS.map(p=>'<div class="fth"><img src="'+p.url+'" alt=""><button class="fx2" data-a="fdelp" data-id="'+p.id+'" aria-label="Remover foto">'+ic('x',14)+'</button></div>').join('')+'</div><label>Tempo de cada foto em destaque</label><div class="chips">'+[[5,'5 s'],[8,'8 s'],[12,'12 s'],[20,'20 s']].map(x=>chip(sl===x[0],'fslide',x[0],x[1])).join('')+'</div><div class="btns"><button class="btn s" data-a="fuse">Usar no foco</button></div>':'<div class="empty" style="padding:10px 0">Nenhuma foto ainda.</div>')+'<p class="sub" style="margin:12px 0 0;font-size:12px">Fotos grandes, como as do Samsung, são reduzidas e convertidas para JPEG automaticamente. As fotos ficam só neste aparelho e não entram no backup .json.</p></div>'}
 else if(SH.type==='confirm'){h='<div class="sh sm"><p style="margin:2px 0 16px;font-size:15px;line-height:1.5">'+esc(SH.msg)+'</p><div class="btns" style="margin-top:0"><button class="btn" data-a="cyes">'+esc(SH.label)+'</button><button class="lnk" data-a="close">Cancelar</button></div></div>'}
 else if(SH.type==='settings'){let m='auto';try{m=localStorage.getItem(MODE)||'auto'}catch(e){}
-h='<div class="sh">'+head('Ajustes')+'<label>Aparência</label><div class="chips">'+[['auto','Sistema'],['light','Claro'],['dark','Escuro']].map(o=>'<button class="chip'+(m===o[0]?' on':'')+'" data-a="mode" data-v="'+o[0]+'">'+o[1]+'</button>').join('')+'</div>'+visualSettings()+iconSettings()+calSettings()+ritSettings()+'<label>Foco</label><div class="chips"><button class="chip" data-a="fotos">Fotos do foco ('+PHOTOS.length+')</button></div>'+'<label>Hoje</label><div class="chips">'+chip(SETG().groupToday,'setg','x','Agrupar por projeto e área')+'</div><label>Lembretes</label><div class="chips"><button class="chip" data-a="perm">Ativar notificações</button></div><label>Backup</label><div class="chips"><button class="chip" data-a="export">Backup completo (com capas e fotos)</button><button class="chip" data-a="import">Importar backup</button></div><input type="file" id="imp" accept=".json,application/json" style="display:none"><label>Dados</label><div class="chips"><button class="chip" style="color:var(--dg)" data-a="wipe">Apagar tudo</button></div>'+
-'<label>Atalhos</label><p class="sub" style="line-height:1.7">Captura numa linha: <i>Ligar dentista amanhã 9:00 @saúde #urgente</i><br>Datas: hoje, amanhã, sexta, algum dia · Hora: às 18, 18h30, em 30 min<br>@área · #tag<br>Também: esta noite, em 3 dias, toda segunda, dias úteis, a cada 2 semanas<br>Puxe a tela para baixo: buscar, criar e ações.<br>Pílula no rodapé: deslize para os lados para trocar de lugar; toque ou arraste para cima para ver todos. Numa tarefa: deslize para a direita para escolher quando, e para a esquerda para selecionar várias. Botão +: toque cria uma tarefa; arraste e solte para inserir onde quiser; solte só sobre um destino.</p></div>'}
+h='<div class="sh">'+head('Ajustes')+'<label>Aparência</label><div class="chips">'+[['auto','Sistema'],['light','Claro'],['dark','Escuro']].map(o=>'<button class="chip'+(m===o[0]?' on':'')+'" data-a="mode" data-v="'+o[0]+'">'+o[1]+'</button>').join('')+'</div>'+visualSettings()+iconSettings()+calSettings()+ritSettings()+'<label>Foco</label><div class="chips"><button class="chip" data-a="fotos">Fotos do foco ('+PHOTOS.length+')</button></div>'+'<label>Hoje</label><div class="chips">'+chip(SETG().groupToday,'setg','x','Agrupar por projeto e área')+'</div><label>Lembretes</label><div class="chips"><button class="chip" data-a="perm">Ativar notificações</button></div><label>Backup</label><div class="chips"><button class="chip" data-a="export">Backup completo (com capas e fotos)</button><button class="chip" data-a="import">Importar backup</button></div><input type="file" id="imp" accept=".json,application/json" style="display:none"><label>Verificar dados</label><div class="chips"><button class="chip" data-a="dcheck">Verificar e consertar ligações</button></div><label>Dados</label><div class="chips"><button class="chip" style="color:var(--dg)" data-a="wipe">Apagar tudo</button></div>'+
+'<label>Atalhos</label><p class="sub" style="line-height:1.7">Captura numa linha: <i>Ligar dentista amanhã 9:00 @saúde #urgente</i><br>Datas: hoje, amanhã, sexta, algum dia · Hora: às 18, 18h30, em 30 min<br>@área · #tag<br>Também: esta noite, em 3 dias, toda segunda, dias úteis, a cada 2 semanas<br>'+(DESKON()?'Teclado: <b>Ctrl K</b> (ou <b>/</b>) busca, <b>N</b> cria uma tarefa, <b>Esc</b> fecha a folha, a busca ou a seleção, <b>Alt ←</b> volta. O menu fica fixo à esquerda; clique direito numa área para modificá-la.<br>Numa tarefa: arraste para a direita para escolher quando, e para a esquerda para selecionar várias.':'Puxe a tela para baixo ou toque na lupa: buscar, criar e ações. Toque no título da tela para abrir o menu.<br>Pílula no rodapé: deslize para os lados para trocar de lugar; toque ou arraste para cima para ver todos. Numa tarefa: deslize para a direita para escolher quando, e para a esquerda para selecionar várias. Botão +: toque cria uma tarefa; arraste e solte para inserir onde quiser; solte só sobre um destino.')+'</p></div>'}
 if(SH.type==='task'&&SH.d)h=taskSheetTweaks(h);const kind=sheetKind(SH.type);h=h.replace('class="sh','class="sh k-'+kind);return '<div class="bk k-'+kind+'" data-a="bk">'+h+'</div>'}
 let LASTR=null,LASTRT=0,FOCUS_RECT=null;
 let ORIG={x:innerWidth/2,y:60},FORIG={x:innerWidth/2,y:40};
@@ -2987,8 +3231,8 @@ holder.addEventListener('mousedown',e=>{if(e.button!==0||(e.target.closest&&e.ta
 if(window.visualViewport){const upd=()=>{const vv=window.visualViewport,kb=Math.max(0,innerHeight-vv.height-vv.offsetTop);document.documentElement.style.setProperty('--kb',kb+'px')};window.visualViewport.addEventListener('resize',upd);window.visualViewport.addEventListener('scroll',upd);upd()}}
 let RS_ING=false;function renderSheet(){if(RS_ING)return;RS_ING=true;try{renderSheet0()}finally{RS_ING=false}}function renderSheet0(){renderSheet1();if(SH&&SH.focus){const e=document.getElementById('lb-'+SH.focus);if(e){SH.focus=null;const lb=e.previousElementSibling;if(lb)lb.classList.add('flash');setTimeout(()=>{try{e.scrollIntoView({block:'center',behavior:calm()?'auto':'smooth'})}catch(x){}},380)}}}
 function renderSheet1(){const old=$('#sheet .sh'),st=old?old.scrollTop:0;$('#sheet').innerHTML=sheetHTML();const n=$('#sheet .sh');if(n&&st)n.scrollTop=st;if(n&&SH&&sheetKind(SH.type)==='pop')placePop(n,SH);if(!SH&&V.tab==='ajustes'){const y=window.scrollY;render(true);window.scrollTo({top:y,left:0,behavior:'instant'})}}
-function openSheet(o){o.t0=Date.now();o.orig=Object.assign({},ORIG);o.anc=(Date.now()-LASTRT<1200&&LASTR)?Object.assign({},LASTR):{left:o.orig.x-1,right:o.orig.x+1,top:o.orig.y-1,bottom:o.orig.y+1};SH=o;renderSheet();const bk=$('#sheet .bk'),el=$('#sheet .sh');if(el)sheetIn(el,bk,o)}
-function closeSheet(dy){if(!SH)return;const o=SH,kind=sheetKind(o.type);SH=null;const holder=$('#sheet'),bk=holder.querySelector('.bk'),el=holder.querySelector('.sh');if(!el){holder.innerHTML='';return}sheetOut(el,bk,o,kind,()=>{if(!SH&&holder.firstChild===bk)holder.innerHTML=''},typeof dy==='number'?dy:0)}
+function openSheet(o){if(finderOpen)closeFinder();if(FAN.open)fanClose();o.t0=Date.now();o.orig=Object.assign({},ORIG);o.anc=(Date.now()-LASTRT<1200&&LASTR)?Object.assign({},LASTR):{left:o.orig.x-1,right:o.orig.x+1,top:o.orig.y-1,bottom:o.orig.y+1};SH=o;renderSheet();const bk=$('#sheet .bk'),el=$('#sheet .sh');if(el)sheetIn(el,bk,o)}
+function closeSheet(dy){if(!SH)return;if(DTP.inSheet){DTP.open=false;DTP.inSheet=false}const o=SH,kind=sheetKind(o.type);SH=null;const holder=$('#sheet'),bk=holder.querySelector('.bk'),el=holder.querySelector('.sh');if(!el){holder.innerHTML='';return}sheetOut(el,bk,o,kind,()=>{if(!SH&&holder.firstChild===bk)holder.innerHTML=''},typeof dy==='number'?dy:0)}
 function ask(msg,label,fn){openSheet({type:'confirm',msg:msg,label:label,fn:fn})}
 const curFolder=()=>V.tab==='folder'?V.fid:null;
 function newTask(ctx){openSheet({type:'task',d:Object.assign({id:null,title:'',notes:'',tags:[],tagsText:'',more:!!(V.proj||curFolder()),projectId:V.proj||null,folderId:curFolder(),due:V.tab==='hoje'?today():null,deadline:null,evening:false,repeat:null,checklist:[],headingId:null,clOpen:false,someday:V.tab==='someday',someUntil:null,remindAt:null,ctx:null,fuTitle:'',fuMin:60},ctx||{})});setTimeout(()=>{const e=$('#f-title');if(e)e.focus()},50)}
@@ -3068,7 +3312,7 @@ let HAPT=0;function hapTask(){if(SETG().hapt===false)return;const n=Date.now();i
 const SB={open:false,el:null,drag:false};
 const DESKM=window.matchMedia?window.matchMedia('(min-width:900px) and (pointer:fine)'):{matches:false};
 const DESKON=()=>document.body.classList.contains('desk');
-function deskApply(){document.body.classList.toggle('desk',!!DESKM.matches);if(DESKM.matches){const e=sbEnsure();sbRender();e.classList.add('on');e.style.transition='none';e.style.transform='none';e.setAttribute('aria-hidden','false');SB.open=false;document.body.classList.remove('sb-open')}else if(SB.el&&!SB.open){SB.el.classList.remove('on');SB.el.style.transform='translateX(-100%)';SB.el.setAttribute('aria-hidden','true')}}
+let DESKP=null;function deskApply(){const was=DESKP;DESKP=!!DESKM.matches;document.body.classList.toggle('desk',!!DESKM.matches);if(was!==null&&was!==DESKP){setTimeout(()=>{try{render(true)}catch(e){}},30)}if(DESKM.matches){const e=sbEnsure();sbRender();e.classList.add('on');e.style.transition='none';e.style.transform='none';e.setAttribute('aria-hidden','false');SB.open=false;document.body.classList.remove('sb-open')}else if(SB.el&&!SB.open){SB.el.classList.remove('on');SB.el.style.transform='translateX(-100%)';SB.el.setAttribute('aria-hidden','true')}}
 Object.assign(ICONS,{cloud:'<path d="M7 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17.4 8.6 4.5 4.5 0 0 1 17.5 18H7z"/>',cklist:'<path d="M10 6h10M10 12h10M10 18h10M4 6l1.2 1.2L7.5 5M4 12l1.2 1.2L7.5 11M4 18l1.2 1.2L7.5 17"/>'});
 function sbEnsure(){if(SB.el)return SB.el;let e=document.getElementById('sbar');if(!e){e=document.createElement('div');e.id='sbar';document.body.appendChild(e)}e.setAttribute('role','dialog');e.setAttribute('aria-label','Menu');e.setAttribute('aria-hidden','true');SB.el=e;
 let s=null,lp=null,lr=null;const lpClear=()=>{clearTimeout(lp);if(lr){lr.classList.remove('lp0');lr=null}};e.addEventListener('contextmenu',ev=>{ev.preventDefault();const r=ev.target.closest&&ev.target.closest('.sb-i[data-v^="a:"]');if(r){lpClear();s=null;swallow=true;setTimeout(()=>{swallow=false},700);setOrig(r);openSheet({type:'amenu',fid:r.dataset.v.slice(2)})}});
@@ -3093,7 +3337,7 @@ const it=(v,lab,n,bd)=>{const c=SBI[v];return '<button class="sb-i" data-a="sbgo
 const pr=(p,col)=>'<button class="sb-i sb-p" data-a="sbgo" data-v="p:'+p.id+'" data-k="p:'+p.id+'"><span class="sb-ic">'+ring(projPct(p),col||'var(--ac)',16)+'</span><span class="sb-t">'+esc(p.title)+'</span></button>';
 const g=x=>x?'<div class="sb-g">'+x+'</div>':'',hr='<div class="sb-hr"></div>';
 const open=S.projects.filter(p=>!p.done);
-let h=g(it('inbox','Inbox',inb))+g(it('hoje','Hoje',td,late)+it('upcoming','Upcoming')+it('anytime','Anytime')+it('someday','Someday'))+g(it('logbook','Logbook')+it('trash','Lixeira'))+g(it('vida','Vida')+it('rituais','Rituais')+it('calendario','Calendário'));
+let h='<button class="sb-find" data-a="qs" aria-label="Buscar">'+ic('search',16)+'<span>Buscar</span><kbd>'+(/Mac|iPhone|iPad/.test(navigator.platform||'')?'⌘ K':'Ctrl K')+'</kbd></button>'+g(it('inbox','Inbox',inb))+g(it('hoje','Hoje',td,late)+it('upcoming','Upcoming')+it('anytime','Anytime')+it('someday','Someday'))+g(it('logbook','Logbook')+it('trash','Lixeira'))+g(it('vida','Vida')+it('rituais','Rituais')+it('calendario','Calendário'));
 const loose=open.filter(p=>!pFolder(p)||!fol(pFolder(p)));if(loose.length)h+=hr+g(loose.map(p=>pr(p)).join(''));
 S.folders.forEach(f=>{h+=hr+g('<button class="sb-i sb-a" data-a="sbgo" data-v="a:'+f.id+'" data-k="a:'+f.id+'"><span class="sb-ic" style="color:'+esc(f.color||'var(--ac)')+'">'+ic(areaIconOf(f),19)+'</span><span class="sb-t">'+esc(f.name)+'</span></button>'+open.filter(p=>pFolder(p)===f.id).map(p=>pr(p,f.color)).join(''))});
 if(tg.length)h+=hr+'<div class="sb-cap">Tags</div>'+g(tg.map(x=>'<button class="sb-i tg" data-a="sbgo" data-v="t:'+esc(x)+'" data-k="t:'+esc(x)+'"><span class="sb-ic" style="color:#9AA0A8">'+ic('tag',17)+'</span><span class="sb-t">'+esc(x)+'</span><span class="sb-n">'+tags[x]+'</span></button>').join(''));
@@ -3108,14 +3352,14 @@ if(calm()){e.style.transition='none';e.style.transform='translateX(-100%)';e.cla
 e.style.transition='transform .34s cubic-bezier(.3,.7,.2,1)';e.style.transform='translateX(-100%)';clearTimeout(SB.t);SB.t=setTimeout(()=>{if(!SB.open)e.classList.remove('on')},360)}
 function sbPeek(){if(DESKON())return;const e=sbEnsure();if(!SB.drag){sbRender();e.classList.add('on');e.style.transition='none';e.style.transform='translateX(-100%)';e.scrollTop=0;SB.drag=true;document.body.classList.add('sb-open')}}
 function sbDrag(dx){const e=SB.el;if(!e)return;e.style.transform='translateX('+(Math.max(0,Math.min(innerWidth,dx))-innerWidth)+'px)'}
-function sbEnd(dx,v){const e=SB.el;SB.drag=false;if(dx>innerWidth*.28||v>.5){SB.open=false;e.style.transition='transform .3s cubic-bezier(.2,.8,.2,1)';e.style.transform='none';SB.open=true;e.setAttribute('aria-hidden','false');}else{document.body.classList.remove('sb-open');e.style.transition='transform .3s cubic-bezier(.3,.7,.2,1)';e.style.transform='translateX(-100%)';clearTimeout(SB.t);SB.t=setTimeout(()=>{if(!SB.open)e.classList.remove('on')},320)}}
+function sbEnd(dx,v){const e=SB.el;SB.drag=false;if(dx>innerWidth*.28||(v>.5&&dx>40)){SB.open=false;e.style.transition='transform .3s cubic-bezier(.2,.8,.2,1)';e.style.transform='none';SB.open=true;e.setAttribute('aria-hidden','false');}else{document.body.classList.remove('sb-open');e.style.transition='transform .3s cubic-bezier(.3,.7,.2,1)';e.style.transform='translateX(-100%)';clearTimeout(SB.t);SB.t=setTimeout(()=>{if(!SB.open)e.classList.remove('on')},320)}}
 function sbGo(v){sbClose();if(v.indexOf('p:')===0){const p=projOf(v.slice(2));if(p){const f=pFolder(p);if(f&&fol(f))go({tab:'folder',fid:f,proj:p.id});else go({tab:'metas',goal:p.goalId?p.goalId:'none',proj:p.id})}}else if(v.indexOf('a:')===0)go({tab:'folder',fid:v.slice(2)});else if(v.indexOf('t:')===0)go({tab:'tag',tag:v.slice(2)});else go({tab:v})}
 function tagView(){const g=V.tag||'',ts=S.tasks.filter(t=>!t.done&&!t.canceled&&(t.tags||[]).indexOf(g)>=0).sort((x,y)=>(x.due||'9')<(y.due||'9')?-1:(x.due||'9')>(y.due||'9')?1:x.createdAt-y.createdAt),dn=S.tasks.filter(t=>t.done&&!t.note&&!t.canceled&&(t.tags||[]).indexOf(g)>=0).sort((x,y)=>(y.doneAt||0)-(x.doneAt||0)).slice(0,8);
 let h='<h1><span class="tgh">'+ic('tag',26)+'</span>'+esc(g)+'</h1><p class="sub">'+ts.length+(ts.length===1?' tarefa aberta':' tarefas abertas')+'</p>'+qc('Nova tarefa com #'+g);
 if(!ts.length)h+='<div class="empty">Nenhuma tarefa aberta com esta etiqueta.</div>';else h+=ts.map(taskRow).join('');
 if(dn.length)h+='<div class="sec">Concluídas recentes</div>'+dn.map(taskRow).join('');return h}
 
-let NAV=[],IGN=0;
+let NAV=[],IGN=0,NXUP=null;const DST={};
 const viewKey=v=>[v.tab,v.fid||'',v.proj||'',v.prog||'',v.goal||'',v.tag||''].join('|');
 const navSnap=()=>({v:JSON.parse(JSON.stringify(V)),y:window.scrollY});
 const navValid=v=>(!v.fid||fol(v.fid))&&(!v.proj||projOf(v.proj))&&(!v.prog||(v.prog.slice(0,2)==='p:'?projOf(v.prog.slice(2)):fol(v.prog.slice(2))));
@@ -3153,10 +3397,12 @@ setTimeout(()=>{sh.cancel();snap.remove();dim.remove();da.cancel();ba.cancel()},
 
 
 function applyView(nv,sy){V=nv;{let fid=null;if(nv.proj){const p=projOf(nv.proj);fid=p&&pFolder(p)}else if(nv.tab==='folder')fid=nv.fid;if(fid&&S.lastArea!==fid){S.lastArea=fid;save()}}
-if(SEL.on){SEL={on:false,ids:[]};document.body.classList.remove('selmode');updateSelBar()}if(V.tab!=='inbox'){MOVED=0;MOVEDL=[]}TAGF=null;ANYX={};if(V.tab==='revsem')RW.step=0;noteRecent();if(['hoje','upcoming','amanha'].indexOf(V.tab)>=0)calRefresh();if(V.tab==='upcoming')UP={from:-7,to:21};closeSheet();render(true);window.scrollTo({top:sy!=null?sy:0,left:0,behavior:'instant'});nstTitles();if(V.tab==='upcoming'&&!V.proj&&sy==null)scrollToday()}
+if(SEL.on){SEL={on:false,ids:[]};document.body.classList.remove('selmode');updateSelBar()}if(V.tab!=='inbox'){MOVED=0;MOVEDL=[]}TAGF=null;ANYX={};if(V.tab==='revsem')RW.step=0;noteRecent();if(['hoje','upcoming','amanha'].indexOf(V.tab)>=0)calRefresh();if(V.tab==='upcoming'){UP=NXUP?Object.assign({},NXUP):{from:-7,to:21};NXUP=null}closeSheet();render(true);window.scrollTo({top:sy!=null?sy:0,left:0,behavior:'instant'});nstTitles();if(V.tab==='upcoming'&&!V.proj&&sy==null)scrollToday()}
 function go(v,opt,sy,orPop){if(v&&v.tab==='home'){sbOpen();return}
 if(V.tab==='revsem'&&RW.step>0&&!RW.exit&&(!v||v.tab!=='revsem')&&opt!=='replace'){if(!(SH&&SH.type==='confirm'&&SH.rw)){ask('Sair da revisão semanal? Você está no passo '+(RW.step+1)+' de '+RSTEPS.length+'. Se sair, a revisão recomeça do início.','Sair da revisão',()=>{RW.exit=true;try{go(v,opt,sy,orPop)}finally{RW.exit=false}});if(SH)SH.rw=true}return}
-const nv=Object.assign({tab:'hoje',goal:null,proj:null,fid:null},v),same=viewKey(nv)===viewKey(V),or=(Date.now()-LASTRT<1500&&LASTR)?Object.assign({},LASTR):null;
+const nv=Object.assign({tab:'hoje',goal:null,proj:null,fid:null},v),same=viewKey(nv)===viewKey(V);
+if(!same){DST[viewKey(V)]={y:window.scrollY,up:(V.tab==='upcoming'&&!V.proj)?Object.assign({},UP):null};const sv=DST[viewKey(nv)];if(sv){if(sy==null)sy=sv.y;NXUP=sv.up||null}}
+const or=(Date.now()-LASTRT<1500&&LASTR)?Object.assign({},LASTR):null;
 
 let dir='fwd';
 if(opt==='pop')dir='back';
@@ -3173,11 +3419,20 @@ function backStep(){return goBack()==='ok'}
 const APP=()=>(window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App)||null;
 function overlayClose(){if(DTP.open){dtpClose();return true}if(TOUR.open){tourBack();return true}if(SB.open){sbClose();return true}if(FAN.open){fanClose();return true}if(AG.open&&!SH){agClose();return true}if(finderOpen){closeFinder();return true}if(SH){closeSheet();return true}if(SEL.on){endSelect();return true}if(focusOpen){fcClose();return true}return false}
 let ROOTT=0,ROOTARM=false,RT=0;
-function backAction(){if(overlayClose())return 'ok';return goBack()}
+/* o "pai" de cada tela: projeto → área (ou meta) → ...; filhos da Vida e dos Rituais → a própria Vida/Rituais; qualquer outro destino de topo → Hoje */
+function parentOf(v){
+if(v.proj){if(v.tab==='folder'&&v.fid)return{tab:'folder',fid:v.fid};if(v.tab==='metas')return v.goal?{tab:'metas',goal:v.goal}:{tab:'metas'};return{tab:'metas'}}
+if(v.prog)return{tab:'metas'};
+if(v.tab==='metas'&&v.goal)return{tab:'metas'};
+if(PARENT[v.tab])return{tab:PARENT[v.tab][0]};
+if(v.tab==='hoje')return null;
+return{tab:'hoje'}}
+function sysBackStep(){const p=parentOf(V);if(p){go(p,'pop');return 'ok'}return 'root'}
+function backAction(){if(overlayClose())return 'ok';return sysBackStep()}
 /* voltar nas abas por onde você passou; na Inbox, pede para apertar de novo para sair */
-function handleBack(){const r=backAction();if(r!=='root')return;const now=Date.now();if(now-ROOTT<2300){const A=APP();if(A&&A.exitApp)A.exitApp();return}ROOTT=now;toast('Aperte voltar novamente para sair')}
+function handleBack(){const r=backAction();if(r!=='root')return;const A=APP();if(A&&A.exitApp){A.exitApp();return}const now=Date.now();if(now-ROOTT<2300)return;ROOTT=now;toast('Aperte voltar novamente para sair')}
 window.addEventListener('popstate',()=>{if(IGN){IGN=0;return}const r=backAction();
-if(r==='root'){const now=Date.now();if(now-ROOTT<2300)return;ROOTT=now;toast('Aperte voltar novamente para sair');ROOTARM=true;clearTimeout(RT);RT=setTimeout(()=>{ROOTARM=false;try{history.pushState({s:'app'},'')}catch(e){}},2400);return}
+if(r==='root'){if(DESKON())return;const now=Date.now();if(now-ROOTT<2300)return;ROOTT=now;toast('Aperte voltar novamente para sair');ROOTARM=true;clearTimeout(RT);RT=setTimeout(()=>{ROOTARM=false;try{history.pushState({s:'app'},'')}catch(e){}},2400);return}
 try{history.pushState({s:'app'},'')}catch(e){}});
 function backInit(){if(window.__plugBack)return;try{history.replaceState({s:'base'},'');history.pushState({s:'app'},'')}catch(e){}
 document.addEventListener('pointerdown',()=>{if(ROOTARM){ROOTARM=false;clearTimeout(RT);try{history.pushState({s:'app'},'')}catch(e){}}},true)}
@@ -3186,7 +3441,7 @@ document.addEventListener('backbutton',e=>{try{e.preventDefault()}catch(x){}hand
 
 /* ---------- Quick finder: busca tudo, tags e ações ---------- */
 const COMMANDS=[
-{name:'Ir para Agora',kw:'foco pomodoro bateria bloco concentrar focar tempo prêmios',top:1,run:()=>go({tab:'foco'})},
+{name:'Ir para Foco',kw:'agora foco pomodoro bateria bloco concentrar focar tempo prêmios cenários',top:1,run:()=>go({tab:'foco'})},
 {name:'Amanhã',kw:'lista planejar amanha',run:()=>go({tab:'amanha'})},
 {name:'Prazos',kw:'deadlines prazo final',run:()=>go({tab:'prazos'})},
 {name:'Repetições',kw:'repetir recorrentes rotina',run:()=>go({tab:'repeticoes'})},
@@ -3369,8 +3624,14 @@ case 'dtph':case 'dtpn':{const c=$(a==='dtph'?'#dtp-h':'#dtp-m');if(a==='dtph')D
 case 'dtpt':{const p=el.dataset.v.split(':');DTP.h=Number(p[0]);DTP.mi=Number(p[1]);dtpRender(false);break}
 case 'dtpok':dtpOk();break;
 case 'dtpclr':dtpCommit('');break;
+case 'sbopen':if(!DESKON())sbOpen();break;
+case 'ntone':SETG().ntfTone=el.dataset.v;save();rescheduleAll();schedRituals();render(true);break;
+case 'ntact':SETG().ntfAct=el.dataset.v==='1';save();rescheduleAll();schedRituals();render(true);break;
+case 'ntest':ntTest();break;
+case 'qs':{const r=el.getBoundingClientRect();openFinder('',{x:r.left+r.width/2,y:r.top+r.height/2});break}
 case 'sbnewmenu':openSheet({type:'sbnewmenu'});break;
 case 'synccloud':if(SYNC.needAuth||SYNC.err)syncRun(true);else go({tab:'ajustes'});break;
+case 'srvaltsave':{const v=srvNorm(($('#s-srvalt2')||{}).value||'');if(v&&!/^https?:\/\/[^\s\/]+/i.test(v)){toast('Endereço inválido. Exemplo: http://100.x.y.z:8787');break}S.sync.srv.alt=v||'';SYNC.srvAlt=false;save();render(true);toast(v?'Endereço de fora salvo':'Endereço de fora removido');syncRun(false);break}
 case 'syncevery':S.sync.every=Number(el.dataset.v);save();syncSchedule();render(true);break;
 case 'mqopen':{const m=mediaOf(id);if(!m)break;setOrig(el);openSheet({type:'mqk',id:id,mq:{tabs:el.classList.contains('mq-t'),r:el.getBoundingClientRect(),mode:'edge',side:el.classList.contains('sl')?'l':'r'}});break}
 case 'mqreset':SETG().mqp=null;SETG().mqt=null;save();render(true);break;
@@ -3379,13 +3640,13 @@ case 'mqfile':{const m=mediaOf(id);closeSheet();if(m)setTimeout(()=>openSheet({t
 case 'mqa':SETG().mqa=el.dataset.v;save();render(true);break;
 case 'wspd':SETG().wspd=el.dataset.v;save();render(true);break;
 case 'syncon':syncConnect();break;
-case 'syncdiag':syncDiag();break;
+case 'syncdiag':if(syncKindSel()==='server')srvDiag();else syncDiag();break;
 case 'syncnow':syncRun(true);break;
 case 'syncfirst':{const v=el.dataset.v;closeSheet();syncRun(true,v).then(()=>render(true));break}
 case 'syncpull':ask('Substituir TODOS os dados deste aparelho pela cópia da nuvem?','Substituir',()=>{syncRun(true,'remote').then(()=>render(true))});break;
 case 'syncpush':ask('Substituir a cópia da nuvem pelos dados deste aparelho?','Substituir',()=>{syncRun(true,'local').then(()=>render(true))});break;
 case 'synckind':{S.sync=Object.assign(S.sync||{},{kind:el.dataset.v});save();render(true);break}
-case 'syncoff':ask('Desconectar? Os dados continuam neste aparelho e no arquivo da nuvem. O token deste aparelho é apagado.','Desconectar',()=>{S.sync.on=false;if(S.sync.gh)S.sync.gh.token='';SNAP=null;clearTimeout(SYNC.t);clearTimeout(SYNC.pt);SYNC.tok=null;SYNC.needAuth=false;save();render(true);toast('Desconectado')});break;
+case 'syncoff':ask('Desconectar? Os dados continuam neste aparelho e no arquivo da nuvem. O token deste aparelho é apagado.','Desconectar',()=>{S.sync.on=false;if(S.sync.gh)S.sync.gh.token='';SNAP=null;clearTimeout(SYNC.t);clearTimeout(SYNC.pt);serverBE.abortLive();if(S.sync.srv)S.sync.srv.token='';SYNC.tok=null;SYNC.needAuth=false;save();render(true);toast('Desconectado')});break;
 case 'sbgo':sbGo(el.dataset.v);break;
 case 'sbnew':sbClose();openSheet({type:'folder',d:{id:null,title:'',color:FCOL[S.folders.length%FCOL.length]}});break;
 case 'newarea':openSheet({type:'folder',d:{id:null,title:'',color:FCOL[S.folders.length%FCOL.length]}});break;
@@ -3446,6 +3707,8 @@ case 'pdone':{const p=projOf(id);if(p){p.done=!p.done;save();render()}break}
 case 'pdel':ask('Excluir o projeto? Ele vai para a Lixeira, e as tarefas dele continuam, sem projeto.','Excluir',()=>{const p=projOf(id);if(p){S.trash=S.trash||[];S.trash.push({kind:'project',id:uid(),deletedAt:Date.now(),title:p.title,item:JSON.parse(JSON.stringify(p)),taskIds:S.tasks.filter(t=>t.projectId===id).map(t=>({id:t.id,h:t.headingId||null}))})}
 S.tasks.forEach(t=>{if(t.projectId===id){t.projectId=null;t.headingId=null}});S.projects=S.projects.filter(p=>p.id!==id);V.proj=null;save();render();toast('Projeto movido para a lixeira')});break;
 case 'hopen':HX={id:HX.id===id?null:id,tab:null};render();break;
+case 'hmon':{const b=HX.month?parse(HX.month):new Date(new Date().getFullYear(),new Date().getMonth(),1);HX.month=ymd(new Date(b.getFullYear(),b.getMonth()+Number(el.dataset.v),1));render();break}
+case 'dcheck':{const r=dataCheck(false);if(!r.length){toast('Tudo certo: nenhuma ligação quebrada');break}ask('Achei estes problemas:\n'+r.map(x=>'• '+x.msg+': '+x.n).join('\n')+'\n\nCorrigir agora? (nada é apagado além do que está quebrado)','Corrigir',()=>{const f=dataCheck(true);render();toast('Corrigido: '+f.reduce((s,x)=>s+x.n,0)+' ocorrência(s)')});break}
 case 'htab':HX.tab=HX.tab===el.dataset.v?null:el.dataset.v;render();break;
 case 'hday':{const h=habitOf(id),i=Number(el.dataset.v);let d=(hDays(h)||[0,1,2,3,4,5,6]).slice();if(d.length===7)d=[i];else{const k=d.indexOf(i);if(k>=0){if(d.length>1)d.splice(k,1)}else d.push(i)}h.days=d.sort();h.target=d.length;save();render();habitSchedule();break}
 case 'hset':{const h=habitOf(id);if(h){const n=new Date(),m=Math.ceil((n.getMinutes()+1)/15)*15,s=new Date(n.getFullYear(),n.getMonth(),n.getDate(),n.getHours(),m);h.from=agFmt(s.getTime());h.to=agFmt(s.getTime()+(Number(el.dataset.v)||30)*60000);save();render();habitSchedule()}break}
@@ -3457,7 +3720,7 @@ case 'hlocf':{const h=habitOf(id);h.folderId=el.dataset.v||null;save();render();
 case 'hlocp':{const h=habitOf(id);h.projectId=el.dataset.v||null;save();render();break}
 case 'dday':{syncDraft();const i=Number(el.dataset.v);let d=(SH.d.days||[0,1,2,3,4,5,6]).slice();if(d.length===7)d=[i];else{const k=d.indexOf(i);if(k>=0){if(d.length>1)d.splice(k,1)}else d.push(i)}SH.d.days=d;renderSheet();break}
 case 'dall':syncDraft();SH.d.days=[0,1,2,3,4,5,6];renderSheet();break;
-case 'hab':{const h=S.habits.find(x=>x.id===id),d=el.dataset.d,i=h.logs.indexOf(d);if(i>=0)h.logs.splice(i,1);else h.logs.push(d);save();render();break}
+case 'hab':{habToggle(S.habits.find(x=>x.id===id),el.dataset.d,null,false);break}
 case 'hdel':ask('Excluir o hábito e todo o histórico dele?','Excluir',()=>{S.habits=S.habits.filter(h=>h.id!==id);if(HX.id===id)HX={id:null,tab:null};save();render();habitSchedule()});break;
 case 'ctx':openSheet({type:'ctx',k:el.dataset.k,chk:{}});break;
 case 'cchk':SH.chk[id]=!SH.chk[id];renderSheet();break;
@@ -3530,6 +3793,7 @@ case 'medpd':{syncMed();const v=el.dataset.v;SH.d.plan=v==='none'?null:Object.as
 case 'medseason':syncMed();SH.d.season=(SH.d.season||1)+1;SH.d.ep=0;renderSheet();break;
 case 'medep':{syncMed();const m=mediaOf(SH.id);if(m){m.season=SH.d.season;m.ep=SH.d.ep;mediaEp(m,1);SH.d=medDraft(m);renderSheet()}break}
 case 'medpg':{syncMed();const m=mediaOf(SH.id);if(m){m.page=SH.d.page||0;m.pages=Number(SH.d.pages)||0;mediaPages(m,Number(el.dataset.v));SH.d=medDraft(m);renderSheet()}break}
+case 'medhist':syncMed();SH.d.page=Number(el.dataset.v)||0;renderSheet();break;
 case 'medfilm':{const m=mediaOf(SH.id);if(m){closeSheet();mediaFinish(m)}break}
 case 'medquick':{closeSheet();mediaQuick(id);break}
 case 'meddel':{const m=mediaOf(SH.id);if(m)ask('Excluir “'+m.title+'” e o histórico dele?','Excluir',()=>{S.media=S.media.filter(x=>x.id!==m.id);S.mlog=(S.mlog||[]).filter(l=>l.id!==m.id);if(m.cover)CDB.del(m.cover).catch(()=>{});save();render();mediaSchedule()});break}
@@ -3562,7 +3826,7 @@ case 'jw':{jSetSel(addDays(jSel(),7*Number(el.dataset.v)));const y=window.scroll
 case 'jd':{jSetSel(el.dataset.d);const v=jVw();if(jCal())SETG().cv=(v==='dia')?'dia':'dia';else SETG().jv=(v==='semana'||v==='mes'||v==='ano')?'dia':v;save();render(true);window.scrollTo({top:0,left:0,behavior:'instant'});break}
 case 'jf':JD.filter=el.dataset.v||null;render(true);break;
 case 'jn':toast(el.dataset.h+' · '+el.dataset.t);break;
-case 'jt':{const k=el.dataset.k;if(k==='med'){mediaQuick(id);break}if(k==='task'){const t=taskOf(id);if(t){const was=t.done;toggleDone(t);if(!was)xpPop(el,'+10 XP')}}else{const h=habitOf(id),d=el.dataset.d,i=h.logs.indexOf(d);if(i>=0)h.logs.splice(i,1);else{h.logs.push(d);xpPop(el,'+12 XP')}save();render(true)}break}
+case 'jt':{const k=el.dataset.k;if(k==='med'){mediaQuick(id);break}if(k==='task'){const t=taskOf(id);if(t){const was=t.done;toggleDone(t);if(!was)xpPop(el,'+10 XP')}}else{habToggle(habitOf(id),el.dataset.d,el,true)}break}
 case 'jgoal':SETG().jgoal=Number(el.dataset.v);save();renderSheet();break;
 case 'setvis':SETG().vis=el.dataset.v;SETG().lg=el.dataset.v==='glass';save();applyVisual();renderSheet();break;
 case 'crtfx':{const c=crtOf();c[el.dataset.v]=!c[el.dataset.v];SETG().crt=c;save();applyVisual();renderSheet();break}
@@ -3607,7 +3871,7 @@ if(e.key==='Enter'&&!e.isComposing&&e.target.id==='f-cl'){e.preventDefault();clA
 if(e.key==='Enter'&&!e.isComposing&&e.target.id==='qin'){e.preventDefault();quickAdd();return}
 if(e.key==='Enter'&&!e.isComposing&&e.target.id==='f-title'&&SH){const m={task:'savetask',goal:'savegoal',project:'saveproj',habit:'savehab',folder:'savefolder',heading:'saveheading'}[SH.type];if(m){e.preventDefault();act(m,{dataset:{}},e)}return}
 if(e.target.id==='fq'){if(e.key==='ArrowDown'){e.preventDefault();FI=Math.min(FI+1,Math.max(0,FR.length-1));finderSel()}else if(e.key==='ArrowUp'){e.preventDefault();FI=Math.max(0,FI-1);finderSel()}else if(e.key==='Enter'){e.preventDefault();if(FR.length)runFinder(FI);else if($('#fq').value.trim()&&$('#fq').value.trim()[0]!=='>')createFromFinder()}else if(e.key==='Escape')closeFinder();return}
-const typing=/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||''));
+const typing=/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||''));if(e.key==='Escape'&&!e.defaultPrevented&&!(finderOpen||DTP.open||FAN.open)&&overlayClose()){e.preventDefault();return}
 if((e.key==='k'&&(e.ctrlKey||e.metaKey))||(e.key==='/'&&!typing)){e.preventDefault();openFinder('')}
 else if((e.key==='n'||e.key==='N')&&!typing&&!SH&&!finderOpen&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!FAN.open&&!focusOpen){e.preventDefault();newTask()}
 else if(FAN.open&&(e.key==='Escape'||e.key==='ArrowUp'||e.key==='ArrowDown'||e.key==='Enter')){e.preventDefault();if(e.key==='Escape')fanClose();else if(FAN.w){if(e.key==='Enter'){fanWheelCommit();fanClose()}else{const w=FAN.w,st=w.isP?(e.shiftKey?1:5):1,v=Math.max(0,Math.min(w.max,w.v+(e.key==='ArrowUp'?st:-st)));w.v=v;document.getElementById('fan-w').innerHTML=fanWheelHTML(w)}}else if(e.key==='Enter'&&FAN.hover>=0)fanActivate(FAN.hover,true)} else if(e.key==='Escape'){if(finderOpen)closeFinder();else if(SH)closeSheet();else if(SEL.on)endSelect();else if(focusOpen)fcClose();else if(SB.open)sbClose()}});
@@ -3680,7 +3944,7 @@ setTimeout(()=>{c.remove();D.ph.remove();document.querySelectorAll('.zone-hot').
 if(apply){NOANIM=true;try{dropOn(D.t,(card||zone).dataset.z)}finally{NOANIM=false}}else D.row.style.display=''},240)}
 function gMove(x,y){PX=x;PY=y;if(!G||G.lock||finderOpen||SH)return;if(G.mode==='drag')return;const dx=x-G.x,dy=y-G.y;
 if(Math.hypot(dx,dy)>6)clearTimeout(LP);
-if(!G.mode){if(Math.abs(dx)<10&&Math.abs(dy)<10)return;clearTimeout(LP);G.mode=Math.abs(dx)>Math.abs(dy)?'h':'v';if(G.mode==='v'&&!(G.top&&dy>0)){G.mode='x'}document.body.classList.add('dragging')}
+if(!G.mode){if(Math.abs(dx)<10&&Math.abs(dy)<10)return;clearTimeout(LP);G.mode=Math.abs(dx)>Math.abs(dy)?'h':'v';if(G.mode==='v'&&(DESKON()||!(G.top&&dy>0))){G.mode='x'}document.body.classList.add('dragging')}
 if(G.mode==='x'&&G.src==='mouse')window.scrollBy(0,G.ly-y);
 G.ly=y;G.dx=dx;{const nw=performance.now();if(G.lx!=null&&nw>G.lt)G.v=(x-G.lx)/(nw-G.lt);G.lx=x;G.lt=nw}
 if(G.mode==='v'){G.pull=Math.min(dy*0.5,90);setPull(G.pull)}
@@ -3767,7 +4031,7 @@ let PHOTOS=[],FBM={},FOT={t0:null,tiny:{},gc:0};
 const PDB={db:null,open(){return new Promise((res,rej)=>{if(PDB.db)return res(PDB.db);if(!window.indexedDB)return rej(new Error('sem indexedDB'));const r=indexedDB.open('lembra-fotos',1);r.onupgradeneeded=()=>r.result.createObjectStore('p',{keyPath:'id'});r.onsuccess=()=>{PDB.db=r.result;res(r.result)};r.onerror=()=>rej(r.error)})},
 async tx(mode,fn){const d=await PDB.open();return new Promise((res,rej)=>{const t=d.transaction('p',mode),s=t.objectStore('p'),q=fn(s);t.oncomplete=()=>res(q&&q.result);t.onerror=()=>rej(t.error)})},
 all(){return PDB.tx('readonly',s=>s.getAll())},put(o){return PDB.tx('readwrite',s=>s.put(o))},del(id){return PDB.tx('readwrite',s=>s.delete(id))}};
-async function fotosLoad(){try{const l=((await PDB.all())||[]).sort((x,y)=>x.at-y.at);PHOTOS.forEach(p=>{try{URL.revokeObjectURL(p.url)}catch(e){}});PHOTOS=l.map(o=>({id:o.id,blob:o.blob,w:o.w,h:o.h,url:URL.createObjectURL(o.blob)}));Object.keys(FBM).forEach(k=>{const id=k.slice(0,-1);if(!PHOTOS.some(p=>p.id===id)){try{FBM[k]&&FBM[k].b&&FBM[k].b.close()}catch(e){}delete FBM[k]}});Object.keys(FOT.tiny).forEach(id=>{if(!PHOTOS.some(p=>p.id===id))delete FOT.tiny[id]})}catch(e){PHOTOS=[]}
+async function fotosLoad(){try{const l=((await PDB.all())||[]).sort((x,y)=>x.at-y.at);PHOTOS.forEach(p=>{try{URL.revokeObjectURL(p.url)}catch(e){}});PHOTOS=l.map(o=>({id:o.id,blob:o.blob,w:o.w,h:o.h,at:o.at,url:URL.createObjectURL(o.blob)}));fotosIdxFix();Object.keys(FBM).forEach(k=>{const id=k.slice(0,-1);if(!PHOTOS.some(p=>p.id===id)){try{FBM[k]&&FBM[k].b&&FBM[k].b.close()}catch(e){}delete FBM[k]}});Object.keys(FOT.tiny).forEach(id=>{if(!PHOTOS.some(p=>p.id===id))delete FOT.tiny[id]})}catch(e){PHOTOS=[]}
 if(SH&&SH.type==='fotos')renderSheet();if(V.tab==='foco')render(true)}
 function exifOri(v,s){try{const le=v.getUint16(s)===0x4949,g16=o=>v.getUint16(o,le),g32=o=>v.getUint32(o,le),ifd=s+g32(s+4),n=g16(ifd);for(let i=0;i<n;i++){const e=ifd+2+i*12;if(g16(e)===0x0112)return g16(e+8)}}catch(x){}return 1}
 async function imgInfo(file){try{const buf=await file.slice(0,1048576).arrayBuffer(),v=new DataView(buf);let w=0,h=0,ori=1;
@@ -3793,7 +4057,7 @@ try{const r=await fotoPrep(f);await PDB.put({id:uid(),blob:r.blob,w:r.w,h:r.h,at
 const first=!PHOTOS.length;await fotosLoad();if(ok&&first){const fi=SCENES.findIndex(s=>s.k==='fotos');FS().scene=fi;save()}
 const hint=heic?' · '+heic+(heic===1?' é HEIC':' são HEIC')+': no Samsung, desligue "Fotos de alta eficiência" na câmera ou compartilhe como JPEG':'';
 toast(ok?(ok===1?'1 foto adicionada':ok+' fotos adicionadas')+(fail?' · '+fail+' não abriram'+hint:''):fail?(heic?'Esse formato (HEIC) o app não abre. No Samsung, desligue "Fotos de alta eficiência" na câmera ou compartilhe como JPEG':'Não consegui abrir essas fotos'):'Nenhuma foto escolhida')}
-async function fotoDel(id){try{await PDB.del(id)}catch(e){}await fotosLoad();if(focusOpen&&SCENES[FSC.cur].k==='fotos'&&!PHOTOS.length){const L=sceneList();if(L.length)fcSetScene(L[0])}}
+async function fotoDel(id){try{await PDB.del(id)}catch(e){}S.fotosIdx=(S.fotosIdx||[]).filter(e=>e.id!==id);save();if(syncOn()&&syncKind()==='server')serverBE.delBlob(id);await fotosLoad();if(focusOpen&&SCENES[FSC.cur].k==='fotos'&&!PHOTOS.length){const L=sceneList();if(L.length)fcSetScene(L[0])}}
 function fbmK(p,kind){const key=p.id+kind,c=FBM[key];if(c&&c!=='l'){c.u=performance.now();return c.b}
 if(!c){FBM[key]='l';const hh=kind==='t'?420:1100,mk=()=>createImageBitmap(p.blob,{resizeHeight:hh,resizeQuality:'high'});mk().catch(()=>createImageBitmap(p.blob)).then(b=>{FBM[key]={b:b,u:performance.now()}}).catch(()=>{delete FBM[key]})}return null}
 function tinyOf(p){let t=FOT.tiny[p.id];if(t)return t;const b=fbmK(p,'t');if(!b)return null;const cv=document.createElement('canvas');cv.width=18;cv.height=32;const x=cv.getContext('2d'),s=Math.max(18/b.width,32/b.height);x.drawImage(b,(18-b.width*s)/2,(32-b.height*s)/2,b.width*s,b.height*s);FOT.tiny[p.id]=cv;return cv}
@@ -3835,7 +4099,7 @@ function audioUnlock(){try{const A=window._ac||(window._ac=new (window.AudioCont
 function chime(){try{audioUnlock();const A=window._ac;[523.25,659.25,783.99].forEach((f,i)=>{const o=A.createOscillator(),g=A.createGain();o.type='sine';o.frequency.value=f;o.connect(g);g.connect(A.destination);const t=A.currentTime+i*.18;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.12,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+1.4);o.start(t);o.stop(t+1.5)})}catch(e){}try{navigator.vibrate&&navigator.vibrate([120,80,120])}catch(e){}}
 async function wake(){try{if(navigator.wakeLock&&!WL){WL=await navigator.wakeLock.request('screen');WL.addEventListener('release',()=>{WL=null})}}catch(e){}}
 function unwake(){try{WL&&WL.release()}catch(e){}WL=null}
-async function fcNotify(r){const ln=LN();if(!ln)return;try{await ln.cancel({notifications:[{id:880001}]});if(r&&r.running)await ln.schedule({notifications:[{id:880001,title:'Lembra · Foco',body:r.phase==='focus'?'Pomo concluído. Hora da pausa.':'Pausa terminada. Pronto para o próximo pomo?',schedule:{at:new Date(r.endAt),allowWhileIdle:true}}]})}catch(e){}}
+async function fcNotify(r){const ln=LN();if(!ln)return;try{await ln.cancel({notifications:[{id:880001}]});if(r&&r.running)await ln.schedule({notifications:[{id:880001,title:'Lembra · Foco',body:ntFoco(r),extra:{k:'foco'},schedule:{at:new Date(r.endAt),allowWhileIdle:true}}]})}catch(e){}}
 
 /* ---- sessão ---- */
 function fcStart(kind,id,force){if(kind==='free'&&!force&&!id){const st=agState(Date.now());if(st.cur&&!st.cur.t.med){openSheet({type:'linkq',hab:st.cur.t.hab||null,tid:st.cur.t.id,pomo:isPomo(st.cur.t),title:st.cur.t.title});return}}
@@ -3891,7 +4155,7 @@ const hs=S.habits.filter(x=>ok(x.title)).sort((a,b)=>schedToday(b)-schedToday(a)
 if(hs.length)h+='<div class="sec">Hábitos</div>'+hs.map(x=>{const n=cnt(x.id);return '<div class="row fopt" data-a="fstart" data-k="habit" data-id="'+x.id+'"><div class="tx"><div class="tt">'+esc(x.title)+'</div><div class="mt">'+esc(hLabelText(x)+(n?' · '+n+(n===1?' pomo':' pomos'):''))+'</div></div></div>'}).join('');
 if(q&&!ts.length&&!hs.length&&!ok('foco livre sem tarefa'))h='<div class="empty">Nada encontrado.</div>';return h}
 function focoView(){const f=FS(),pi=prizeInfo(),r=f.run;
-let h='<h1>'+ring(pi.pct,'var(--ac)',26)+'Agora</h1><p class="sub">O bloco do momento e o que focar agora</p>';
+let h='<h1>'+ring(pi.pct,'var(--ac)',26)+'Foco</h1><p class="sub">Pomodoros, cenários e prêmios</p>';
 if(r)h+='<div class="card"><div class="tt">'+esc(runTitle(r))+'</div><div class="mt">'+PHL[r.phase]+' · '+fmtMS(runLeft(r))+(r.running?' · em andamento':' · pausado')+'</div><div style="margin-top:6px"><button class="lnk a" data-a="fopen">Continuar</button><button class="lnk d" data-a="fend">Encerrar</button></div></div>';
 h+='<input type="text" id="ffilter" placeholder="Buscar tarefa ou hábito…" autocomplete="off" style="margin:6px 0 4px"><div id="fopts">'+fopts('')+'</div>';
 h+='<div class="sec">Fundo do foco</div>'+(PHOTOS.length?'<div class="mstrip" data-a="fstrip" role="button" aria-label="Abrir o foco com o carrossel de fotos"><div class="mfeat"><img src="'+PHOTOS[0].url+'" alt=""></div><div class="mtrack"><div class="mslide">'+[0,1].map(()=>PHOTOS.slice(1).concat(PHOTOS.slice(0,1)).slice(0,10).map(p=>'<img src="'+p.url+'" alt="">').join('')).join('')+'</div></div></div><div class="mt" style="margin:8px 0 0">'+PHOTOS.length+(PHOTOS.length===1?' foto':' fotos')+' em carrossel · toque para abrir o foco</div><button class="lnk" data-a="fotos">Gerenciar fotos</button>':'<div class="card click rc" data-a="fotos"><span style="color:var(--ac);display:flex">'+ic('camera',24)+'</span><div class="cb"><div class="tt">Minhas fotos</div><div class="mt">Adicione fotos do aparelho para passarem em carrossel</div></div></div>');
@@ -3957,9 +4221,9 @@ window.addEventListener('pointerup',e=>{if(MP&&e.target!==mp)end(e)},true);windo
 mp.addEventListener('contextmenu',e=>{e.preventDefault();if(MP){if(!MP.drag&&!MP.fan&&!FAN.open){clearTimeout(MP.lp);MP.fan=true;fanOpen(true)}}else if(!FAN.open)fanOpen(false)});mp.title='Clique: nova tarefa · segure, clique com o botão direito ou Shift+clique: mais opções';
 $('#mpin').innerHTML=ic('inbox',20)+'<span>Inbox</span>'})();
 sheetWire();backInit();tourWire();try{deskApply();DESKM.addEventListener&&DESKM.addEventListener('change',deskApply)}catch(e){}
-syncWire();if(syncOn()){setTimeout(()=>syncRun(false),1200);syncSchedule()}
+syncWire();if(syncOn()){setTimeout(()=>syncRun(false),1200);syncStart()}
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!window.Capacitor){try{navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}}
-agWire();{const f=$('#med-file');if(f)f.addEventListener('change',medFileChange)}capasLoad();{const s=document.querySelector('#fnd .fsi');if(s)s.innerHTML=ic('search',18)}applyVisual();mediaMigrate();mpRingUpdate();
+agWire();{const f=$('#med-file');if(f)f.addEventListener('change',medFileChange)}capasLoad();{const s=document.querySelector('#fnd .fsi');if(s)s.innerHTML=ic('search',18)}applyVisual();ntfInit();mediaMigrate();try{const dc=dataCheck(true);if(dc.length)setTimeout(()=>toast('Corrigi '+dc.reduce((s,x)=>s+x.n,0)+' inconsistência(s) nos dados'),1500)}catch(e){}mpRingUpdate();
 document.addEventListener('input',e=>{if(e.target&&e.target.id==='s-color'){SETG().color=e.target.value;applyVisual()}});document.addEventListener('input',e=>{if(e.target&&e.target.id==='lq'){LB.q=e.target.value;const pos=e.target.selectionStart,y=window.scrollY;render(true);window.scrollTo({top:y,left:0,behavior:'instant'});const n=$('#nq');if(n){n.focus();try{n.setSelectionRange(pos,pos)}catch(x){}}}});document.addEventListener('change',e=>{if(e.target&&e.target.id==='s-color'){SETG().color=e.target.value;save();applyVisual();renderSheet()}});fotosLoad();updateSelBar();applyMode();pruneDone();render();checkDue();splashRun();calRefresh(true);schedRituals();setInterval(checkDue,15000);rescheduleAll();
 
 </script>
